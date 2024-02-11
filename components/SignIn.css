@@ -1,0 +1,173 @@
+:root{
+  
+  --custom-orange-color: #fc6736; /* custom color code */
+  --custom-peach-color: #f4b1b1;
+  --custom-gray-color: #efecec;
+  --custom-navy-color: #0c2d57;
+}
+  [data-amplify-authenticator] button:hover{
+    background-color: #05244da9;
+  }
+
+  div [data-amplify-authenticator]  {
+    background: linear-gradient(
+        to bottom,
+        var( --custom-navy-color),
+        var( --custom-peach-color),
+        var(--custom-orange-color)
+      );
+  }
+  
+  
+[data-amplify-authenticator] {
+    
+    --amplify-components-authenticator-router-box-shadow: 0 0 16px var(--amplify-colors-overlay-10);
+    --amplify-components-authenticator-router-border-width: 0;
+    --amplify-components-authenticator-form-padding: var(--amplify-space-medium) var(--amplify-space-xl) var(--amplify-space-xl);
+    --amplify-components-button-primary-background-color: var(--amplify-colors-neutral-100);
+    --amplify-components-button-hovor-color: var(--custom-peach-color);
+    --amplify-components-fieldcontrol-focus-box-shadow: 0 0 0 2px var(--amplify-colors-purple-60);
+    --amplify-components-tabs-item-active-border-color: var(--amplify-colors-neutral-100);
+    --amplify-components-tabs-item-color: var(--amplify-colors-neutral-80);
+    --amplify-components-tabs-item-active-color: var(--amplify-colors-purple-100);
+    --amplify-components-button-link-color: var(--amplify-colors-purple-80);
+
+    --amplify-components-header-color: var(--amplify-colors-purple-80);
+  }
+  [data-amplify-authenticator] .amplify-button--primary {
+    background-color:#103360ee;
+     
+
+  }
+@media (min-width:576px) {
+.createRes{
+  width: auto !important; 
+  flex:.7;
+}
+}
+
+
+  @media (max-width: 576px) {
+ 
+    main .trips{
+     align-items: center;
+     flex-direction: column;
+     overflow-y: scroll;
+     overflow-x: hidden;
+    
+   
+   
+    }
+    div.card{
+      max-height: 20rem;
+      
+    }
+
+
+  }
+  
+.navbar a {
+font-weight: 900;
+font-family:sans-serif,'Lucida Grande';
+color: white;
+}
+  
+
+
+.navbar{
+  position: absolute;
+  background: radial-gradient(
+    circle at left,
+   
+    var( --custom-navy-color),
+    var(--custom-orange-color)
+   
+  );
+}
+.trips::-webkit-scrollbar  {
+  display: none;
+}
+
+
+
+.trips{
+ 
+    display: flex;
+    justify-content: left;
+  
+    width: 100%;
+    overflow-y:auto;
+
+}
+div.card{
+  max-height: 25rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+}
+
+
+.createRes{
+
+display: flex;
+  width: 15rem; 
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+
+
+
+}
+.createRes >section{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+}
+ #firstName{
+  flex:1; 
+  margin-right: 10px;
+ }
+ #lastName{
+ flex:1;
+ }
+
+
+#fNameLabel{
+  
+
+flex:1;
+}
+
+
+.input {
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+}
+
+
+
+.sideBarIcons >button {
+  background-color: white;
+  border: none;
+
+margin: 10px;
+ 
+ }
+ .snowIcon{
+  padding: 25px;
+  display: inline-block;
+ 
+  background-size: cover;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a small black box shadow */
+  border-radius: 50%; 
+}
+
+#snow{
+  background-image: url(https://www.svgrepo.com/show/231966/snowboarder.svg);
+}
+#ski{background-image: url(https://www.svgrepo.com/show/231962/skier.svg);}
+#createIcon{
+  background-image: url(https://www.svgrepo.com/show/435930/register.svg);
+  border-radius: 5%; 
+}

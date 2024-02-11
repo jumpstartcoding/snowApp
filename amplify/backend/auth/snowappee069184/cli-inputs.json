@@ -1,0 +1,128 @@
+{
+  "version": "1",
+  "cognitoConfig": {
+    "identityPoolName": "snowappee069184_identitypool_ee069184",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "snowapee069184",
+    "userPoolName": "snowappee069184_userpool_ee069184",
+    "autoVerifiedAttributes": [
+      "email"
+    ],
+    "mfaConfiguration": "OFF",
+    "mfaTypes": [
+      "SMS Text Message"
+    ],
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [],
+    "requiredAttributes": [
+      "email"
+    ],
+    "aliasAttributes": [],
+    "userpoolClientGenerateSecret": false,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientWriteAttributes": [
+      "email"
+    ],
+    "userpoolClientReadAttributes": [
+      "email"
+    ],
+    "userpoolClientLambdaRole": "snowapee069184_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": false,
+    "sharedId": "ee069184",
+    "resourceName": "snowappee069184",
+    "authSelections": "identityPoolAndUserPool",
+    "useDefault": "defaultSocial",
+    "hostedUI": true,
+    "usernameAttributes": [
+      "email"
+    ],
+    "triggers": {
+      "DefineAuthChallenge": [
+        "captcha-define-challenge"
+      ],
+      "CreateAuthChallenge": [
+        "captcha-create-challenge"
+      ],
+      "VerifyAuthChallengeResponse": [
+        "captcha-verify"
+      ],
+      "CustomMessage": [
+        "verification-link"
+      ]
+    },
+    "hostedUIDomainName": "snowappee069184-ee069184",
+    "authProvidersUserPool": [
+      "Google"
+    ],
+    "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
+    "userPoolGroupList": [
+      "snowemployee"
+    ],
+    "serviceName": "Cognito",
+    "verificationBucketName": "snowappee069184verificationbucket",
+    "usernameCaseSensitive": false,
+    "useEnabledMfas": true,
+    "authRoleArn": {
+      "Fn::GetAtt": [
+        "AuthRole",
+        "Arn"
+      ]
+    },
+    "unauthRoleArn": {
+      "Fn::GetAtt": [
+        "UnauthRole",
+        "Arn"
+      ]
+    },
+    "breakCircularDependency": true,
+    "dependsOn": [
+      {
+        "category": "function",
+        "resourceName": "snowappee069184DefineAuthChallenge",
+        "triggerProvider": "Cognito",
+        "attributes": [
+          "Arn",
+          "Name"
+        ]
+      },
+      {
+        "category": "function",
+        "resourceName": "snowappee069184CreateAuthChallenge",
+        "triggerProvider": "Cognito",
+        "attributes": [
+          "Arn",
+          "Name"
+        ]
+      },
+      {
+        "category": "function",
+        "resourceName": "snowappee069184VerifyAuthChallengeResponse",
+        "triggerProvider": "Cognito",
+        "attributes": [
+          "Arn",
+          "Name"
+        ]
+      },
+      {
+        "category": "function",
+        "resourceName": "snowappee069184CustomMessage",
+        "triggerProvider": "Cognito",
+        "attributes": [
+          "Arn",
+          "Name"
+        ]
+      }
+    ],
+    "permissions": [],
+    "authTriggerConnections": "[\n  {\n    \"triggerType\": \"DefineAuthChallenge\",\n    \"lambdaFunctionName\": \"snowappee069184DefineAuthChallenge\"\n  },\n  {\n    \"triggerType\": \"CreateAuthChallenge\",\n    \"lambdaFunctionName\": \"snowappee069184CreateAuthChallenge\"\n  },\n  {\n    \"triggerType\": \"VerifyAuthChallengeResponse\",\n    \"lambdaFunctionName\": \"snowappee069184VerifyAuthChallengeResponse\"\n  },\n  {\n    \"triggerType\": \"CustomMessage\",\n    \"lambdaFunctionName\": \"snowappee069184CustomMessage\"\n  }\n]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:5173/home/\"],\"LogoutURLs\":[\"http://localhost:5173/\"]}",
+    "parentStack": {
+      "Ref": "AWS::StackId"
+    }
+  }
+}

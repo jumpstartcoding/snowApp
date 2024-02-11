@@ -1,0 +1,226 @@
+{
+  "auth": {
+    "snowappee069184": {
+      "customAuth": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "snowappee069184DefineAuthChallenge",
+          "triggerProvider": "Cognito"
+        },
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "snowappee069184CreateAuthChallenge",
+          "triggerProvider": "Cognito"
+        },
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "snowappee069184VerifyAuthChallengeResponse",
+          "triggerProvider": "Cognito"
+        },
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "snowappee069184CustomMessage",
+          "triggerProvider": "Cognito"
+        }
+      ],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [
+          "GOOGLE"
+        ],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    },
+    "userPoolGroups": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "snowappee069184"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito-UserPool-Groups"
+    }
+  },
+  "function": {
+    "snowapp0fa3e196CustomMessage": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "snowappee069184CreateAuthChallenge": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "snowappee069184CustomMessage": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "snowappee069184DefineAuthChallenge": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "snowappee069184VerifyAuthChallengeResponse": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_snowapp0fa3e196CustomMessage_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowapp0fa3e196CustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_snowapp0fa3e196CustomMessage_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowapp0fa3e196CustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_snowappee069184CreateAuthChallenge_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowappee069184CreateAuthChallenge"
+        }
+      ]
+    },
+    "AMPLIFY_function_snowappee069184CreateAuthChallenge_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowappee069184CreateAuthChallenge"
+        }
+      ]
+    },
+    "AMPLIFY_function_snowappee069184CustomMessage_EMAILMESSAGE": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowappee069184CustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_snowappee069184CustomMessage_EMAILSUBJECT": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowappee069184CustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_snowappee069184CustomMessage_REDIRECTURL": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowappee069184CustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_snowappee069184CustomMessage_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowappee069184CustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_snowappee069184CustomMessage_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowappee069184CustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_snowappee069184DefineAuthChallenge_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowappee069184DefineAuthChallenge"
+        }
+      ]
+    },
+    "AMPLIFY_function_snowappee069184DefineAuthChallenge_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowappee069184DefineAuthChallenge"
+        }
+      ]
+    },
+    "AMPLIFY_function_snowappee069184VerifyAuthChallengeResponse_RECAPTCHASECRET": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowappee069184VerifyAuthChallengeResponse"
+        }
+      ]
+    },
+    "AMPLIFY_function_snowappee069184VerifyAuthChallengeResponse_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowappee069184VerifyAuthChallengeResponse"
+        }
+      ]
+    },
+    "AMPLIFY_function_snowappee069184VerifyAuthChallengeResponse_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowappee069184VerifyAuthChallengeResponse"
+        }
+      ]
+    }
+  }
+}

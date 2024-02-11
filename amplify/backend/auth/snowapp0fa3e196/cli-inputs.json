@@ -1,0 +1,61 @@
+{
+  "version": "1",
+  "cognitoConfig": {
+    "identityPoolName": "snowapp0fa3e196_identitypool_0fa3e196",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "snowap0fa3e196",
+    "userPoolName": "snowapp0fa3e196_userpool_0fa3e196",
+    "autoVerifiedAttributes": [
+      "email"
+    ],
+    "mfaConfiguration": "OFF",
+    "mfaTypes": [
+      "SMS Text Message"
+    ],
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [],
+    "requiredAttributes": [
+      "email"
+    ],
+    "aliasAttributes": [],
+    "userpoolClientGenerateSecret": false,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientWriteAttributes": [
+      "email"
+    ],
+    "userpoolClientReadAttributes": [
+      "email"
+    ],
+    "userpoolClientLambdaRole": "snowap0fa3e196_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": false,
+    "sharedId": "0fa3e196",
+    "resourceName": "snowapp0fa3e196",
+    "authSelections": "identityPoolAndUserPool",
+    "useDefault": "defaultSocial",
+    "hostedUI": true,
+    "usernameAttributes": [
+      "email"
+    ],
+    "triggers": {
+      "CustomMessage": [
+        "verification-link"
+      ]
+    },
+    "hostedUIDomainName": "snowapp0fa3e196-0fa3e196",
+    "authProvidersUserPool": [
+      "Google"
+    ],
+    "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:5173/home/\"],\"LogoutURLs\":[\"http://localhost:5173/\"]}",
+    "userPoolGroupList": [],
+    "serviceName": "Cognito",
+    "verificationBucketName": "snowapp0fa3e196verificationbucket",
+    "usernameCaseSensitive": false,
+    "useEnabledMfas": true
+  }
+}
