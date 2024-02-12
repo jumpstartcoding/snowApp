@@ -109,16 +109,7 @@ function HomePage(props: { user?: any; signOut?: any }) {
             )}
           </section>
         </main>
-        <div
-          className="sideBarIcons"
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            backgroundColor: "white",
-            flex: ".5",
-          }}
-        >
+        <div className="sideBarIcons">
           <button onClick={() => handleClick("Snowboard")}>
             <span id="snow" className="snowIcon"></span>
           </button>
