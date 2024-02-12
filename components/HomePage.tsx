@@ -57,17 +57,21 @@ function HomePage(props: { user?: any; signOut?: any }) {
   const handleClick = (type: string) => setResType(type);
   return (
     <>
-      <NavBar />
       <div
         style={{
           display: "flex",
           flexDirection: "column",
+
           justifyContent: "flex-start",
+
           backgroundColor: "orange",
           width: "100%",
+
           overflow: "auto",
         }}
       >
+        <NavBar />
+
         <main
           style={{
             display: "flex",
@@ -85,29 +89,24 @@ function HomePage(props: { user?: any; signOut?: any }) {
               <>{resType} Trips</>
             )}
           </h1>
-          {resType === "create" ? (
-            <CreateRes />
-          ) : (
-            <section
-              style={{
-                justifyContent: "left",
-              }}
-            >
-              {resType === "Ski" ? (
-                <>
-                  <ResCard reservations={skiTrips} tag="one"></ResCard>
-                  <ResCard reservations={skiTrips} tag="onesws"></ResCard>
-                  <ResCard reservations={skiTrips} tag="onesww"></ResCard>
-                </>
-              ) : resType === "Snowboard" ? (
-                <ResCard reservations={snowBoardTrips} tag="onswswe"></ResCard>
-              ) : (
-                <div>
-                  <p>feefe</p>
-                </div>
-              )}
-            </section>
-          )}
+
+          <section
+            style={{
+              justifyContent: `${resType === "create" ? "center" : "left"} `,
+            }}
+          >
+            {resType === "Ski" ? (
+              <>
+                <ResCard reservations={skiTrips} tag="one"></ResCard>
+                <ResCard reservations={skiTrips} tag="onesws"></ResCard>
+                <ResCard reservations={skiTrips} tag="onesww"></ResCard>
+              </>
+            ) : resType === "Snowboard" ? (
+              <ResCard reservations={snowBoardTrips} tag="onswswe"></ResCard>
+            ) : (
+              <CreateRes />
+            )}
+          </section>
         </main>
       </div>
       <div className="sideBarIcons ">
