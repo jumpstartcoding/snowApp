@@ -82,19 +82,19 @@ function HomePage(props: { user?: any; signOut?: any }) {
             backgroundColor: "white",
           }}
         >
-          <h1>
-            {resType === "create" ? (
-              <>Create Reservation</>
-            ) : (
-              <>{resType} Trips</>
-            )}
-          </h1>
-
           <section
+            className="trips"
             style={{
               justifyContent: `${resType === "create" ? "center" : "left"} `,
             }}
           >
+            <h1 style={{ marginTop: "5rem" }}>
+              {resType === "create" ? (
+                <>Create Reservation</>
+              ) : (
+                <>{resType} Trips</>
+              )}
+            </h1>
             {resType === "Ski" ? (
               <>
                 <ResCard reservations={skiTrips} tag="one"></ResCard>

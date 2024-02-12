@@ -39,11 +39,7 @@
      
 
   }
-@media (min-width:576px) {
-.createRes{
 
-}
-}
 
 
   @media (max-width: 576px) {
@@ -59,10 +55,8 @@
     }
     div.card{
       max-height: 20rem;
-      
+
     }
-
-
   }
   
 .navbar a {
