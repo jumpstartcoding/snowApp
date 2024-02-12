@@ -1,4 +1,52 @@
 {
+  "auth": {
+    "snowapp60223a44": {
+      "customAuth": false,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "snowapp60223a44CustomMessage",
+          "triggerProvider": "Cognito"
+        }
+      ],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [
+          "GOOGLE"
+        ],
+        "usernameAttributes": [
+          "EMAIL",
+          "PHONE_NUMBER"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
+  "function": {
+    "snowapp60223a44CustomMessage": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
   "hosting": {
     "amplifyhosting": {
       "lastPushTimeStamp": "2024-02-12T01:58:47.552Z",
@@ -7,6 +55,46 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_snowapp60223a44CustomMessage_EMAILMESSAGE": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowapp60223a44CustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_snowapp60223a44CustomMessage_EMAILSUBJECT": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowapp60223a44CustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_snowapp60223a44CustomMessage_REDIRECTURL": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowapp60223a44CustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_snowapp60223a44CustomMessage_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowapp60223a44CustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_snowapp60223a44CustomMessage_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowapp60223a44CustomMessage"
+        }
+      ]
+    },
     "AMPLIFY_hosting_amplifyhosting_appId": {
       "usedBy": [
         {

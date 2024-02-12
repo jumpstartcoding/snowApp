@@ -1,0 +1,61 @@
+{
+  "version": "1",
+  "cognitoConfig": {
+    "identityPoolName": "snowapp60223a44_identitypool_60223a44",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "snowap60223a44",
+    "userPoolName": "snowapp60223a44_userpool_60223a44",
+    "autoVerifiedAttributes": [
+      "email"
+    ],
+    "mfaConfiguration": "OFF",
+    "mfaTypes": [
+      "SMS Text Message"
+    ],
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [],
+    "requiredAttributes": [
+      "email"
+    ],
+    "aliasAttributes": [],
+    "userpoolClientGenerateSecret": false,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientWriteAttributes": [
+      "email"
+    ],
+    "userpoolClientReadAttributes": [
+      "email"
+    ],
+    "userpoolClientLambdaRole": "snowap60223a44_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": false,
+    "sharedId": "60223a44",
+    "resourceName": "snowapp60223a44",
+    "authSelections": "identityPoolAndUserPool",
+    "useDefault": "defaultSocial",
+    "hostedUI": true,
+    "usernameAttributes": [
+      "email, phone_number"
+    ],
+    "triggers": {
+      "CustomMessage": [
+        "verification-link"
+      ]
+    },
+    "hostedUIDomainName": "snowapp60223a44-60223a44",
+    "authProvidersUserPool": [
+      "Google"
+    ],
+    "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://master.d2jwbe423r6oil.amplifyapp.com/home/\",\"http://localhost:5173/home/\"],\"LogoutURLs\":[\"https://master.d2jwbe423r6oil.amplifyapp.com/\",\"http://localhost:5173/\"]}",
+    "userPoolGroupList": [],
+    "serviceName": "Cognito",
+    "verificationBucketName": "snowapp60223a44verificationbucket",
+    "usernameCaseSensitive": false,
+    "useEnabledMfas": true
+  }
+}
