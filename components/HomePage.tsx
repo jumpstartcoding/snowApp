@@ -57,8 +57,6 @@ function HomePage(props: { user?: any; signOut?: any }) {
   const handleClick = (type: string) => setResType(type);
   return (
     <>
-      <NavBar />
-
       <div
         style={{
           display: "flex",
@@ -68,10 +66,12 @@ function HomePage(props: { user?: any; signOut?: any }) {
 
           backgroundColor: "orange",
           width: "100%",
-          height: "100vh",
+
           overflow: "auto",
         }}
       >
+        <NavBar />
+
         <main
           style={{
             display: "flex",
@@ -80,7 +80,6 @@ function HomePage(props: { user?: any; signOut?: any }) {
             alignItems: "center",
             flexDirection: "column",
             backgroundColor: "white",
-            flex: "4",
           }}
         >
           <h1>
@@ -109,17 +108,17 @@ function HomePage(props: { user?: any; signOut?: any }) {
             )}
           </section>
         </main>
-        <div className="sideBarIcons">
-          <button onClick={() => handleClick("Snowboard")}>
-            <span id="snow" className="snowIcon"></span>
-          </button>
-          <button onClick={() => handleClick("Ski")}>
-            <span id="ski" className="snowIcon"></span>
-          </button>
-          <button onClick={() => handleClick("create")}>
-            <span id="createIcon" className="snowIcon"></span>
-          </button>
-        </div>
+      </div>
+      <div className="sideBarIcons ">
+        <button onClick={() => handleClick("Snowboard")}>
+          <span id="snow" className="snowIcon"></span>
+        </button>
+        <button onClick={() => handleClick("Ski")}>
+          <span id="ski" className="snowIcon"></span>
+        </button>
+        <button onClick={() => handleClick("create")}>
+          <span id="createIcon" className="snowIcon"></span>
+        </button>
       </div>
     </>
   );

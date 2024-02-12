@@ -4,7 +4,7 @@ import "./SignIn.css";
 export default function CreateRes() {
   return (
     <>
-      <Form className="createRes" style={{ paddingTop: "10px" }}>
+      <Form className="createRes " style={{ paddingTop: "10px" }}>
         <section>
           <Input
             className="input"
