@@ -42,6 +42,12 @@
           "deploymentBucketName": "amplify-snowapp-dev-150624-deployment",
           "s3Key": "amplify-builds/snowapp0fa3e196CustomMessage-597a6a7a574f756f774c-build.zip"
         }
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d3csishffg1wrd",
+          "type": "cicd"
+        }
       }
     }
   }
