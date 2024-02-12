@@ -101,7 +101,7 @@ color: white;
 }
 div.card{
   max-height: 25rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
 
 
@@ -141,7 +141,7 @@ flex:1;
 
 .input {
 
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 
 }
 
@@ -170,4 +170,9 @@ margin: 10px;
 #createIcon{
   background-image: url(https://www.svgrepo.com/show/435930/register.svg);
   border-radius: 5%; 
+}
+
+
+.sideBarIcons{
+  width: 100%;
 }

@@ -62,7 +62,7 @@ function HomePage(props: { user?: any; signOut?: any }) {
       <div
         style={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: "column",
 
           justifyContent: "flex-start",
 
@@ -72,27 +72,6 @@ function HomePage(props: { user?: any; signOut?: any }) {
           overflow: "auto",
         }}
       >
-        <div
-          className="sideBarIcons"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            marginRight: "10px",
-            backgroundColor: "white",
-            flex: ".5",
-          }}
-        >
-          <button onClick={() => handleClick("Snowboard")}>
-            <span id="snow" className="snowIcon"></span>
-          </button>
-          <button onClick={() => handleClick("Ski")}>
-            <span id="ski" className="snowIcon"></span>
-          </button>
-          <button onClick={() => handleClick("create")}>
-            <span id="createIcon" className="snowIcon"></span>
-          </button>
-        </div>
-
         <main
           style={{
             display: "flex",
@@ -113,7 +92,6 @@ function HomePage(props: { user?: any; signOut?: any }) {
           </h1>
 
           <section
-            className="trips"
             style={{
               justifyContent: `${resType === "create" ? "center" : "left"} `,
             }}
@@ -131,6 +109,26 @@ function HomePage(props: { user?: any; signOut?: any }) {
             )}
           </section>
         </main>
+        <div
+          className="sideBarIcons"
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            backgroundColor: "white",
+            flex: ".5",
+          }}
+        >
+          <button onClick={() => handleClick("Snowboard")}>
+            <span id="snow" className="snowIcon"></span>
+          </button>
+          <button onClick={() => handleClick("Ski")}>
+            <span id="ski" className="snowIcon"></span>
+          </button>
+          <button onClick={() => handleClick("create")}>
+            <span id="createIcon" className="snowIcon"></span>
+          </button>
+        </div>
       </div>
     </>
   );
