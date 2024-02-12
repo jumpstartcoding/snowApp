@@ -63,6 +63,7 @@ function HomePage(props: { user?: any; signOut?: any }) {
         style={{
           display: "flex",
           flexDirection: "row",
+
           justifyContent: "flex-start",
 
           backgroundColor: "orange",
