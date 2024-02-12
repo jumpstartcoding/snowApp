@@ -108,7 +108,7 @@ function HomePage(props: { user?: any; signOut?: any }) {
             {resType === "create" ? (
               <>Create Reservation</>
             ) : (
-              <>Available {resType} Trips</>
+              <>{resType} Trips</>
             )}
           </h1>
 
