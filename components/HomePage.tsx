@@ -79,6 +79,7 @@ function HomePage(props: { user?: any; signOut?: any }) {
             overflowY: "scroll",
             alignItems: "center",
             flexDirection: "column",
+
             backgroundColor: "white",
           }}
         >
@@ -89,24 +90,29 @@ function HomePage(props: { user?: any; signOut?: any }) {
               <>{resType} Trips</>
             )}
           </h1>
-
-          <section
-            style={{
-              justifyContent: `${resType === "create" ? "center" : "left"} `,
-            }}
-          >
-            {resType === "Ski" ? (
-              <>
-                <ResCard reservations={skiTrips} tag="one"></ResCard>
-                <ResCard reservations={skiTrips} tag="onesws"></ResCard>
-                <ResCard reservations={skiTrips} tag="onesww"></ResCard>
-              </>
-            ) : resType === "Snowboard" ? (
-              <ResCard reservations={snowBoardTrips} tag="onswswe"></ResCard>
-            ) : (
-              <CreateRes />
-            )}
-          </section>
+          {resType === "create" ? (
+            <CreateRes />
+          ) : (
+            <section
+              style={{
+                justifyContent: "left",
+              }}
+            >
+              {resType === "Ski" ? (
+                <>
+                  <ResCard reservations={skiTrips} tag="one"></ResCard>
+                  <ResCard reservations={skiTrips} tag="onesws"></ResCard>
+                  <ResCard reservations={skiTrips} tag="onesww"></ResCard>
+                </>
+              ) : resType === "Snowboard" ? (
+                <ResCard reservations={snowBoardTrips} tag="onswswe"></ResCard>
+              ) : (
+                <div>
+                  <p>feefe</p>
+                </div>
+              )}
+            </section>
+          )}
         </main>
       </div>
       <div className="sideBarIcons ">
