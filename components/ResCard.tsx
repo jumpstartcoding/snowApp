@@ -15,8 +15,9 @@ export default function ResCard(props: {
         <div
           className="card"
           style={{
-            flex: "0 0 20rem",
-            width: "15rem",
+            flex: "0 0 23rem",
+            width: "20rem",
+            height: "22rem",
             overflow: "scroll",
             margin: "25px",
           }}
