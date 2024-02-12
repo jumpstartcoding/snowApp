@@ -57,21 +57,17 @@ function HomePage(props: { user?: any; signOut?: any }) {
   const handleClick = (type: string) => setResType(type);
   return (
     <>
+      <NavBar />
       <div
         style={{
           display: "flex",
           flexDirection: "column",
-
           justifyContent: "flex-start",
-
           backgroundColor: "orange",
           width: "100%",
-
           overflow: "auto",
         }}
       >
-        <NavBar />
-
         <main
           style={{
             display: "flex",
@@ -79,7 +75,6 @@ function HomePage(props: { user?: any; signOut?: any }) {
             overflowY: "scroll",
             alignItems: "center",
             flexDirection: "column",
-
             backgroundColor: "white",
           }}
         >
