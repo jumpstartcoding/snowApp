@@ -1,7 +1,7 @@
-import { signOut } from "aws-amplify/auth";
+import { signOut, SignOutInput } from "aws-amplify/auth";
 import { Link } from "react-router-dom";
 
-export default function NavBar() {
+export default function NavBar(props: { signOut: SignOutInput }) {
   return (
     <>
       <nav className="navbar  fixed-top text-center navbar-expand-sm bg-body-tertiary ">
@@ -43,15 +43,10 @@ export default function NavBar() {
           <Link
             role="button"
             onClick={async () => {
-              alert("signing Out");
-              try {
-                signOut();
-              } catch (e) {
-                alert(e);
-              }
+              signOut();
             }}
             className="nav-link "
-            to="#"
+            to="/"
           >
             Sign Out
           </Link>

@@ -1,15 +1,12 @@
-import { Amplify } from "aws-amplify";
-
 import "@aws-amplify/ui-react/styles.css";
-import config from "./amplifyconfiguration.json";
-import SignIn from "../components/SignIn";
-Amplify.configure(config);
+
+import HomePage from "../components/HomePage";
 
 export function App() {
   return (
     <>
       <div>
-        <SignIn></SignIn>
+        <HomePage></HomePage>
       </div>
     </>
   );
