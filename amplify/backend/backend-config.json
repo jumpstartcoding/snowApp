@@ -1,18 +1,41 @@
 {
-  "auth": {
-    "snowapp60223a44": {
-      "customAuth": false,
+  "api": {
+    "snowapp": {
       "dependsOn": [
         {
           "attributes": [
-            "Arn",
-            "Name"
+            "UserPoolId"
           ],
-          "category": "function",
-          "resourceName": "snowapp60223a44CustomMessage",
-          "triggerProvider": "Cognito"
+          "category": "auth",
+          "resourceName": "snowappe3bc7239"
         }
       ],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authsnowappe3bc7239"
+              }
+            }
+          ],
+          "defaultAuthentication": {
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7
+            },
+            "authenticationType": "API_KEY"
+          }
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  },
+  "auth": {
+    "snowappe3bc7239": {
+      "customAuth": false,
+      "dependsOn": [],
       "frontendAuthConfig": {
         "mfaConfiguration": "OFF",
         "mfaTypes": [
@@ -40,61 +63,14 @@
       "service": "Cognito"
     }
   },
-  "function": {
-    "snowapp60223a44CustomMessage": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    }
-  },
   "hosting": {
     "amplifyhosting": {
-      "lastPushTimeStamp": "2024-02-12T01:58:47.552Z",
+      "lastPushTimeStamp": "2024-02-13T21:48:57.228Z",
       "service": "amplifyhosting",
       "type": "cicd"
     }
   },
   "parameters": {
-    "AMPLIFY_function_snowapp60223a44CustomMessage_EMAILMESSAGE": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "snowapp60223a44CustomMessage"
-        }
-      ]
-    },
-    "AMPLIFY_function_snowapp60223a44CustomMessage_EMAILSUBJECT": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "snowapp60223a44CustomMessage"
-        }
-      ]
-    },
-    "AMPLIFY_function_snowapp60223a44CustomMessage_REDIRECTURL": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "snowapp60223a44CustomMessage"
-        }
-      ]
-    },
-    "AMPLIFY_function_snowapp60223a44CustomMessage_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "snowapp60223a44CustomMessage"
-        }
-      ]
-    },
-    "AMPLIFY_function_snowapp60223a44CustomMessage_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "snowapp60223a44CustomMessage"
-        }
-      ]
-    },
     "AMPLIFY_hosting_amplifyhosting_appId": {
       "usedBy": [
         {

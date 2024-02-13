@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "snowapp",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authsnowappe3bc7239",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

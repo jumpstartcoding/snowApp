@@ -1,35 +1,28 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-snowapp-dev-205335-authRole",
-      "UnauthRoleArn": "arn:aws:iam::457245890540:role/amplify-snowapp-dev-205335-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::457245890540:role/amplify-snowapp-dev-205335-authRole",
+      "AuthRoleName": "amplify-snowapp-dev-164129-authRole",
+      "UnauthRoleArn": "arn:aws:iam::457245890540:role/amplify-snowapp-dev-164129-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::457245890540:role/amplify-snowapp-dev-164129-authRole",
       "Region": "us-east-2",
-      "DeploymentBucketName": "amplify-snowapp-dev-205335-deployment",
-      "UnauthRoleName": "amplify-snowapp-dev-205335-unauthRole",
-      "StackName": "amplify-snowapp-dev-205335",
-      "StackId": "arn:aws:cloudformation:us-east-2:457245890540:stack/amplify-snowapp-dev-205335/89c26c80-c949-11ee-8222-061eb575611b",
-      "AmplifyAppId": "d2jwbe423r6oil",
-      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-snowapp-dev-205335-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+      "DeploymentBucketName": "amplify-snowapp-dev-164129-deployment",
+      "UnauthRoleName": "amplify-snowapp-dev-164129-unauthRole",
+      "StackName": "amplify-snowapp-dev-164129",
+      "StackId": "arn:aws:cloudformation:us-east-2:457245890540:stack/amplify-snowapp-dev-164129/a7068680-cab8-11ee-8c78-0a989beae5bf",
+      "AmplifyAppId": "df5m0t3vxfz15"
     },
     "categories": {
       "hosting": {
         "amplifyhosting": {
-          "appId": "d2jwbe423r6oil",
+          "appId": "df5m0t3vxfz15",
           "type": "cicd"
         }
       },
       "auth": {
-        "snowapp60223a44": {}
+        "snowappe3bc7239": {}
       },
-      "function": {
-        "snowapp60223a44CustomMessage": {
-          "REDIRECTURL": "https://master.d2jwbe423r6oil.amplifyapp.com/home/",
-          "EMAILSUBJECT": "Email Verification",
-          "EMAILMESSAGE": "Thank you for signing up, please click the link below to verify your email: ",
-          "deploymentBucketName": "amplify-snowapp-dev-205335-deployment",
-          "s3Key": "amplify-builds/snowapp60223a44CustomMessage-49625663337a6f483765-build.zip"
-        }
+      "api": {
+        "snowapp": {}
       }
     }
   }
