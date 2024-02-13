@@ -64,12 +64,19 @@ function HomePage(props: { user?: any; signOut?: any }) {
 
           justifyContent: "flex-start",
 
-          backgroundColor: "orange",
+          backgroundColor: "white",
           width: "100%",
 
           overflow: "auto",
         }}
       >
+        <h1 style={{ textAlign: "center", marginTop: "4rem" }}>
+          {resType === "create" ? (
+            <>Create Reservation</>
+          ) : (
+            <>{resType} Trips</>
+          )}
+        </h1>
         <NavBar />
 
         <main
@@ -82,13 +89,6 @@ function HomePage(props: { user?: any; signOut?: any }) {
             backgroundColor: "white",
           }}
         >
-          <h1 style={{ marginTop: "4rem" }}>
-            {resType === "create" ? (
-              <>Create Reservation</>
-            ) : (
-              <>{resType} Trips</>
-            )}
-          </h1>
           <section
             className="trips"
             style={{
