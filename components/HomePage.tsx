@@ -89,24 +89,21 @@ function HomePage(props: { user?: any; signOut?: any }) {
             backgroundColor: "white",
           }}
         >
-          <section
-            className="trips"
-            style={{
-              justifyContent: `${resType === "create" ? "center" : "left"} `,
-            }}
-          >
-            {resType === "Ski" ? (
-              <>
-                <ResCard reservations={skiTrips} tag="one"></ResCard>
-                <ResCard reservations={skiTrips} tag="onesws"></ResCard>
-                <ResCard reservations={skiTrips} tag="onesww"></ResCard>
-              </>
-            ) : resType === "Snowboard" ? (
-              <ResCard reservations={snowBoardTrips} tag="onswswe"></ResCard>
-            ) : (
-              <CreateRes />
-            )}
-          </section>
+          {resType === "create" ? (
+            <CreateRes />
+          ) : (
+            <section className="trips">
+              {resType === "Ski" ? (
+                <>
+                  <ResCard reservations={skiTrips} tag="one"></ResCard>
+                  <ResCard reservations={skiTrips} tag="onesws"></ResCard>
+                  <ResCard reservations={skiTrips} tag="onesww"></ResCard>
+                </>
+              ) : (
+                <ResCard reservations={snowBoardTrips} tag="onswswe"></ResCard>
+              )}
+            </section>
+          )}
         </main>
       </div>
       <div className="sideBarIcons ">

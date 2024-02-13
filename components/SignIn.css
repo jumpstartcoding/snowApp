@@ -97,16 +97,9 @@ div.card{
   max-height: 25rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
- @media (max-width:576px) {
-  .createRes{
- margin-bottom: 100px;
-  }
-  
- }
 
 .createRes{
-max-width: 80%;
-padding: 25px;
+padding: 15px 25px 15px 25px;
 
 }
 .createRes >section{
