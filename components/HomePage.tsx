@@ -70,7 +70,7 @@ function HomePage(props: { user?: any; signOut?: any }) {
           overflow: "auto",
         }}
       >
-        <NavBar signOut={props.signOut} />
+        <NavBar />
 
         <main
           style={{
