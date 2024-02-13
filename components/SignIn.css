@@ -99,7 +99,7 @@ div.card{
 }
 
 .createRes{
-padding: 15px 25px 15px 25px;
+padding:50px;
 
 }
 .createRes >section{
@@ -128,7 +128,7 @@ flex:1;
 
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.921);
 
-  border-radius: 50px;
+  border-radius: 10px;
   padding: 10px;
   border: 1px solid #ccc;
 
@@ -167,4 +167,11 @@ background-color: none;
 position: fixed;
 bottom: 0;
 
+}
+
+
+@media (max-width:576px) {
+  .card.createRes {
+margin: 10px;
+  } 
 }
