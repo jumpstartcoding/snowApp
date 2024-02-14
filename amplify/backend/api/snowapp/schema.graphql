@@ -4,14 +4,7 @@
 input AMPLIFY {
   globalAuthRule: AuthRule = { allow: public }
 } # FOR TESTING ONLY!
-type Reservation
-  @model
-  @auth(
-    rules: [
-      { allow: groups, groups: ["snowapp60223a44_userpool_60223a44-dev"] }
-      { allow: owner }
-    ]
-  ) {
+type Reservation @model @auth(rules: [{ allow: public }]) {
   id: ID!
   type: String!
   location: String!
@@ -30,6 +23,7 @@ type Customer @model {
   phone_number: String
   email: String
   reservation: Reservation @hasOne
+  guest: Int
 }
 
 type Instructor @model {
@@ -38,28 +32,6 @@ type Instructor @model {
   phone_number: String
   email: String
   reservations: [Reservation] @hasMany
-  locations: [String]
-  tier: Int
-}
-
-input ReservationInput {
-  type: String!
-  location: String!
-  date: AWSDateTime! # Assuming you're using AWS AppSync, use AWSDateTime for dates
-  createdAt: AWSDateTime!
-  updatedAt: AWSDateTime
-  tier: Int
-  status: String
-}
-
-input CustomerInput {
-  name: String!
-  phone_number: String
-  email: String
-}
-
-input InstructorInput {
-  name: String!
   locations: [String]
   tier: Int
 }
