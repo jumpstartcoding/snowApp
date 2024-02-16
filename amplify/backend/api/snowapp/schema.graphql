@@ -36,24 +36,21 @@ type Instructor @model {
   tier: Int
 }
 
-type Mutation {
-  createReservationAndCustomer(
-    input: CreateReservationAndCustomerInput!
-  ): ReservationAndCustomer!
+type ReservationAndCustomer {
+  reservation: Reservation!
+  customer: Customer!
 }
 
-input CreateReservationAndCustomerInput {
-  reservationInput: CreateReservationInput!
-  customerInput: CreateCustomerInput!
+type Mutation {
+  createReservation(input: CreateReservationInput!): ReservationAndCustomer!
 }
 
 input CreateReservationInput {
+  date: AWSDateTime!
   type: String!
   location: String!
-  date: AWSDateTime!
-  instructorId: ID! # Assuming you have the ID of the instructor
-  tier: Int
-  status: String
+  status: String!
+  customer: CreateCustomerInput! # Include customer details
 }
 
 input CreateCustomerInput {
@@ -61,9 +58,4 @@ input CreateCustomerInput {
   phone_number: String
   email: String
   guest: Int
-}
-
-type ReservationAndCustomer {
-  reservation: Reservation!
-  customer: Customer!
 }

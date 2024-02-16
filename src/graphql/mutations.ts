@@ -8,6 +8,458 @@ type GeneratedMutation<InputType, OutputType> = string & {
   __generatedMutationOutput: OutputType;
 };
 
+export const createReservationAndCustomer = /* GraphQL */ `mutation CreateReservationAndCustomer(
+  $input: CreateReservationAndCustomerInput!
+) {
+  createReservationAndCustomer(input: $input) {
+    reservation {
+      id
+      type
+      location
+      date
+      instructor {
+        id
+        name
+        phone_number
+        email
+        reservations {
+          items {
+            id
+            type
+            location
+            date
+            instructor {
+              id
+              name
+              phone_number
+              email
+              reservations {
+                items {
+                  id
+                  type
+                  location
+                  date
+                  createdAt
+                  updatedAt
+                  tier
+                  status
+                  instructorReservationsId
+                  reservationCustomerId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              locations
+              tier
+              createdAt
+              updatedAt
+              __typename
+            }
+            customer {
+              id
+              name
+              phone_number
+              email
+              reservation {
+                id
+                type
+                location
+                date
+                instructor {
+                  id
+                  name
+                  phone_number
+                  email
+                  locations
+                  tier
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                customer {
+                  id
+                  name
+                  phone_number
+                  email
+                  guest
+                  createdAt
+                  updatedAt
+                  customerReservationId
+                  __typename
+                }
+                createdAt
+                updatedAt
+                tier
+                status
+                instructorReservationsId
+                reservationCustomerId
+                __typename
+              }
+              guest
+              createdAt
+              updatedAt
+              customerReservationId
+              __typename
+            }
+            createdAt
+            updatedAt
+            tier
+            status
+            instructorReservationsId
+            reservationCustomerId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        locations
+        tier
+        createdAt
+        updatedAt
+        __typename
+      }
+      customer {
+        id
+        name
+        phone_number
+        email
+        reservation {
+          id
+          type
+          location
+          date
+          instructor {
+            id
+            name
+            phone_number
+            email
+            reservations {
+              items {
+                id
+                type
+                location
+                date
+                instructor {
+                  id
+                  name
+                  phone_number
+                  email
+                  locations
+                  tier
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                customer {
+                  id
+                  name
+                  phone_number
+                  email
+                  guest
+                  createdAt
+                  updatedAt
+                  customerReservationId
+                  __typename
+                }
+                createdAt
+                updatedAt
+                tier
+                status
+                instructorReservationsId
+                reservationCustomerId
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            locations
+            tier
+            createdAt
+            updatedAt
+            __typename
+          }
+          customer {
+            id
+            name
+            phone_number
+            email
+            reservation {
+              id
+              type
+              location
+              date
+              instructor {
+                id
+                name
+                phone_number
+                email
+                reservations {
+                  nextToken
+                  __typename
+                }
+                locations
+                tier
+                createdAt
+                updatedAt
+                __typename
+              }
+              customer {
+                id
+                name
+                phone_number
+                email
+                reservation {
+                  id
+                  type
+                  location
+                  date
+                  createdAt
+                  updatedAt
+                  tier
+                  status
+                  instructorReservationsId
+                  reservationCustomerId
+                  __typename
+                }
+                guest
+                createdAt
+                updatedAt
+                customerReservationId
+                __typename
+              }
+              createdAt
+              updatedAt
+              tier
+              status
+              instructorReservationsId
+              reservationCustomerId
+              __typename
+            }
+            guest
+            createdAt
+            updatedAt
+            customerReservationId
+            __typename
+          }
+          createdAt
+          updatedAt
+          tier
+          status
+          instructorReservationsId
+          reservationCustomerId
+          __typename
+        }
+        guest
+        createdAt
+        updatedAt
+        customerReservationId
+        __typename
+      }
+      createdAt
+      updatedAt
+      tier
+      status
+      instructorReservationsId
+      reservationCustomerId
+      __typename
+    }
+    customer {
+      id
+      name
+      phone_number
+      email
+      reservation {
+        id
+        type
+        location
+        date
+        instructor {
+          id
+          name
+          phone_number
+          email
+          reservations {
+            items {
+              id
+              type
+              location
+              date
+              instructor {
+                id
+                name
+                phone_number
+                email
+                reservations {
+                  nextToken
+                  __typename
+                }
+                locations
+                tier
+                createdAt
+                updatedAt
+                __typename
+              }
+              customer {
+                id
+                name
+                phone_number
+                email
+                reservation {
+                  id
+                  type
+                  location
+                  date
+                  createdAt
+                  updatedAt
+                  tier
+                  status
+                  instructorReservationsId
+                  reservationCustomerId
+                  __typename
+                }
+                guest
+                createdAt
+                updatedAt
+                customerReservationId
+                __typename
+              }
+              createdAt
+              updatedAt
+              tier
+              status
+              instructorReservationsId
+              reservationCustomerId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          locations
+          tier
+          createdAt
+          updatedAt
+          __typename
+        }
+        customer {
+          id
+          name
+          phone_number
+          email
+          reservation {
+            id
+            type
+            location
+            date
+            instructor {
+              id
+              name
+              phone_number
+              email
+              reservations {
+                items {
+                  id
+                  type
+                  location
+                  date
+                  createdAt
+                  updatedAt
+                  tier
+                  status
+                  instructorReservationsId
+                  reservationCustomerId
+                  __typename
+                }
+                nextToken
+                __typename
+              }
+              locations
+              tier
+              createdAt
+              updatedAt
+              __typename
+            }
+            customer {
+              id
+              name
+              phone_number
+              email
+              reservation {
+                id
+                type
+                location
+                date
+                instructor {
+                  id
+                  name
+                  phone_number
+                  email
+                  locations
+                  tier
+                  createdAt
+                  updatedAt
+                  __typename
+                }
+                customer {
+                  id
+                  name
+                  phone_number
+                  email
+                  guest
+                  createdAt
+                  updatedAt
+                  customerReservationId
+                  __typename
+                }
+                createdAt
+                updatedAt
+                tier
+                status
+                instructorReservationsId
+                reservationCustomerId
+                __typename
+              }
+              guest
+              createdAt
+              updatedAt
+              customerReservationId
+              __typename
+            }
+            createdAt
+            updatedAt
+            tier
+            status
+            instructorReservationsId
+            reservationCustomerId
+            __typename
+          }
+          guest
+          createdAt
+          updatedAt
+          customerReservationId
+          __typename
+        }
+        createdAt
+        updatedAt
+        tier
+        status
+        instructorReservationsId
+        reservationCustomerId
+        __typename
+      }
+      guest
+      createdAt
+      updatedAt
+      customerReservationId
+      __typename
+    }
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.CreateReservationMutationVariables,
+  APITypes.CreateReservationMutation
+>;
 export const createReservation = /* GraphQL */ `mutation CreateReservation(
   $input: CreateReservationInput!
   $condition: ModelReservationConditionInput
