@@ -10,7 +10,7 @@ type Reservation @model @auth(rules: [{ allow: public }]) {
   location: String!
   date: AWSDateTime! # Assuming you're using AWS AppSync, use AWSDateTime for dates
   instructor: Instructor @belongsTo
-  customer: Customer @belongsTo
+  customer: Customer! @belongsTo
   createdAt: AWSDateTime!
   updatedAt: AWSDateTime
   tier: Int
@@ -34,4 +34,36 @@ type Instructor @model {
   reservations: [Reservation] @hasMany
   locations: [String]
   tier: Int
+}
+
+type Mutation {
+  createReservationAndCustomer(
+    input: CreateReservationAndCustomerInput!
+  ): ReservationAndCustomer!
+}
+
+input CreateReservationAndCustomerInput {
+  reservationInput: CreateReservationInput!
+  customerInput: CreateCustomerInput!
+}
+
+input CreateReservationInput {
+  type: String!
+  location: String!
+  date: AWSDateTime!
+  instructorId: ID! # Assuming you have the ID of the instructor
+  tier: Int
+  status: String
+}
+
+input CreateCustomerInput {
+  name: String!
+  phone_number: String
+  email: String
+  guest: Int
+}
+
+type ReservationAndCustomer {
+  reservation: Reservation!
+  customer: Customer!
 }

@@ -8,8 +8,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "/components/SignIn.css";
 import "@aws-amplify/ui-react/styles.css";
 import { Amplify } from "aws-amplify";
+
 Amplify.configure(config);
 import config from "./amplifyconfiguration.json";
+
 import {
   Authenticator,
   Button,

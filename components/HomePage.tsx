@@ -1,9 +1,13 @@
 import ResCard from "./ResCard";
 import NavBar from "./NavBar";
 import "./SignIn.css";
-import { useState } from "react";
+import { clientContext } from "../components/clientContext";
+import { useContext, useEffect, useState } from "react";
 
 import CreateRes from "./CreateRes";
+import { useAuthenticator } from "@aws-amplify/ui-react";
+
+import { listReservations } from "../src/graphql/queries";
 
 export interface Reservation {
   id: string;
@@ -51,8 +55,22 @@ let reservationsData: Reservation[] = [
 const skiTrips = reservationsData.filter((e) => e.type === "Ski");
 const snowBoardTrips = reservationsData.filter((e) => e.type === "Snowboard");
 
-function HomePage(props: { user?: any; signOut?: any }) {
-  console.log(props);
+function HomePage() {
+  const client = useContext(clientContext);
+  const ye = client.graphql({
+    query: listReservations,
+    variables: {
+      filter: {
+        location: { eq: "Vermont" },
+      },
+    },
+  });
+  useEffect(() => {
+    console.log("njj", ye);
+  }, []);
+
+  //const { user } = useAuthenticator((context) => [context.user]);
+
   const [resType, setResType] = useState("Snowboard");
   const handleClick = (type: string) => setResType(type);
   return (

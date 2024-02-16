@@ -2,11 +2,11 @@ import { Form } from "react-router-dom";
 import { Button, Input, Label } from "@aws-amplify/ui-react";
 import "./SignIn.css";
 import { createReservation, createCustomer } from "../src/graphql/mutations";
-import { useEffect, useState } from "react";
-import { generateClient } from "aws-amplify/api";
+import { useContext, useEffect, useState } from "react";
+import { clientContext } from "../components/clientContext";
 
-const client = generateClient();
 export default function CreateRes() {
+  const client = useContext(clientContext);
   const [reservation, setReservation] = useState({
     customer: {
       firstName: "",
@@ -17,7 +17,7 @@ export default function CreateRes() {
     },
     date: "",
     type: "",
-    tier: "",
+    tier: 1,
     location: "",
     status: "new",
   });
@@ -74,7 +74,7 @@ export default function CreateRes() {
           guest: 0,
         },
         type: " ",
-        tier: " ",
+        tier: 1,
         location: " ",
       });
     } catch (e) {
@@ -86,7 +86,13 @@ export default function CreateRes() {
   const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
 
-    if (name === "firstName" || "lastName" || " email" || "phone" || "guest") {
+    if (
+      name === "firstName" ||
+      name === "lastName" ||
+      name === "email" ||
+      name === "phone" ||
+      name === "guest"
+    ) {
       setReservation({
         ...reservation,
         customer: { ...reservation.customer, [name]: value },
@@ -112,7 +118,9 @@ export default function CreateRes() {
             <Label id="fNameLabel" htmlFor="firstName">
               First Name
             </Label>
-            <Label htmlFor="lastName">Last Name</Label>
+            <Label id="lNameLabel" htmlFor="lastName">
+              Last Name
+            </Label>
           </section>
           <section>
             <Input
@@ -132,7 +140,9 @@ export default function CreateRes() {
               onChange={handleChange}
             />
           </section>
-          <Label htmlFor="email">Email</Label>
+          <Label id="emailLabel" htmlFor="email">
+            Email
+          </Label>
           <Input
             className="input"
             type="email"
@@ -141,7 +151,9 @@ export default function CreateRes() {
             value={reservation.customer.email}
             onChange={handleChange}
           />
-          <Label htmlFor="phone">Phone Number</Label>
+          <Label id="phoneNumberLabel" htmlFor="phone">
+            Phone Number
+          </Label>
           <Input
             className="input"
             type="tel"
@@ -150,7 +162,9 @@ export default function CreateRes() {
             value={reservation.customer.phone}
             onChange={handleChange}
           />
-          <Label htmlFor="guests"># of Guests</Label>
+          <Label id="guestLabel" htmlFor="guests">
+            # of Guests
+          </Label>
           <Input
             className="input"
             type="number"
@@ -168,7 +182,11 @@ export default function CreateRes() {
               value="Ski"
               onChange={handleChange}
             />
-            <Label style={{ marginRight: "10px" }} htmlFor="snowBoardRes">
+            <Label
+              id="skiLabel"
+              style={{ marginRight: "10px" }}
+              htmlFor="skiRes"
+            >
               Ski
             </Label>
             <input
@@ -179,15 +197,20 @@ export default function CreateRes() {
               onChange={handleChange}
             />
 
-            <Label htmlFor="snowBoardRes"> SnowBoard </Label>
+            <Label id="snowBoardResLabel" htmlFor="snowBoardRes">
+              {" "}
+              SnowBoard{" "}
+            </Label>
           </section>
-          <Label htmlFor="location">Location</Label>
-          <Input
+          <Label id="locationLabel" htmlFor="location">
+            Location
+          </Label>
+          <input
             className="input"
-            type="list"
+            type="text"
             list="locationList"
-            id="location"
             name="location"
+            id="location"
             onChange={handleChange}
           />
           <datalist id="locationList">
@@ -197,7 +220,9 @@ export default function CreateRes() {
             <option value="Colorado"></option>
           </datalist>
 
-          <Label htmlFor="date">Date</Label>
+          <Label id="dateLabel" htmlFor="date">
+            Date
+          </Label>
           <Input
             className="input"
             type="date"
@@ -206,6 +231,7 @@ export default function CreateRes() {
           />
           <Button
             // isLoading={true}
+            name="resButton"
             loadingText="Loading..."
             type="submit"
             style={{ position: "relative", top: "1rem" }}

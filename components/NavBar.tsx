@@ -40,16 +40,18 @@ export default function NavBar() {
           className="nav-item "
           style={{ position: "absolute", right: "15px" }}
         >
-          <Link
-            role="button"
+          <button
             onClick={async () => {
-              signOut();
+              try {
+                await signOut();
+              } catch (e) {
+                console.log("SignOut Button:", e);
+              }
             }}
             className="nav-link "
-            to="/"
           >
             Sign Out
-          </Link>
+          </button>
         </span>
       </nav>
     </>
