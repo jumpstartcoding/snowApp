@@ -5,11 +5,12 @@ import { clientContext } from "../components/clientContext";
 import { useContext, useEffect, useState } from "react";
 
 import CreateRes from "./CreateRes";
-import { useAuthenticator } from "@aws-amplify/ui-react";
 
 import { listReservations } from "../src/graphql/queries";
 
-export interface Reservation {
+import React from "react";
+
+export interface Reservations {
   id: string;
   firstName: string;
   lastName: string;
@@ -19,59 +20,38 @@ export interface Reservation {
   type: string;
   tier: string;
 }
-let reservationsData: Reservation[] = [
-  {
-    id: "1",
-    firstName: "Vaughn",
-    lastName: "John",
-    phoneNumber: "324679823",
-    guests: "3",
-    date: "1/1/2020",
-    type: "Ski",
-    tier: "4",
-  },
-  {
-    id: "2",
-    firstName: "Pablo",
-    lastName: "Felipe",
-    phoneNumber: "22333823",
-    guests: "3",
-    date: "1/12/2020",
-    type: "Ski",
-    tier: "1",
-  },
-  {
-    id: "3",
-    firstName: "Asken",
-    lastName: "March",
-    phoneNumber: "444679823",
-    guests: "2",
-    date: "2/12/2023",
-    type: "Snowboard",
-    tier: "1",
-  },
-];
-
-const skiTrips = reservationsData.filter((e) => e.type === "Ski");
-const snowBoardTrips = reservationsData.filter((e) => e.type === "Snowboard");
 
 function HomePage() {
+  const [trips, setTrips] = React.useState<any | undefined>([]);
+  const [renders, setRender] = useState(0);
+  const [loading, isLoading] = useState(true);
   const client = useContext(clientContext);
+  const [resType, setResType] = useState("Snowboard");
   const ye = client.graphql({
     query: listReservations,
     variables: {
-      filter: {
-        location: { eq: "Vermont" },
-      },
+      filter: {},
     },
   });
   useEffect(() => {
-    console.log("njj", ye);
-  }, []);
+    ye.then((response) => {
+      setTrips(response.data.listReservations.items);
+      isLoading(false);
+
+      response.data.listReservations.items.map((elt) => {
+        setRender(renders + 1);
+
+        console.log(renders, " :Aaa:", elt.customer.name);
+      });
+    });
+  }, [resType]);
+
+  function yea(a: any) {
+    console.log(trips[0].customer);
+  }
 
   //const { user } = useAuthenticator((context) => [context.user]);
 
-  const [resType, setResType] = useState("Snowboard");
   const handleClick = (type: string) => setResType(type);
   return (
     <>
@@ -113,12 +93,14 @@ function HomePage() {
             <section className="trips">
               {resType === "Ski" ? (
                 <>
-                  <ResCard reservations={skiTrips} tag="one"></ResCard>
-                  <ResCard reservations={skiTrips} tag="onesws"></ResCard>
-                  <ResCard reservations={skiTrips} tag="onesww"></ResCard>
+                  <ResCard reservations={trips} tag="one"></ResCard>
+                  <ResCard reservations={trips} tag="onesws"></ResCard>
+                  <ResCard reservations={trips} tag="onesww"></ResCard>
                 </>
               ) : (
-                <ResCard reservations={snowBoardTrips} tag="onswswe"></ResCard>
+                !loading && (
+                  <ResCard reservations={trips} tag="onswswe"></ResCard>
+                )
               )}
             </section>
           )}
@@ -131,7 +113,7 @@ function HomePage() {
         <button onClick={() => handleClick("Ski")}>
           <span id="ski" className="snowIcon"></span>
         </button>
-        <button onClick={() => handleClick("create")}>
+        <button onClick={async () => handleClick("create")}>
           <span id="createIcon" className="snowIcon"></span>
         </button>
       </div>

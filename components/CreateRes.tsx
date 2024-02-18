@@ -1,12 +1,17 @@
 import { Form } from "react-router-dom";
 import { Button, Input, Label } from "@aws-amplify/ui-react";
 import "./SignIn.css";
-import { createReservation, createCustomer } from "../src/graphql/mutations";
+import {
+  createReservation,
+  createCustomer,
+  updateCustomer,
+} from "../src/graphql/mutations";
 import { useContext, useEffect, useState } from "react";
-import { clientContext } from "../components/clientContext";
+import { clientContext } from "./clientContext";
 
 export default function CreateRes() {
   const client = useContext(clientContext);
+  const currentDate = new Date().toISOString().split("T")[0];
   const [reservation, setReservation] = useState({
     customer: {
       firstName: "",
@@ -23,7 +28,7 @@ export default function CreateRes() {
   });
   useEffect(() => {
     // Get the current date
-    const currentDate = new Date().toISOString();
+
     setReservation({
       ...reservation,
       date: currentDate,
@@ -34,18 +39,6 @@ export default function CreateRes() {
     try {
       e.preventDefault();
       console.log("res:", reservation);
-      const yup = await client.graphql({
-        query: createReservation,
-        variables: {
-          input: {
-            date: reservation.date,
-            type: reservation.type,
-            location: reservation.location,
-            status: "new",
-          },
-        },
-      });
-      console.log("create Res:", yup);
 
       const cust = await client.graphql({
         query: createCustomer,
@@ -58,11 +51,35 @@ export default function CreateRes() {
             email: reservation.customer.email,
             phone_number: reservation.customer.phone,
             guest: reservation.customer.guest,
+          },
+        },
+      });
+      const yup = await client.graphql({
+        query: createReservation,
+        variables: {
+          input: {
+            date: reservation.date,
+            type: reservation.type,
+            location: reservation.location,
+            status: "new",
+            reservationCustomerId: cust.data.createCustomer.id,
+          },
+        },
+      });
+
+      const updateCust = await client.graphql({
+        query: updateCustomer,
+        variables: {
+          input: {
+            id: cust.data.createCustomer.id,
             customerReservationId: yup.data.createReservation.id,
           },
         },
       });
+      console.log("create Res:", yup);
+
       console.log("create Cust:", cust);
+      console.log("updated Cust:", updateCust);
 
       setReservation({
         ...reservation,
@@ -97,6 +114,8 @@ export default function CreateRes() {
         ...reservation,
         customer: { ...reservation.customer, [name]: value },
       });
+    } else if (name === "date") {
+      setReservation({ ...reservation, [name]: new Date(value).toISOString() });
     } else {
       setReservation({
         ...reservation,
@@ -147,6 +166,7 @@ export default function CreateRes() {
             className="input"
             type="email"
             name="email"
+            autoComplete="email"
             id="email"
             value={reservation.customer.email}
             onChange={handleChange}
@@ -158,6 +178,7 @@ export default function CreateRes() {
             className="input"
             type="tel"
             name="phone"
+            autoComplete="phone"
             id="phone"
             value={reservation.customer.phone}
             onChange={handleChange}
@@ -227,6 +248,8 @@ export default function CreateRes() {
             className="input"
             type="date"
             id="date"
+            name="date"
+            defaultValue={currentDate}
             onChange={handleChange}
           />
           <Button

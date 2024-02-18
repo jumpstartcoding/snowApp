@@ -1,14 +1,11 @@
 import { Button, Input } from "@aws-amplify/ui-react";
-import { Reservation } from "./HomePage";
 
 const onSubmit = (id: string) => {
   console.log("Accept", id);
 };
 
-export default function ResCard(props: {
-  reservations: Reservation[];
-  tag: string;
-}) {
+export default function ResCard(props: { reservations: any[]; tag: string }) {
+  console.log(props.reservations);
   return (
     <>
       {props.reservations[0] ? (
@@ -31,7 +28,7 @@ export default function ResCard(props: {
             </h6>
 
             <div className="accordion" id="accordionExample">
-              {props.reservations.map((reservation: Reservation, index) => (
+              {props.reservations.map((reservation: any, index) => (
                 <div key={reservation.id} className="accordion-item">
                   <h2 className="accordion-header">
                     <button
@@ -42,7 +39,7 @@ export default function ResCard(props: {
                       aria-expanded="false"
                       aria-controls={`${props.tag}${index}`}
                     >
-                      {reservation.date}
+                      {reservation.date.split("T")[0]}
                     </button>
                   </h2>
                   <div
@@ -52,11 +49,15 @@ export default function ResCard(props: {
                   >
                     <div className="accordion-body">
                       <h5>Customer Name:</h5>
-                      {reservation.firstName} {reservation.lastName}
-                      <h5>Phone Number:</h5>
-                      {reservation.phoneNumber}
+                      {reservation.customer.name} <h5>Phone Number:</h5>
+                      {reservation.customer.phone_number}
                       <h5># of Guests</h5>
-                      <Input type="text" placeholder="3" readOnly />
+                      <Input
+                        name="guestAmount"
+                        type="text"
+                        placeholder="3"
+                        readOnly
+                      />
                       {reservation ? (
                         <footer className="text-center">
                           <Button
@@ -88,7 +89,7 @@ export default function ResCard(props: {
           </div>
         </div>
       ) : (
-        {}
+        <div></div>
       )}
     </>
   );
