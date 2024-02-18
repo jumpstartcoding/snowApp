@@ -46,10 +46,6 @@ function HomePage() {
     });
   }, [resType]);
 
-  function yea(a: any) {
-    console.log(trips[0].customer);
-  }
-
   //const { user } = useAuthenticator((context) => [context.user]);
 
   const handleClick = (type: string) => setResType(type);
