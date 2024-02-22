@@ -34,6 +34,7 @@ const events = [
 export default function ResCalendar(props: {
   events?: { title: string; start: Date };
 }) {
+  console.log(props);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [createRes, setCreateRes] = useState<boolean>(false);
   const [calendarView, setCalendarView] = useState<"dayGridMonth" | "listWeek">(
@@ -43,21 +44,9 @@ export default function ResCalendar(props: {
     setCalendarView("dayGridMonth"); // Switch back to month view
     setCreateRes(false);
   };
-  function getDayEvents(): (
-    | { title: string; start: Date; extendedProps?: undefined }
-    | { title: string; start: Date; extendedProps: { status: string } }
-  )[] {
-    if (!selectedDate) return []; // Return empty array if no date is selected
 
-    const selectedDateString = selectedDate.toISOString().split("T")[0];
-
-    return events.filter((event) => {
-      const eventDateString = event.start.toISOString().split("T")[0];
-      return eventDateString === selectedDateString;
-    });
-  }
   const client = useContext(clientContext);
-  const dayEvents = getDayEvents();
+
   const handleDateClick = (arg: DateClickArg) => {
     console.log("Date clicked:", arg?.allDay);
     setCalendarView("listWeek"); // Switch to list view
