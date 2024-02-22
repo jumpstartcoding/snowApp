@@ -55,7 +55,11 @@ export default function ResCard(props: { reservations: any[]; tag: string }) {
                       <Input
                         name="guestAmount"
                         type="text"
-                        placeholder="3"
+                        placeholder={
+                          (reservation.customer.guest >= 0 &&
+                            reservation.customer.guest) ||
+                          "0"
+                        }
                         readOnly
                       />
                       {reservation ? (
@@ -89,7 +93,7 @@ export default function ResCard(props: { reservations: any[]; tag: string }) {
           </div>
         </div>
       ) : (
-        <div></div>
+        <div>Loading</div>
       )}
     </>
   );

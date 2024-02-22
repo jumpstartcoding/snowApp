@@ -1,14 +1,11 @@
 import ResCard from "./ResCard";
 import NavBar from "./NavBar";
 import "./SignIn.css";
+import CreateRes from "./CreateRes";
 import { clientContext } from "../components/clientContext";
 import { useContext, useEffect, useState } from "react";
 
-import CreateRes from "./CreateRes";
-
 import { listReservations } from "../src/graphql/queries";
-
-import React from "react";
 
 export interface Reservations {
   id: string;
@@ -22,7 +19,7 @@ export interface Reservations {
 }
 
 function HomePage() {
-  const [trips, setTrips] = React.useState<any | undefined>([]);
+  const [trips, setTrips] = useState<any | undefined>([]);
   const [renders, setRender] = useState(0);
   const [loading, isLoading] = useState(true);
   const client = useContext(clientContext);
@@ -85,6 +82,14 @@ function HomePage() {
         >
           {resType === "create" ? (
             <CreateRes />
+          ) : loading ? (
+            <div
+              className="spinner-grow text-warning"
+              style={{ marginTop: "100px" }}
+              role="status"
+            >
+              <span className="visually-hidden">Loading...</span>
+            </div>
           ) : (
             <section className="trips">
               {resType === "Ski" ? (
@@ -94,9 +99,7 @@ function HomePage() {
                   <ResCard reservations={trips} tag="onesww"></ResCard>
                 </>
               ) : (
-                !loading && (
-                  <ResCard reservations={trips} tag="onswswe"></ResCard>
-                )
+                <ResCard reservations={trips} tag="onswswe"></ResCard>
               )}
             </section>
           )}

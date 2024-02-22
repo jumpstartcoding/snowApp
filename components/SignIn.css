@@ -101,6 +101,10 @@ div.card{
 .createRes{
 padding:50px;
 
+margin-top: 20px;
+}
+main >.createRes{
+  margin-bottom: 100px;
 }
 .createRes >section{
   display: flex;
@@ -174,4 +178,99 @@ bottom: 0;
   .card.createRes {
 margin: 10px;
   } 
+}
+
+
+.side-panel{
+
+  background-color: white;
+
+  position: fixed;
+  top: 50px;
+  right: 0;
+  width: 350px; /* Adjust width as needed */
+  height: 100%;
+  z-index: 1;
+  padding: 20px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Add shadow to create depth */
+  overflow-y: auto; 
+  
+}
+
+
+.side-panel h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+.reservation-list {
+  font-family: Arial, sans-serif;
+}
+
+.event-item {
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.event-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.event-time {
+  font-weight: bold;
+  color: #333; /* Customize color as needed */
+}
+
+.event-title {
+  font-size: 18px;
+  color: #555; /* Customize color as needed */
+}
+
+.event-details {
+  color: #666; /* Customize color as needed */
+}
+
+
+
+.side-panel-button {
+  display: inline-block;
+
+  font-size: 16px;
+  margin: 2.5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #007bff;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.side-panel-button:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.side-panel-button:focus {
+  outline: none;
+}
+
+.collaspe-content{
+  border-radius: 2px;
+  border: 1px solid #ccc; /* Border for the internal div */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.event-details> h5{
+  font-weight: bold;
 }

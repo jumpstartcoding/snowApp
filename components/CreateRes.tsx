@@ -9,7 +9,11 @@ import {
 import { useContext, useEffect, useState } from "react";
 import { clientContext } from "./clientContext";
 
-export default function CreateRes() {
+export default function CreateRes(props: { date?: Date }) {
+  var resDate = null;
+  if (props.date) {
+    resDate = props.date.toISOString().split("T")[0];
+  }
   const client = useContext(clientContext);
   const currentDate = new Date().toISOString().split("T")[0];
   const [reservation, setReservation] = useState({
@@ -20,7 +24,7 @@ export default function CreateRes() {
       phone: "",
       guest: 0,
     },
-    date: "",
+    date: resDate ? resDate + "T" + "12:00:00" + "Z" : "",
     type: "",
     tier: 1,
     location: "",
@@ -127,142 +131,132 @@ export default function CreateRes() {
 
   return (
     <>
-      <div
-        style={{
-          marginBottom: "100px",
-        }}
-      >
-        <Form className="card createRes " onSubmit={onSubmit}>
-          <section>
-            <Label id="fNameLabel" htmlFor="firstName">
-              First Name
-            </Label>
-            <Label id="lNameLabel" htmlFor="lastName">
-              Last Name
-            </Label>
-          </section>
-          <section>
-            <Input
-              className="input"
-              type="text"
-              name="firstName"
-              id="firstName"
-              value={reservation.customer.firstName}
-              onChange={handleChange}
-            />
-            <Input
-              className="input"
-              type="text"
-              name="lastName"
-              id="lastName"
-              value={reservation.customer.lastName}
-              onChange={handleChange}
-            />
-          </section>
-          <Label id="emailLabel" htmlFor="email">
-            Email
+      <Form className="card createRes " onSubmit={onSubmit}>
+        <section>
+          <Label id="fNameLabel" htmlFor="firstName">
+            First Name
           </Label>
+          <Label id="lNameLabel" htmlFor="lastName">
+            Last Name
+          </Label>
+        </section>
+        <section>
           <Input
-            className="input"
-            type="email"
-            name="email"
-            autoComplete="email"
-            id="email"
-            value={reservation.customer.email}
-            onChange={handleChange}
-          />
-          <Label id="phoneNumberLabel" htmlFor="phone">
-            Phone Number
-          </Label>
-          <Input
-            className="input"
-            type="tel"
-            name="phone"
-            autoComplete="phone"
-            id="phone"
-            value={reservation.customer.phone}
-            onChange={handleChange}
-          />
-          <Label id="guestLabel" htmlFor="guests">
-            # of Guests
-          </Label>
-          <Input
-            className="input"
-            type="number"
-            name="guest"
-            id="guests"
-            value={reservation.customer.guest}
-            onChange={handleChange}
-          />
-
-          <section style={{ justifyContent: "center" }}>
-            <input
-              type="checkbox"
-              name="type"
-              id="skiRes"
-              value="Ski"
-              onChange={handleChange}
-            />
-            <Label
-              id="skiLabel"
-              style={{ marginRight: "10px" }}
-              htmlFor="skiRes"
-            >
-              Ski
-            </Label>
-            <input
-              type="checkbox"
-              name="type"
-              id="snowBoardRes"
-              value="Snowboard"
-              onChange={handleChange}
-            />
-
-            <Label id="snowBoardResLabel" htmlFor="snowBoardRes">
-              {" "}
-              SnowBoard{" "}
-            </Label>
-          </section>
-          <Label id="locationLabel" htmlFor="location">
-            Location
-          </Label>
-          <input
             className="input"
             type="text"
-            list="locationList"
-            name="location"
-            id="location"
+            name="firstName"
+            id="firstName"
+            value={reservation.customer.firstName}
             onChange={handleChange}
           />
-          <datalist id="locationList">
-            <option value="CamelBack"></option>
-            <option value="Vermont">Tier 4 Only</option>
-            <option value="NYC"></option>
-            <option value="Colorado"></option>
-          </datalist>
-
-          <Label id="dateLabel" htmlFor="date">
-            Date
-          </Label>
           <Input
             className="input"
-            type="date"
-            id="date"
-            name="date"
-            defaultValue={currentDate}
+            type="text"
+            name="lastName"
+            id="lastName"
+            value={reservation.customer.lastName}
             onChange={handleChange}
           />
-          <Button
-            // isLoading={true}
-            name="resButton"
-            loadingText="Loading..."
-            type="submit"
-            style={{ position: "relative", top: "1rem" }}
-          >
-            Create
-          </Button>
-        </Form>
-      </div>
+        </section>
+        <Label id="emailLabel" htmlFor="email">
+          Email
+        </Label>
+        <Input
+          className="input"
+          type="email"
+          name="email"
+          autoComplete="email"
+          id="email"
+          value={reservation.customer.email}
+          onChange={handleChange}
+        />
+        <Label id="phoneNumberLabel" htmlFor="phone">
+          Phone Number
+        </Label>
+        <Input
+          className="input"
+          type="tel"
+          name="phone"
+          autoComplete="phone"
+          id="phone"
+          value={reservation.customer.phone}
+          onChange={handleChange}
+        />
+        <Label id="guestLabel" htmlFor="guests">
+          # of Guests
+        </Label>
+        <Input
+          className="input"
+          type="number"
+          name="guest"
+          id="guests"
+          value={reservation.customer.guest}
+          onChange={handleChange}
+        />
+
+        <section style={{ justifyContent: "center" }}>
+          <input
+            type="checkbox"
+            name="type"
+            id="skiRes"
+            value="Ski"
+            onChange={handleChange}
+          />
+          <Label id="skiLabel" style={{ marginRight: "10px" }} htmlFor="skiRes">
+            Ski
+          </Label>
+          <input
+            type="checkbox"
+            name="type"
+            id="snowBoardRes"
+            value="Snowboard"
+            onChange={handleChange}
+          />
+
+          <Label id="snowBoardResLabel" htmlFor="snowBoardRes">
+            {" "}
+            SnowBoard{" "}
+          </Label>
+        </section>
+        <Label id="locationLabel" htmlFor="location">
+          Location
+        </Label>
+        <input
+          className="input"
+          type="text"
+          list="locationList"
+          name="location"
+          id="location"
+          onChange={handleChange}
+        />
+        <datalist id="locationList">
+          <option value="CamelBack"></option>
+          <option value="Vermont">Tier 4 Only</option>
+          <option value="NYC"></option>
+          <option value="Colorado"></option>
+        </datalist>
+
+        <Label id="dateLabel" htmlFor="date">
+          Date
+        </Label>
+        <Input
+          className="input"
+          type="date"
+          id="date"
+          name="date"
+          defaultValue={resDate || currentDate}
+          onChange={handleChange}
+        />
+        <Button
+          // isLoading={true}
+          name="resButton"
+          loadingText="Loading..."
+          type="submit"
+          style={{ position: "relative", top: "1rem" }}
+        >
+          Create
+        </Button>
+      </Form>
     </>
   );
 }

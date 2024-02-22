@@ -31,6 +31,11 @@ export default function NavBar() {
                   Reservations
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/calendar">
+                  Calendar
+                </Link>
+              </li>
 
               <li className="nav-item dropdown "></li>
             </ul>

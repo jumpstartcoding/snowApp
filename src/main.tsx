@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import React from "react";
 import HomePage from "../components/HomePage";
 import NotFound from "../components/NotFound";
+import ResCalendar from "../components/Calendar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "/components/SignIn.css";
 import "@aws-amplify/ui-react/styles.css";
@@ -207,6 +208,7 @@ const router = createBrowserRouter([
     path: "/home",
     element: <HomePage />,
   },
+  { path: "/calendar", element: <ResCalendar /> },
   {
     path: "*",
     element: <NotFound />,
