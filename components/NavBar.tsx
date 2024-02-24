@@ -1,7 +1,12 @@
 import { signOut } from "aws-amplify/auth";
+import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
-export default function NavBar() {
+interface NavBarProps {
+  children: ReactNode; // Explicitly type the children prop
+}
+
+export default function NavBar({ children }: NavBarProps) {
   return (
     <>
       <nav className="navbar  fixed-top text-center navbar-expand-sm bg-body-tertiary ">
@@ -27,7 +32,7 @@ export default function NavBar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="#">
+                <Link className="nav-link" to="/reservations">
                   Reservations
                 </Link>
               </li>
@@ -59,6 +64,7 @@ export default function NavBar() {
           </button>
         </span>
       </nav>
+      {children}
     </>
   );
 }

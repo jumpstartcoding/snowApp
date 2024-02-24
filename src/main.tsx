@@ -1,18 +1,9 @@
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import React from "react";
-import HomePage from "../components/HomePage";
-import NotFound from "../components/NotFound";
-import ResCalendar from "../components/Calendar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "/components/SignIn.css";
 import "@aws-amplify/ui-react/styles.css";
-import { Amplify } from "aws-amplify";
-
-Amplify.configure(config);
-import config from "./amplifyconfiguration.json";
-
 import {
   Authenticator,
   Button,
@@ -23,6 +14,17 @@ import {
   Image,
   Text,
 } from "@aws-amplify/ui-react";
+import { Amplify } from "aws-amplify";
+import config from "./amplifyconfiguration.json";
+// Import Components
+import NavBar from "../components/NavBar";
+import HomePage from "../components/HomePage";
+import NotFound from "../components/NotFound";
+import ResCalendar from "../components/Calendar";
+import InstructorRes from "../components/InstructorRes";
+import "/components/SignIn.css";
+
+Amplify.configure(config);
 
 const components = {
   Header() {
@@ -201,14 +203,39 @@ const formFields = {
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <App />,
+    element: (
+      <App>
+        <Outlet />
+      </App>
+    ),
+    children: [
+      {
+        element: (
+          <NavBar>
+            <Outlet />
+          </NavBar>
+        ),
+        children: [
+          {
+            path: "/",
+            element: <HomePage />,
+          },
+          {
+            path: "/home",
+            element: <HomePage />,
+          },
+          {
+            path: "/calendar",
+            element: <ResCalendar />,
+          },
+          {
+            path: "/reservations",
+            element: <InstructorRes />,
+          },
+        ],
+      },
+    ],
   },
-  {
-    path: "/home",
-    element: <HomePage />,
-  },
-  { path: "/calendar", element: <ResCalendar /> },
   {
     path: "*",
     element: <NotFound />,

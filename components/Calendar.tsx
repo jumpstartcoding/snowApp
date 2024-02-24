@@ -8,7 +8,7 @@ import { useState } from "react";
 import { DateClickArg } from "fullcalendar";
 import CreateRes from "./CreateRes";
 import { Button } from "@aws-amplify/ui-react";
-import NavBar from "./NavBar";
+
 import ResList from "./ResList";
 import { clientContext } from "../components/clientContext";
 import { useContext, useEffect } from "react";
@@ -67,8 +67,7 @@ export default function ResCalendar(props: {
 
   return (
     <>
-      <NavBar />
-      <div style={{ marginTop: "100px", padding: "25px" }}>
+      <div style={{ marginTop: "50px", padding: "25px" }}>
         <FullCalendar
           plugins={[
             dayGridPlugin,

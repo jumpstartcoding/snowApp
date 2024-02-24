@@ -1,5 +1,5 @@
 import ResCard from "./ResCard";
-import NavBar from "./NavBar";
+
 import "./SignIn.css";
 import CreateRes from "./CreateRes";
 import { clientContext } from "../components/clientContext";
@@ -110,7 +110,6 @@ function HomePage() {
             <>{resType} Trips</>
           )}
         </h1>
-        <NavBar />
 
         <main
           style={{
