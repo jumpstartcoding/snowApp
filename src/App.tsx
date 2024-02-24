@@ -1,7 +1,5 @@
 import "@aws-amplify/ui-react/styles.css";
 import { ReactNode, useContext } from "react";
-
-import HomePage from "../components/HomePage";
 import { clientContext } from "../components/clientContext";
 
 interface appProps {
