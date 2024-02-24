@@ -213,47 +213,45 @@ ul {
 
 .event-item {
   border: 1px solid #ccc;
+
   background-color: #f0f0f0;
   margin-bottom: 10px;
   padding: 10px;
+
 }
 
 .event-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .event-time {
   font-weight: bold;
-  color: #333; /* Customize color as needed */
+  color: #333; 
 }
 
 .event-title {
   font-size: 18px;
-  color: #555; /* Customize color as needed */
+  color: black; 
 }
 
 .event-details {
-  color: #666; /* Customize color as needed */
+  color: black; 
+  overflow: auto;
 }
 
 
 
 .side-panel-button {
-  display: inline-block;
-
-  font-size: 16px;
-  margin: 2.5px;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #fff;
+  padding: 10px 20px;
   background-color: #007bff;
-  border: 2px solid #007bff;
+  color: white;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  margin: 2.5px;
 }
 
 .side-panel-button:hover {
@@ -267,10 +265,17 @@ ul {
 
 .collaspe-content{
   border-radius: 2px;
-  border: 1px solid #ccc; /* Border for the internal div */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+  padding: 20px;
+  margin: 10px;
+  background-color: white;
 }
 
 .event-details> h5{
   font-weight: bold;
+}
+
+section.dropdown{
+padding: 5px;
+  margin-bottom: 50px;
 }

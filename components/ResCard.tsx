@@ -1,11 +1,37 @@
 import { Button, Input } from "@aws-amplify/ui-react";
 
-const onSubmit = (id: string) => {
-  console.log("Accept", id);
-};
+import { useContext, useState } from "react";
+import { clientContext } from "../components/clientContext";
+import { updateReservation } from "../src/graphql/mutations";
 
-export default function ResCard(props: { reservations: any[]; tag: string }) {
+async function acceptReservation(
+  userId: string,
+  resId: string,
+  client: any
+): Promise<void> {
+  const input = {
+    id: resId,
+    reservationInstructorId: userId,
+  };
+  try {
+    const response = await client.graphql({
+      query: updateReservation,
+      variables: { input: input },
+    });
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
+}
+export default function ResCard(props: {
+  reservations: any[];
+  tag: string;
+  userId: string;
+}) {
+  const client = useContext(clientContext);
   console.log(props.reservations);
+  const [loading, isLoading] = useState<boolean>(false);
+
   return (
     <>
       {props.reservations[0] ? (
@@ -65,8 +91,25 @@ export default function ResCard(props: { reservations: any[]; tag: string }) {
                       {reservation ? (
                         <footer className="text-center">
                           <Button
+                            isLoading={loading}
                             style={{ marginTop: "10px" }}
-                            onClick={() => onSubmit(reservation.id)}
+                            onClick={async () => {
+                              try {
+                                isLoading(true);
+                                await acceptReservation(
+                                  props.userId,
+                                  reservation.id,
+                                  client
+                                );
+                              } catch (error) {
+                                console.error(
+                                  "Error accepting reservation:",
+                                  error
+                                );
+                              } finally {
+                                isLoading(false);
+                              }
+                            }}
                           >
                             Accept
                           </Button>

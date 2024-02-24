@@ -10,12 +10,17 @@ import { useContext, useEffect, useState } from "react";
 import { clientContext } from "./clientContext";
 
 export default function CreateRes(props: { date?: Date }) {
-  var resDate = null;
-  if (props.date) {
-    resDate = props.date.toISOString().split("T")[0];
-  }
   const client = useContext(clientContext);
-  const currentDate = new Date().toISOString().split("T")[0];
+  const [loading, isLoading] = useState<boolean>(false);
+  const [currentDate, setCurrentDate] = useState(
+    props.date
+      ? props.date.toISOString().split("T")[0]
+      : new Date().toISOString().split("T")[0]
+  );
+  useEffect(() => {
+    if (props.date) setCurrentDate(props.date.toISOString().split("T")[0]);
+  });
+
   const [reservation, setReservation] = useState({
     customer: {
       firstName: "",
@@ -24,24 +29,18 @@ export default function CreateRes(props: { date?: Date }) {
       phone: "",
       guest: 0,
     },
-    date: resDate ? resDate + "T" + "12:00:00" + "Z" : "",
+    date: new Date(currentDate).toISOString(),
     type: "",
     tier: 1,
     location: "",
     status: "new",
   });
-  useEffect(() => {
-    // Get the current date
-
-    setReservation({
-      ...reservation,
-      date: currentDate,
-    });
-  }, []);
 
   const onSubmit = async (e: { preventDefault: () => void }) => {
+    isLoading(!loading);
     try {
       e.preventDefault();
+
       console.log("res:", reservation);
 
       const cust = await client.graphql({
@@ -94,6 +93,7 @@ export default function CreateRes(props: { date?: Date }) {
           phone: " ",
           guest: 0,
         },
+
         type: " ",
         tier: 1,
         location: " ",
@@ -102,6 +102,7 @@ export default function CreateRes(props: { date?: Date }) {
       console.log("submit error", e);
       alert("Reservation Not Submitted Please try again");
     }
+    isLoading(false);
   };
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
@@ -221,20 +222,19 @@ export default function CreateRes(props: { date?: Date }) {
         <Label id="locationLabel" htmlFor="location">
           Location
         </Label>
-        <input
-          className="input"
-          type="text"
-          list="locationList"
+
+        <select
           name="location"
           id="location"
+          className="form-select"
+          aria-label="Default select example"
           onChange={handleChange}
-        />
-        <datalist id="locationList">
-          <option value="CamelBack"></option>
-          <option value="Vermont">Tier 4 Only</option>
-          <option value="NYC"></option>
-          <option value="Colorado"></option>
-        </datalist>
+        >
+          <option value="CamelBack">CamelBack</option>
+          <option value="Vermont">Vermont</option>
+          <option value="NYC">NYC</option>
+          <option value="Colorado">Colorado</option>
+        </select>
 
         <Label id="dateLabel" htmlFor="date">
           Date
@@ -244,11 +244,11 @@ export default function CreateRes(props: { date?: Date }) {
           type="date"
           id="date"
           name="date"
-          defaultValue={resDate || currentDate}
+          defaultValue={currentDate}
           onChange={handleChange}
         />
         <Button
-          // isLoading={true}
+          isLoading={loading}
           name="resButton"
           loadingText="Loading..."
           type="submit"

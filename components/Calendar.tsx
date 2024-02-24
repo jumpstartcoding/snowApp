@@ -15,28 +15,13 @@ import { useContext, useEffect } from "react";
 
 import { listReservations } from "../src/graphql/queries";
 
-const events = [
-  { title: "Ski", start: new Date() },
-  { title: "Snowboard", start: new Date() },
-  {
-    title: "Meeting",
-    start: new Date("02-23-2024"),
-    extendedProps: {
-      status: "done",
-    },
-  },
-  {
-    title: "Meet",
-    start: new Date("02-23-2024"),
-  },
-];
-
 export default function ResCalendar(props: {
   events?: { title: string; start: Date };
 }) {
   console.log(props);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [createRes, setCreateRes] = useState<boolean>(false);
+  const [events, setEvents] = useState<any | undefined>([]);
   const [calendarView, setCalendarView] = useState<"dayGridMonth" | "listWeek">(
     "dayGridMonth"
   );
@@ -50,45 +35,58 @@ export default function ResCalendar(props: {
   const handleDateClick = (arg: DateClickArg) => {
     console.log("Date clicked:", arg?.allDay);
     setCalendarView("listWeek"); // Switch to list view
-    setSelectedDate(new Date(arg.date));
+    setSelectedDate(arg.date);
   };
   const [trips, setTrips] = useState<any | undefined>([]);
   const [loading, isLoading] = useState(true);
+
   const ye = client.graphql({
     query: listReservations,
     variables: {
-      filter: {},
+      filter: {
+        location: { contains: "" },
+        status: { contains: "new" },
+      },
     },
   });
   useEffect(() => {
     ye.then((response) => {
       setTrips(response.data.listReservations.items);
       isLoading(false);
+      response.data.listReservations.items.map((elt: any, index) => {
+        console.log("before", events);
+        setEvents((prevData: any) => {
+          const newData = [...prevData];
+          newData[index] = { title: elt.type, start: elt.date };
+          return newData;
+        });
+        console.log("After", events);
+      });
     });
-  }, [calendarView]);
+  }, [calendarView, createRes]);
 
   return (
     <>
       <NavBar />
       <div style={{ marginTop: "100px", padding: "25px" }}>
         <FullCalendar
-          editable={true}
-          selectable={true}
-          initialView={calendarView}
-          events={events}
-          dateClick={(info) => handleDateClick(info)}
-          eventContent={renderEventContent}
-          headerToolbar={{
-            right: "today,dayGridMonth,timeGridDay,listYear",
-            left: "prev,next",
-            center: "title",
-          }}
           plugins={[
             dayGridPlugin,
             listPlugin,
             timeGridPlugin,
             interactionPlugin,
           ]}
+          editable={true}
+          selectable={true}
+          initialView={calendarView}
+          dateClick={(info) => handleDateClick(info)}
+          eventContent={renderEventContent}
+          headerToolbar={{
+            right: "today,dayGridMonth,listYear",
+            left: "prev,next",
+            center: "title",
+          }}
+          events={events}
           eventDidMount={(info) => {
             if (info.event.extendedProps.status === "done") {
               // Change background color of row
@@ -106,18 +104,25 @@ export default function ResCalendar(props: {
         />
         {selectedDate && calendarView === "listWeek" && (
           <div className="side-panel">
-            <header style={{ display: "flex" }}>
+            <header
+              style={{
+                display: "flex",
+                margin: "1em 0",
+                justifyContent: "space-between",
+              }}
+            >
               <Button
-                className="side-panel-button "
+                type="button"
+                aria-label="Close"
+                className=" btn-close"
                 onClick={handleBackToCalendar}
-              >
-                Back to Calendar
-              </Button>
+              ></Button>
               <Button
+                style={{ alignSelf: "end" }}
                 className="side-panel-button "
                 onClick={() => setCreateRes(!createRes)}
               >
-                Create Reservation
+                {!createRes ? "Create Reservation" : "View Reservations"}
               </Button>
             </header>
 
@@ -128,24 +133,21 @@ export default function ResCalendar(props: {
               })}
             </h2>
             <section className="dropdown">
-              {!loading && (
-                <ResList
-                  reservations={trips.filter((res: any) => {
-                    console.log(
-                      res.date.split("T")[0],
-                      "ccdcd  ",
-                      selectedDate.toISOString().split("T")[0]
-                    );
-                    return (
-                      res.date.split("T")[0] ===
-                      selectedDate.toISOString().split("T")[0]
-                    );
-                  })}
-                />
+              {createRes ? (
+                <CreateRes date={selectedDate} />
+              ) : (
+                !loading && (
+                  <ResList
+                    reservations={trips.filter((res: any) => {
+                      return (
+                        new Date(res.date).toLocaleDateString() ===
+                        selectedDate.toLocaleDateString()
+                      );
+                    })}
+                  />
+                )
               )}
             </section>
-
-            {createRes && <CreateRes date={selectedDate} />}
           </div>
         )}
       </div>

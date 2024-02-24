@@ -6,7 +6,8 @@ import { clientContext } from "../components/clientContext";
 import { useContext, useEffect, useState } from "react";
 
 import { listReservations } from "../src/graphql/queries";
-
+import { getCurrentUser } from "aws-amplify/auth";
+import { createInstructor } from "../src/graphql/mutations";
 export interface Reservations {
   id: string;
   firstName: string;
@@ -18,34 +19,75 @@ export interface Reservations {
   tier: string;
 }
 
-function HomePage() {
-  const [trips, setTrips] = useState<any | undefined>([]);
-  const [renders, setRender] = useState(0);
-  const [loading, isLoading] = useState(true);
-  const client = useContext(clientContext);
-  const [resType, setResType] = useState("Snowboard");
-  const ye = client.graphql({
-    query: listReservations,
-    variables: {
-      filter: {},
-    },
-  });
-  useEffect(() => {
-    ye.then((response) => {
-      setTrips(response.data.listReservations.items);
-      isLoading(false);
-
-      response.data.listReservations.items.map((elt) => {
-        setRender(renders + 1);
-
-        console.log(renders, " :Aaa:", elt.customer.name);
+async function createInstruct(client: any, userId: string, signInDetails: any) {
+  try {
+    if (userId && signInDetails) {
+      const input = {
+        id: userId,
+        name: "empty",
+        // Other optional fields can be added here
+        phone_number: "123456789",
+        email: signInDetails.loginId,
+        locations: ["Location1", "Location2"],
+        tier: 1,
+      };
+      const response = await client.graphql({
+        query: createInstructor,
+        variables: {
+          input: input,
+        },
       });
-    });
-  }, [resType]);
+      console.log(response);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+function HomePage() {
+  const [trips, setTrips] = useState<any>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [resType, setResType] = useState<string>("Snowboard");
+  const [userID, setUserID] = useState<{
+    id: string;
+    signIn: string | undefined;
+  }>({
+    id: "",
+    signIn: undefined,
+  });
+  const client = useContext(clientContext);
 
-  //const { user } = useAuthenticator((context) => [context.user]);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const { userId, signInDetails } = await getCurrentUser();
+        setUserID({ id: userId, signIn: signInDetails?.loginId });
+        await createInstruct(client, userId, signInDetails);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    }
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    async function fetchTrips() {
+      try {
+        const response = await client.graphql({
+          query: listReservations,
+          variables: { filter: {} },
+        });
+        setTrips(response.data.listReservations.items);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching trips:", error);
+        setLoading(false);
+      }
+    }
+    fetchTrips();
+  }, [resType, client]);
 
   const handleClick = (type: string) => setResType(type);
+
   return (
     <>
       <div
@@ -94,12 +136,28 @@ function HomePage() {
             <section className="trips">
               {resType === "Ski" ? (
                 <>
-                  <ResCard reservations={trips} tag="one"></ResCard>
-                  <ResCard reservations={trips} tag="onesws"></ResCard>
-                  <ResCard reservations={trips} tag="onesww"></ResCard>
+                  <ResCard
+                    userId={userID.id}
+                    reservations={trips}
+                    tag="one"
+                  ></ResCard>
+                  <ResCard
+                    userId={userID.id}
+                    reservations={trips}
+                    tag="onesws"
+                  ></ResCard>
+                  <ResCard
+                    userId={userID.id}
+                    reservations={trips}
+                    tag="onesww"
+                  ></ResCard>
                 </>
               ) : (
-                <ResCard reservations={trips} tag="onswswe"></ResCard>
+                <ResCard
+                  userId={userID.id}
+                  reservations={trips}
+                  tag="onswswe"
+                ></ResCard>
               )}
             </section>
           )}
