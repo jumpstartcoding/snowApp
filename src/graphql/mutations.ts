@@ -17,6 +17,7 @@ export const createReservation = /* GraphQL */ `mutation CreateReservation(
     type
     location
     date
+    instructorID
     instructor {
       id
       name
@@ -28,88 +29,11 @@ export const createReservation = /* GraphQL */ `mutation CreateReservation(
           type
           location
           date
-          instructor {
-            id
-            name
-            phone_number
-            email
-            reservations {
-              items {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            locations
-            tier
-            createdAt
-            updatedAt
-            __typename
-          }
-          customer {
-            id
-            name
-            phone_number
-            email
-            reservation {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            guest
-            createdAt
-            updatedAt
-            customerReservationId
-            __typename
-          }
+          instructorID
           createdAt
           updatedAt
           tier
           status
-          instructorReservationsId
-          reservationInstructorId
           reservationCustomerId
           __typename
         }
@@ -132,51 +56,12 @@ export const createReservation = /* GraphQL */ `mutation CreateReservation(
         type
         location
         date
+        instructorID
         instructor {
           id
           name
           phone_number
           email
-          reservations {
-            items {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            nextToken
-            __typename
-          }
           locations
           tier
           createdAt
@@ -188,60 +73,6 @@ export const createReservation = /* GraphQL */ `mutation CreateReservation(
           name
           phone_number
           email
-          reservation {
-            id
-            type
-            location
-            date
-            instructor {
-              id
-              name
-              phone_number
-              email
-              reservations {
-                nextToken
-                __typename
-              }
-              locations
-              tier
-              createdAt
-              updatedAt
-              __typename
-            }
-            customer {
-              id
-              name
-              phone_number
-              email
-              reservation {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              guest
-              createdAt
-              updatedAt
-              customerReservationId
-              __typename
-            }
-            createdAt
-            updatedAt
-            tier
-            status
-            instructorReservationsId
-            reservationInstructorId
-            reservationCustomerId
-            __typename
-          }
           guest
           createdAt
           updatedAt
@@ -252,8 +83,6 @@ export const createReservation = /* GraphQL */ `mutation CreateReservation(
         updatedAt
         tier
         status
-        instructorReservationsId
-        reservationInstructorId
         reservationCustomerId
         __typename
       }
@@ -267,8 +96,6 @@ export const createReservation = /* GraphQL */ `mutation CreateReservation(
     updatedAt
     tier
     status
-    instructorReservationsId
-    reservationInstructorId
     reservationCustomerId
     __typename
   }
@@ -286,6 +113,7 @@ export const updateReservation = /* GraphQL */ `mutation UpdateReservation(
     type
     location
     date
+    instructorID
     instructor {
       id
       name
@@ -297,88 +125,11 @@ export const updateReservation = /* GraphQL */ `mutation UpdateReservation(
           type
           location
           date
-          instructor {
-            id
-            name
-            phone_number
-            email
-            reservations {
-              items {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            locations
-            tier
-            createdAt
-            updatedAt
-            __typename
-          }
-          customer {
-            id
-            name
-            phone_number
-            email
-            reservation {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            guest
-            createdAt
-            updatedAt
-            customerReservationId
-            __typename
-          }
+          instructorID
           createdAt
           updatedAt
           tier
           status
-          instructorReservationsId
-          reservationInstructorId
           reservationCustomerId
           __typename
         }
@@ -401,51 +152,12 @@ export const updateReservation = /* GraphQL */ `mutation UpdateReservation(
         type
         location
         date
+        instructorID
         instructor {
           id
           name
           phone_number
           email
-          reservations {
-            items {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            nextToken
-            __typename
-          }
           locations
           tier
           createdAt
@@ -457,60 +169,6 @@ export const updateReservation = /* GraphQL */ `mutation UpdateReservation(
           name
           phone_number
           email
-          reservation {
-            id
-            type
-            location
-            date
-            instructor {
-              id
-              name
-              phone_number
-              email
-              reservations {
-                nextToken
-                __typename
-              }
-              locations
-              tier
-              createdAt
-              updatedAt
-              __typename
-            }
-            customer {
-              id
-              name
-              phone_number
-              email
-              reservation {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              guest
-              createdAt
-              updatedAt
-              customerReservationId
-              __typename
-            }
-            createdAt
-            updatedAt
-            tier
-            status
-            instructorReservationsId
-            reservationInstructorId
-            reservationCustomerId
-            __typename
-          }
           guest
           createdAt
           updatedAt
@@ -521,8 +179,6 @@ export const updateReservation = /* GraphQL */ `mutation UpdateReservation(
         updatedAt
         tier
         status
-        instructorReservationsId
-        reservationInstructorId
         reservationCustomerId
         __typename
       }
@@ -536,8 +192,6 @@ export const updateReservation = /* GraphQL */ `mutation UpdateReservation(
     updatedAt
     tier
     status
-    instructorReservationsId
-    reservationInstructorId
     reservationCustomerId
     __typename
   }
@@ -555,6 +209,7 @@ export const deleteReservation = /* GraphQL */ `mutation DeleteReservation(
     type
     location
     date
+    instructorID
     instructor {
       id
       name
@@ -566,88 +221,11 @@ export const deleteReservation = /* GraphQL */ `mutation DeleteReservation(
           type
           location
           date
-          instructor {
-            id
-            name
-            phone_number
-            email
-            reservations {
-              items {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            locations
-            tier
-            createdAt
-            updatedAt
-            __typename
-          }
-          customer {
-            id
-            name
-            phone_number
-            email
-            reservation {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            guest
-            createdAt
-            updatedAt
-            customerReservationId
-            __typename
-          }
+          instructorID
           createdAt
           updatedAt
           tier
           status
-          instructorReservationsId
-          reservationInstructorId
           reservationCustomerId
           __typename
         }
@@ -670,51 +248,12 @@ export const deleteReservation = /* GraphQL */ `mutation DeleteReservation(
         type
         location
         date
+        instructorID
         instructor {
           id
           name
           phone_number
           email
-          reservations {
-            items {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            nextToken
-            __typename
-          }
           locations
           tier
           createdAt
@@ -726,60 +265,6 @@ export const deleteReservation = /* GraphQL */ `mutation DeleteReservation(
           name
           phone_number
           email
-          reservation {
-            id
-            type
-            location
-            date
-            instructor {
-              id
-              name
-              phone_number
-              email
-              reservations {
-                nextToken
-                __typename
-              }
-              locations
-              tier
-              createdAt
-              updatedAt
-              __typename
-            }
-            customer {
-              id
-              name
-              phone_number
-              email
-              reservation {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              guest
-              createdAt
-              updatedAt
-              customerReservationId
-              __typename
-            }
-            createdAt
-            updatedAt
-            tier
-            status
-            instructorReservationsId
-            reservationInstructorId
-            reservationCustomerId
-            __typename
-          }
           guest
           createdAt
           updatedAt
@@ -790,8 +275,6 @@ export const deleteReservation = /* GraphQL */ `mutation DeleteReservation(
         updatedAt
         tier
         status
-        instructorReservationsId
-        reservationInstructorId
         reservationCustomerId
         __typename
       }
@@ -805,8 +288,6 @@ export const deleteReservation = /* GraphQL */ `mutation DeleteReservation(
     updatedAt
     tier
     status
-    instructorReservationsId
-    reservationInstructorId
     reservationCustomerId
     __typename
   }
@@ -829,66 +310,13 @@ export const createCustomer = /* GraphQL */ `mutation CreateCustomer(
       type
       location
       date
+      instructorID
       instructor {
         id
         name
         phone_number
         email
         reservations {
-          items {
-            id
-            type
-            location
-            date
-            instructor {
-              id
-              name
-              phone_number
-              email
-              reservations {
-                nextToken
-                __typename
-              }
-              locations
-              tier
-              createdAt
-              updatedAt
-              __typename
-            }
-            customer {
-              id
-              name
-              phone_number
-              email
-              reservation {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              guest
-              createdAt
-              updatedAt
-              customerReservationId
-              __typename
-            }
-            createdAt
-            updatedAt
-            tier
-            status
-            instructorReservationsId
-            reservationInstructorId
-            reservationCustomerId
-            __typename
-          }
           nextToken
           __typename
         }
@@ -908,88 +336,11 @@ export const createCustomer = /* GraphQL */ `mutation CreateCustomer(
           type
           location
           date
-          instructor {
-            id
-            name
-            phone_number
-            email
-            reservations {
-              items {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            locations
-            tier
-            createdAt
-            updatedAt
-            __typename
-          }
-          customer {
-            id
-            name
-            phone_number
-            email
-            reservation {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            guest
-            createdAt
-            updatedAt
-            customerReservationId
-            __typename
-          }
+          instructorID
           createdAt
           updatedAt
           tier
           status
-          instructorReservationsId
-          reservationInstructorId
           reservationCustomerId
           __typename
         }
@@ -1003,8 +354,6 @@ export const createCustomer = /* GraphQL */ `mutation CreateCustomer(
       updatedAt
       tier
       status
-      instructorReservationsId
-      reservationInstructorId
       reservationCustomerId
       __typename
     }
@@ -1033,66 +382,13 @@ export const updateCustomer = /* GraphQL */ `mutation UpdateCustomer(
       type
       location
       date
+      instructorID
       instructor {
         id
         name
         phone_number
         email
         reservations {
-          items {
-            id
-            type
-            location
-            date
-            instructor {
-              id
-              name
-              phone_number
-              email
-              reservations {
-                nextToken
-                __typename
-              }
-              locations
-              tier
-              createdAt
-              updatedAt
-              __typename
-            }
-            customer {
-              id
-              name
-              phone_number
-              email
-              reservation {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              guest
-              createdAt
-              updatedAt
-              customerReservationId
-              __typename
-            }
-            createdAt
-            updatedAt
-            tier
-            status
-            instructorReservationsId
-            reservationInstructorId
-            reservationCustomerId
-            __typename
-          }
           nextToken
           __typename
         }
@@ -1112,88 +408,11 @@ export const updateCustomer = /* GraphQL */ `mutation UpdateCustomer(
           type
           location
           date
-          instructor {
-            id
-            name
-            phone_number
-            email
-            reservations {
-              items {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            locations
-            tier
-            createdAt
-            updatedAt
-            __typename
-          }
-          customer {
-            id
-            name
-            phone_number
-            email
-            reservation {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            guest
-            createdAt
-            updatedAt
-            customerReservationId
-            __typename
-          }
+          instructorID
           createdAt
           updatedAt
           tier
           status
-          instructorReservationsId
-          reservationInstructorId
           reservationCustomerId
           __typename
         }
@@ -1207,8 +426,6 @@ export const updateCustomer = /* GraphQL */ `mutation UpdateCustomer(
       updatedAt
       tier
       status
-      instructorReservationsId
-      reservationInstructorId
       reservationCustomerId
       __typename
     }
@@ -1237,66 +454,13 @@ export const deleteCustomer = /* GraphQL */ `mutation DeleteCustomer(
       type
       location
       date
+      instructorID
       instructor {
         id
         name
         phone_number
         email
         reservations {
-          items {
-            id
-            type
-            location
-            date
-            instructor {
-              id
-              name
-              phone_number
-              email
-              reservations {
-                nextToken
-                __typename
-              }
-              locations
-              tier
-              createdAt
-              updatedAt
-              __typename
-            }
-            customer {
-              id
-              name
-              phone_number
-              email
-              reservation {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              guest
-              createdAt
-              updatedAt
-              customerReservationId
-              __typename
-            }
-            createdAt
-            updatedAt
-            tier
-            status
-            instructorReservationsId
-            reservationInstructorId
-            reservationCustomerId
-            __typename
-          }
           nextToken
           __typename
         }
@@ -1316,88 +480,11 @@ export const deleteCustomer = /* GraphQL */ `mutation DeleteCustomer(
           type
           location
           date
-          instructor {
-            id
-            name
-            phone_number
-            email
-            reservations {
-              items {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            locations
-            tier
-            createdAt
-            updatedAt
-            __typename
-          }
-          customer {
-            id
-            name
-            phone_number
-            email
-            reservation {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            guest
-            createdAt
-            updatedAt
-            customerReservationId
-            __typename
-          }
+          instructorID
           createdAt
           updatedAt
           tier
           status
-          instructorReservationsId
-          reservationInstructorId
           reservationCustomerId
           __typename
         }
@@ -1411,8 +498,6 @@ export const deleteCustomer = /* GraphQL */ `mutation DeleteCustomer(
       updatedAt
       tier
       status
-      instructorReservationsId
-      reservationInstructorId
       reservationCustomerId
       __typename
     }
@@ -1442,51 +527,12 @@ export const createInstructor = /* GraphQL */ `mutation CreateInstructor(
         type
         location
         date
+        instructorID
         instructor {
           id
           name
           phone_number
           email
-          reservations {
-            items {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            nextToken
-            __typename
-          }
           locations
           tier
           createdAt
@@ -1498,60 +544,6 @@ export const createInstructor = /* GraphQL */ `mutation CreateInstructor(
           name
           phone_number
           email
-          reservation {
-            id
-            type
-            location
-            date
-            instructor {
-              id
-              name
-              phone_number
-              email
-              reservations {
-                nextToken
-                __typename
-              }
-              locations
-              tier
-              createdAt
-              updatedAt
-              __typename
-            }
-            customer {
-              id
-              name
-              phone_number
-              email
-              reservation {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              guest
-              createdAt
-              updatedAt
-              customerReservationId
-              __typename
-            }
-            createdAt
-            updatedAt
-            tier
-            status
-            instructorReservationsId
-            reservationInstructorId
-            reservationCustomerId
-            __typename
-          }
           guest
           createdAt
           updatedAt
@@ -1562,8 +554,6 @@ export const createInstructor = /* GraphQL */ `mutation CreateInstructor(
         updatedAt
         tier
         status
-        instructorReservationsId
-        reservationInstructorId
         reservationCustomerId
         __typename
       }
@@ -1596,51 +586,12 @@ export const updateInstructor = /* GraphQL */ `mutation UpdateInstructor(
         type
         location
         date
+        instructorID
         instructor {
           id
           name
           phone_number
           email
-          reservations {
-            items {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            nextToken
-            __typename
-          }
           locations
           tier
           createdAt
@@ -1652,60 +603,6 @@ export const updateInstructor = /* GraphQL */ `mutation UpdateInstructor(
           name
           phone_number
           email
-          reservation {
-            id
-            type
-            location
-            date
-            instructor {
-              id
-              name
-              phone_number
-              email
-              reservations {
-                nextToken
-                __typename
-              }
-              locations
-              tier
-              createdAt
-              updatedAt
-              __typename
-            }
-            customer {
-              id
-              name
-              phone_number
-              email
-              reservation {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              guest
-              createdAt
-              updatedAt
-              customerReservationId
-              __typename
-            }
-            createdAt
-            updatedAt
-            tier
-            status
-            instructorReservationsId
-            reservationInstructorId
-            reservationCustomerId
-            __typename
-          }
           guest
           createdAt
           updatedAt
@@ -1716,8 +613,6 @@ export const updateInstructor = /* GraphQL */ `mutation UpdateInstructor(
         updatedAt
         tier
         status
-        instructorReservationsId
-        reservationInstructorId
         reservationCustomerId
         __typename
       }
@@ -1750,51 +645,12 @@ export const deleteInstructor = /* GraphQL */ `mutation DeleteInstructor(
         type
         location
         date
+        instructorID
         instructor {
           id
           name
           phone_number
           email
-          reservations {
-            items {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            nextToken
-            __typename
-          }
           locations
           tier
           createdAt
@@ -1806,60 +662,6 @@ export const deleteInstructor = /* GraphQL */ `mutation DeleteInstructor(
           name
           phone_number
           email
-          reservation {
-            id
-            type
-            location
-            date
-            instructor {
-              id
-              name
-              phone_number
-              email
-              reservations {
-                nextToken
-                __typename
-              }
-              locations
-              tier
-              createdAt
-              updatedAt
-              __typename
-            }
-            customer {
-              id
-              name
-              phone_number
-              email
-              reservation {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              guest
-              createdAt
-              updatedAt
-              customerReservationId
-              __typename
-            }
-            createdAt
-            updatedAt
-            tier
-            status
-            instructorReservationsId
-            reservationInstructorId
-            reservationCustomerId
-            __typename
-          }
           guest
           createdAt
           updatedAt
@@ -1870,8 +672,6 @@ export const deleteInstructor = /* GraphQL */ `mutation DeleteInstructor(
         updatedAt
         tier
         status
-        instructorReservationsId
-        reservationInstructorId
         reservationCustomerId
         __typename
       }

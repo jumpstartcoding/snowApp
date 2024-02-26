@@ -16,6 +16,7 @@ export const onCreateReservation = /* GraphQL */ `subscription OnCreateReservati
     type
     location
     date
+    instructorID
     instructor {
       id
       name
@@ -27,88 +28,11 @@ export const onCreateReservation = /* GraphQL */ `subscription OnCreateReservati
           type
           location
           date
-          instructor {
-            id
-            name
-            phone_number
-            email
-            reservations {
-              items {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            locations
-            tier
-            createdAt
-            updatedAt
-            __typename
-          }
-          customer {
-            id
-            name
-            phone_number
-            email
-            reservation {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            guest
-            createdAt
-            updatedAt
-            customerReservationId
-            __typename
-          }
+          instructorID
           createdAt
           updatedAt
           tier
           status
-          instructorReservationsId
-          reservationInstructorId
           reservationCustomerId
           __typename
         }
@@ -131,51 +55,12 @@ export const onCreateReservation = /* GraphQL */ `subscription OnCreateReservati
         type
         location
         date
+        instructorID
         instructor {
           id
           name
           phone_number
           email
-          reservations {
-            items {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            nextToken
-            __typename
-          }
           locations
           tier
           createdAt
@@ -187,60 +72,6 @@ export const onCreateReservation = /* GraphQL */ `subscription OnCreateReservati
           name
           phone_number
           email
-          reservation {
-            id
-            type
-            location
-            date
-            instructor {
-              id
-              name
-              phone_number
-              email
-              reservations {
-                nextToken
-                __typename
-              }
-              locations
-              tier
-              createdAt
-              updatedAt
-              __typename
-            }
-            customer {
-              id
-              name
-              phone_number
-              email
-              reservation {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              guest
-              createdAt
-              updatedAt
-              customerReservationId
-              __typename
-            }
-            createdAt
-            updatedAt
-            tier
-            status
-            instructorReservationsId
-            reservationInstructorId
-            reservationCustomerId
-            __typename
-          }
           guest
           createdAt
           updatedAt
@@ -251,8 +82,6 @@ export const onCreateReservation = /* GraphQL */ `subscription OnCreateReservati
         updatedAt
         tier
         status
-        instructorReservationsId
-        reservationInstructorId
         reservationCustomerId
         __typename
       }
@@ -266,8 +95,6 @@ export const onCreateReservation = /* GraphQL */ `subscription OnCreateReservati
     updatedAt
     tier
     status
-    instructorReservationsId
-    reservationInstructorId
     reservationCustomerId
     __typename
   }
@@ -284,6 +111,7 @@ export const onUpdateReservation = /* GraphQL */ `subscription OnUpdateReservati
     type
     location
     date
+    instructorID
     instructor {
       id
       name
@@ -295,88 +123,11 @@ export const onUpdateReservation = /* GraphQL */ `subscription OnUpdateReservati
           type
           location
           date
-          instructor {
-            id
-            name
-            phone_number
-            email
-            reservations {
-              items {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            locations
-            tier
-            createdAt
-            updatedAt
-            __typename
-          }
-          customer {
-            id
-            name
-            phone_number
-            email
-            reservation {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            guest
-            createdAt
-            updatedAt
-            customerReservationId
-            __typename
-          }
+          instructorID
           createdAt
           updatedAt
           tier
           status
-          instructorReservationsId
-          reservationInstructorId
           reservationCustomerId
           __typename
         }
@@ -399,51 +150,12 @@ export const onUpdateReservation = /* GraphQL */ `subscription OnUpdateReservati
         type
         location
         date
+        instructorID
         instructor {
           id
           name
           phone_number
           email
-          reservations {
-            items {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            nextToken
-            __typename
-          }
           locations
           tier
           createdAt
@@ -455,60 +167,6 @@ export const onUpdateReservation = /* GraphQL */ `subscription OnUpdateReservati
           name
           phone_number
           email
-          reservation {
-            id
-            type
-            location
-            date
-            instructor {
-              id
-              name
-              phone_number
-              email
-              reservations {
-                nextToken
-                __typename
-              }
-              locations
-              tier
-              createdAt
-              updatedAt
-              __typename
-            }
-            customer {
-              id
-              name
-              phone_number
-              email
-              reservation {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              guest
-              createdAt
-              updatedAt
-              customerReservationId
-              __typename
-            }
-            createdAt
-            updatedAt
-            tier
-            status
-            instructorReservationsId
-            reservationInstructorId
-            reservationCustomerId
-            __typename
-          }
           guest
           createdAt
           updatedAt
@@ -519,8 +177,6 @@ export const onUpdateReservation = /* GraphQL */ `subscription OnUpdateReservati
         updatedAt
         tier
         status
-        instructorReservationsId
-        reservationInstructorId
         reservationCustomerId
         __typename
       }
@@ -534,8 +190,6 @@ export const onUpdateReservation = /* GraphQL */ `subscription OnUpdateReservati
     updatedAt
     tier
     status
-    instructorReservationsId
-    reservationInstructorId
     reservationCustomerId
     __typename
   }
@@ -552,6 +206,7 @@ export const onDeleteReservation = /* GraphQL */ `subscription OnDeleteReservati
     type
     location
     date
+    instructorID
     instructor {
       id
       name
@@ -563,88 +218,11 @@ export const onDeleteReservation = /* GraphQL */ `subscription OnDeleteReservati
           type
           location
           date
-          instructor {
-            id
-            name
-            phone_number
-            email
-            reservations {
-              items {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            locations
-            tier
-            createdAt
-            updatedAt
-            __typename
-          }
-          customer {
-            id
-            name
-            phone_number
-            email
-            reservation {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            guest
-            createdAt
-            updatedAt
-            customerReservationId
-            __typename
-          }
+          instructorID
           createdAt
           updatedAt
           tier
           status
-          instructorReservationsId
-          reservationInstructorId
           reservationCustomerId
           __typename
         }
@@ -667,51 +245,12 @@ export const onDeleteReservation = /* GraphQL */ `subscription OnDeleteReservati
         type
         location
         date
+        instructorID
         instructor {
           id
           name
           phone_number
           email
-          reservations {
-            items {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            nextToken
-            __typename
-          }
           locations
           tier
           createdAt
@@ -723,60 +262,6 @@ export const onDeleteReservation = /* GraphQL */ `subscription OnDeleteReservati
           name
           phone_number
           email
-          reservation {
-            id
-            type
-            location
-            date
-            instructor {
-              id
-              name
-              phone_number
-              email
-              reservations {
-                nextToken
-                __typename
-              }
-              locations
-              tier
-              createdAt
-              updatedAt
-              __typename
-            }
-            customer {
-              id
-              name
-              phone_number
-              email
-              reservation {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              guest
-              createdAt
-              updatedAt
-              customerReservationId
-              __typename
-            }
-            createdAt
-            updatedAt
-            tier
-            status
-            instructorReservationsId
-            reservationInstructorId
-            reservationCustomerId
-            __typename
-          }
           guest
           createdAt
           updatedAt
@@ -787,8 +272,6 @@ export const onDeleteReservation = /* GraphQL */ `subscription OnDeleteReservati
         updatedAt
         tier
         status
-        instructorReservationsId
-        reservationInstructorId
         reservationCustomerId
         __typename
       }
@@ -802,8 +285,6 @@ export const onDeleteReservation = /* GraphQL */ `subscription OnDeleteReservati
     updatedAt
     tier
     status
-    instructorReservationsId
-    reservationInstructorId
     reservationCustomerId
     __typename
   }
@@ -823,66 +304,13 @@ export const onCreateCustomer = /* GraphQL */ `subscription OnCreateCustomer($fi
       type
       location
       date
+      instructorID
       instructor {
         id
         name
         phone_number
         email
         reservations {
-          items {
-            id
-            type
-            location
-            date
-            instructor {
-              id
-              name
-              phone_number
-              email
-              reservations {
-                nextToken
-                __typename
-              }
-              locations
-              tier
-              createdAt
-              updatedAt
-              __typename
-            }
-            customer {
-              id
-              name
-              phone_number
-              email
-              reservation {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              guest
-              createdAt
-              updatedAt
-              customerReservationId
-              __typename
-            }
-            createdAt
-            updatedAt
-            tier
-            status
-            instructorReservationsId
-            reservationInstructorId
-            reservationCustomerId
-            __typename
-          }
           nextToken
           __typename
         }
@@ -902,88 +330,11 @@ export const onCreateCustomer = /* GraphQL */ `subscription OnCreateCustomer($fi
           type
           location
           date
-          instructor {
-            id
-            name
-            phone_number
-            email
-            reservations {
-              items {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            locations
-            tier
-            createdAt
-            updatedAt
-            __typename
-          }
-          customer {
-            id
-            name
-            phone_number
-            email
-            reservation {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            guest
-            createdAt
-            updatedAt
-            customerReservationId
-            __typename
-          }
+          instructorID
           createdAt
           updatedAt
           tier
           status
-          instructorReservationsId
-          reservationInstructorId
           reservationCustomerId
           __typename
         }
@@ -997,8 +348,6 @@ export const onCreateCustomer = /* GraphQL */ `subscription OnCreateCustomer($fi
       updatedAt
       tier
       status
-      instructorReservationsId
-      reservationInstructorId
       reservationCustomerId
       __typename
     }
@@ -1024,66 +373,13 @@ export const onUpdateCustomer = /* GraphQL */ `subscription OnUpdateCustomer($fi
       type
       location
       date
+      instructorID
       instructor {
         id
         name
         phone_number
         email
         reservations {
-          items {
-            id
-            type
-            location
-            date
-            instructor {
-              id
-              name
-              phone_number
-              email
-              reservations {
-                nextToken
-                __typename
-              }
-              locations
-              tier
-              createdAt
-              updatedAt
-              __typename
-            }
-            customer {
-              id
-              name
-              phone_number
-              email
-              reservation {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              guest
-              createdAt
-              updatedAt
-              customerReservationId
-              __typename
-            }
-            createdAt
-            updatedAt
-            tier
-            status
-            instructorReservationsId
-            reservationInstructorId
-            reservationCustomerId
-            __typename
-          }
           nextToken
           __typename
         }
@@ -1103,88 +399,11 @@ export const onUpdateCustomer = /* GraphQL */ `subscription OnUpdateCustomer($fi
           type
           location
           date
-          instructor {
-            id
-            name
-            phone_number
-            email
-            reservations {
-              items {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            locations
-            tier
-            createdAt
-            updatedAt
-            __typename
-          }
-          customer {
-            id
-            name
-            phone_number
-            email
-            reservation {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            guest
-            createdAt
-            updatedAt
-            customerReservationId
-            __typename
-          }
+          instructorID
           createdAt
           updatedAt
           tier
           status
-          instructorReservationsId
-          reservationInstructorId
           reservationCustomerId
           __typename
         }
@@ -1198,8 +417,6 @@ export const onUpdateCustomer = /* GraphQL */ `subscription OnUpdateCustomer($fi
       updatedAt
       tier
       status
-      instructorReservationsId
-      reservationInstructorId
       reservationCustomerId
       __typename
     }
@@ -1225,66 +442,13 @@ export const onDeleteCustomer = /* GraphQL */ `subscription OnDeleteCustomer($fi
       type
       location
       date
+      instructorID
       instructor {
         id
         name
         phone_number
         email
         reservations {
-          items {
-            id
-            type
-            location
-            date
-            instructor {
-              id
-              name
-              phone_number
-              email
-              reservations {
-                nextToken
-                __typename
-              }
-              locations
-              tier
-              createdAt
-              updatedAt
-              __typename
-            }
-            customer {
-              id
-              name
-              phone_number
-              email
-              reservation {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              guest
-              createdAt
-              updatedAt
-              customerReservationId
-              __typename
-            }
-            createdAt
-            updatedAt
-            tier
-            status
-            instructorReservationsId
-            reservationInstructorId
-            reservationCustomerId
-            __typename
-          }
           nextToken
           __typename
         }
@@ -1304,88 +468,11 @@ export const onDeleteCustomer = /* GraphQL */ `subscription OnDeleteCustomer($fi
           type
           location
           date
-          instructor {
-            id
-            name
-            phone_number
-            email
-            reservations {
-              items {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            locations
-            tier
-            createdAt
-            updatedAt
-            __typename
-          }
-          customer {
-            id
-            name
-            phone_number
-            email
-            reservation {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            guest
-            createdAt
-            updatedAt
-            customerReservationId
-            __typename
-          }
+          instructorID
           createdAt
           updatedAt
           tier
           status
-          instructorReservationsId
-          reservationInstructorId
           reservationCustomerId
           __typename
         }
@@ -1399,8 +486,6 @@ export const onDeleteCustomer = /* GraphQL */ `subscription OnDeleteCustomer($fi
       updatedAt
       tier
       status
-      instructorReservationsId
-      reservationInstructorId
       reservationCustomerId
       __typename
     }
@@ -1429,51 +514,12 @@ export const onCreateInstructor = /* GraphQL */ `subscription OnCreateInstructor
         type
         location
         date
+        instructorID
         instructor {
           id
           name
           phone_number
           email
-          reservations {
-            items {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            nextToken
-            __typename
-          }
           locations
           tier
           createdAt
@@ -1485,60 +531,6 @@ export const onCreateInstructor = /* GraphQL */ `subscription OnCreateInstructor
           name
           phone_number
           email
-          reservation {
-            id
-            type
-            location
-            date
-            instructor {
-              id
-              name
-              phone_number
-              email
-              reservations {
-                nextToken
-                __typename
-              }
-              locations
-              tier
-              createdAt
-              updatedAt
-              __typename
-            }
-            customer {
-              id
-              name
-              phone_number
-              email
-              reservation {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              guest
-              createdAt
-              updatedAt
-              customerReservationId
-              __typename
-            }
-            createdAt
-            updatedAt
-            tier
-            status
-            instructorReservationsId
-            reservationInstructorId
-            reservationCustomerId
-            __typename
-          }
           guest
           createdAt
           updatedAt
@@ -1549,8 +541,6 @@ export const onCreateInstructor = /* GraphQL */ `subscription OnCreateInstructor
         updatedAt
         tier
         status
-        instructorReservationsId
-        reservationInstructorId
         reservationCustomerId
         __typename
       }
@@ -1582,51 +572,12 @@ export const onUpdateInstructor = /* GraphQL */ `subscription OnUpdateInstructor
         type
         location
         date
+        instructorID
         instructor {
           id
           name
           phone_number
           email
-          reservations {
-            items {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            nextToken
-            __typename
-          }
           locations
           tier
           createdAt
@@ -1638,60 +589,6 @@ export const onUpdateInstructor = /* GraphQL */ `subscription OnUpdateInstructor
           name
           phone_number
           email
-          reservation {
-            id
-            type
-            location
-            date
-            instructor {
-              id
-              name
-              phone_number
-              email
-              reservations {
-                nextToken
-                __typename
-              }
-              locations
-              tier
-              createdAt
-              updatedAt
-              __typename
-            }
-            customer {
-              id
-              name
-              phone_number
-              email
-              reservation {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              guest
-              createdAt
-              updatedAt
-              customerReservationId
-              __typename
-            }
-            createdAt
-            updatedAt
-            tier
-            status
-            instructorReservationsId
-            reservationInstructorId
-            reservationCustomerId
-            __typename
-          }
           guest
           createdAt
           updatedAt
@@ -1702,8 +599,6 @@ export const onUpdateInstructor = /* GraphQL */ `subscription OnUpdateInstructor
         updatedAt
         tier
         status
-        instructorReservationsId
-        reservationInstructorId
         reservationCustomerId
         __typename
       }
@@ -1735,51 +630,12 @@ export const onDeleteInstructor = /* GraphQL */ `subscription OnDeleteInstructor
         type
         location
         date
+        instructorID
         instructor {
           id
           name
           phone_number
           email
-          reservations {
-            items {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            nextToken
-            __typename
-          }
           locations
           tier
           createdAt
@@ -1791,60 +647,6 @@ export const onDeleteInstructor = /* GraphQL */ `subscription OnDeleteInstructor
           name
           phone_number
           email
-          reservation {
-            id
-            type
-            location
-            date
-            instructor {
-              id
-              name
-              phone_number
-              email
-              reservations {
-                nextToken
-                __typename
-              }
-              locations
-              tier
-              createdAt
-              updatedAt
-              __typename
-            }
-            customer {
-              id
-              name
-              phone_number
-              email
-              reservation {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              guest
-              createdAt
-              updatedAt
-              customerReservationId
-              __typename
-            }
-            createdAt
-            updatedAt
-            tier
-            status
-            instructorReservationsId
-            reservationInstructorId
-            reservationCustomerId
-            __typename
-          }
           guest
           createdAt
           updatedAt
@@ -1855,8 +657,6 @@ export const onDeleteInstructor = /* GraphQL */ `subscription OnDeleteInstructor
         updatedAt
         tier
         status
-        instructorReservationsId
-        reservationInstructorId
         reservationCustomerId
         __typename
       }

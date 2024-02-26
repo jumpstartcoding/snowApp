@@ -11,7 +11,7 @@ async function acceptReservation(
 ): Promise<void> {
   const input = {
     id: resId,
-    reservationInstructorId: userId,
+    instructorID: userId,
   };
   try {
     const response = await client.graphql({
@@ -135,8 +135,10 @@ export default function ResCard(props: {
             </div>
           </div>
         </div>
-      ) : (
+      ) : loading ? (
         <div>Loading</div>
+      ) : (
+        <div>No Reservations</div>
       )}
     </>
   );

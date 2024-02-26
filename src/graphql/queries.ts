@@ -14,6 +14,7 @@ export const getReservation = /* GraphQL */ `query GetReservation($id: ID!) {
     type
     location
     date
+    instructorID
     instructor {
       id
       name
@@ -25,88 +26,11 @@ export const getReservation = /* GraphQL */ `query GetReservation($id: ID!) {
           type
           location
           date
-          instructor {
-            id
-            name
-            phone_number
-            email
-            reservations {
-              items {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            locations
-            tier
-            createdAt
-            updatedAt
-            __typename
-          }
-          customer {
-            id
-            name
-            phone_number
-            email
-            reservation {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            guest
-            createdAt
-            updatedAt
-            customerReservationId
-            __typename
-          }
+          instructorID
           createdAt
           updatedAt
           tier
           status
-          instructorReservationsId
-          reservationInstructorId
           reservationCustomerId
           __typename
         }
@@ -129,51 +53,12 @@ export const getReservation = /* GraphQL */ `query GetReservation($id: ID!) {
         type
         location
         date
+        instructorID
         instructor {
           id
           name
           phone_number
           email
-          reservations {
-            items {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            nextToken
-            __typename
-          }
           locations
           tier
           createdAt
@@ -185,60 +70,6 @@ export const getReservation = /* GraphQL */ `query GetReservation($id: ID!) {
           name
           phone_number
           email
-          reservation {
-            id
-            type
-            location
-            date
-            instructor {
-              id
-              name
-              phone_number
-              email
-              reservations {
-                nextToken
-                __typename
-              }
-              locations
-              tier
-              createdAt
-              updatedAt
-              __typename
-            }
-            customer {
-              id
-              name
-              phone_number
-              email
-              reservation {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              guest
-              createdAt
-              updatedAt
-              customerReservationId
-              __typename
-            }
-            createdAt
-            updatedAt
-            tier
-            status
-            instructorReservationsId
-            reservationInstructorId
-            reservationCustomerId
-            __typename
-          }
           guest
           createdAt
           updatedAt
@@ -249,8 +80,6 @@ export const getReservation = /* GraphQL */ `query GetReservation($id: ID!) {
         updatedAt
         tier
         status
-        instructorReservationsId
-        reservationInstructorId
         reservationCustomerId
         __typename
       }
@@ -264,8 +93,6 @@ export const getReservation = /* GraphQL */ `query GetReservation($id: ID!) {
     updatedAt
     tier
     status
-    instructorReservationsId
-    reservationInstructorId
     reservationCustomerId
     __typename
   }
@@ -285,66 +112,13 @@ export const listReservations = /* GraphQL */ `query ListReservations(
       type
       location
       date
+      instructorID
       instructor {
         id
         name
         phone_number
         email
         reservations {
-          items {
-            id
-            type
-            location
-            date
-            instructor {
-              id
-              name
-              phone_number
-              email
-              reservations {
-                nextToken
-                __typename
-              }
-              locations
-              tier
-              createdAt
-              updatedAt
-              __typename
-            }
-            customer {
-              id
-              name
-              phone_number
-              email
-              reservation {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              guest
-              createdAt
-              updatedAt
-              customerReservationId
-              __typename
-            }
-            createdAt
-            updatedAt
-            tier
-            status
-            instructorReservationsId
-            reservationInstructorId
-            reservationCustomerId
-            __typename
-          }
           nextToken
           __typename
         }
@@ -364,88 +138,11 @@ export const listReservations = /* GraphQL */ `query ListReservations(
           type
           location
           date
-          instructor {
-            id
-            name
-            phone_number
-            email
-            reservations {
-              items {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            locations
-            tier
-            createdAt
-            updatedAt
-            __typename
-          }
-          customer {
-            id
-            name
-            phone_number
-            email
-            reservation {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            guest
-            createdAt
-            updatedAt
-            customerReservationId
-            __typename
-          }
+          instructorID
           createdAt
           updatedAt
           tier
           status
-          instructorReservationsId
-          reservationInstructorId
           reservationCustomerId
           __typename
         }
@@ -459,8 +156,6 @@ export const listReservations = /* GraphQL */ `query ListReservations(
       updatedAt
       tier
       status
-      instructorReservationsId
-      reservationInstructorId
       reservationCustomerId
       __typename
     }
@@ -483,66 +178,13 @@ export const getCustomer = /* GraphQL */ `query GetCustomer($id: ID!) {
       type
       location
       date
+      instructorID
       instructor {
         id
         name
         phone_number
         email
         reservations {
-          items {
-            id
-            type
-            location
-            date
-            instructor {
-              id
-              name
-              phone_number
-              email
-              reservations {
-                nextToken
-                __typename
-              }
-              locations
-              tier
-              createdAt
-              updatedAt
-              __typename
-            }
-            customer {
-              id
-              name
-              phone_number
-              email
-              reservation {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              guest
-              createdAt
-              updatedAt
-              customerReservationId
-              __typename
-            }
-            createdAt
-            updatedAt
-            tier
-            status
-            instructorReservationsId
-            reservationInstructorId
-            reservationCustomerId
-            __typename
-          }
           nextToken
           __typename
         }
@@ -562,88 +204,11 @@ export const getCustomer = /* GraphQL */ `query GetCustomer($id: ID!) {
           type
           location
           date
-          instructor {
-            id
-            name
-            phone_number
-            email
-            reservations {
-              items {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            locations
-            tier
-            createdAt
-            updatedAt
-            __typename
-          }
-          customer {
-            id
-            name
-            phone_number
-            email
-            reservation {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            guest
-            createdAt
-            updatedAt
-            customerReservationId
-            __typename
-          }
+          instructorID
           createdAt
           updatedAt
           tier
           status
-          instructorReservationsId
-          reservationInstructorId
           reservationCustomerId
           __typename
         }
@@ -657,8 +222,6 @@ export const getCustomer = /* GraphQL */ `query GetCustomer($id: ID!) {
       updatedAt
       tier
       status
-      instructorReservationsId
-      reservationInstructorId
       reservationCustomerId
       __typename
     }
@@ -689,51 +252,12 @@ export const listCustomers = /* GraphQL */ `query ListCustomers(
         type
         location
         date
+        instructorID
         instructor {
           id
           name
           phone_number
           email
-          reservations {
-            items {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            nextToken
-            __typename
-          }
           locations
           tier
           createdAt
@@ -745,60 +269,6 @@ export const listCustomers = /* GraphQL */ `query ListCustomers(
           name
           phone_number
           email
-          reservation {
-            id
-            type
-            location
-            date
-            instructor {
-              id
-              name
-              phone_number
-              email
-              reservations {
-                nextToken
-                __typename
-              }
-              locations
-              tier
-              createdAt
-              updatedAt
-              __typename
-            }
-            customer {
-              id
-              name
-              phone_number
-              email
-              reservation {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              guest
-              createdAt
-              updatedAt
-              customerReservationId
-              __typename
-            }
-            createdAt
-            updatedAt
-            tier
-            status
-            instructorReservationsId
-            reservationInstructorId
-            reservationCustomerId
-            __typename
-          }
           guest
           createdAt
           updatedAt
@@ -809,8 +279,6 @@ export const listCustomers = /* GraphQL */ `query ListCustomers(
         updatedAt
         tier
         status
-        instructorReservationsId
-        reservationInstructorId
         reservationCustomerId
         __typename
       }
@@ -840,51 +308,12 @@ export const getInstructor = /* GraphQL */ `query GetInstructor($id: ID!) {
         type
         location
         date
+        instructorID
         instructor {
           id
           name
           phone_number
           email
-          reservations {
-            items {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            nextToken
-            __typename
-          }
           locations
           tier
           createdAt
@@ -896,60 +325,6 @@ export const getInstructor = /* GraphQL */ `query GetInstructor($id: ID!) {
           name
           phone_number
           email
-          reservation {
-            id
-            type
-            location
-            date
-            instructor {
-              id
-              name
-              phone_number
-              email
-              reservations {
-                nextToken
-                __typename
-              }
-              locations
-              tier
-              createdAt
-              updatedAt
-              __typename
-            }
-            customer {
-              id
-              name
-              phone_number
-              email
-              reservation {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              guest
-              createdAt
-              updatedAt
-              customerReservationId
-              __typename
-            }
-            createdAt
-            updatedAt
-            tier
-            status
-            instructorReservationsId
-            reservationInstructorId
-            reservationCustomerId
-            __typename
-          }
           guest
           createdAt
           updatedAt
@@ -960,8 +335,6 @@ export const getInstructor = /* GraphQL */ `query GetInstructor($id: ID!) {
         updatedAt
         tier
         status
-        instructorReservationsId
-        reservationInstructorId
         reservationCustomerId
         __typename
       }
@@ -996,88 +369,11 @@ export const listInstructors = /* GraphQL */ `query ListInstructors(
           type
           location
           date
-          instructor {
-            id
-            name
-            phone_number
-            email
-            reservations {
-              items {
-                id
-                type
-                location
-                date
-                createdAt
-                updatedAt
-                tier
-                status
-                instructorReservationsId
-                reservationInstructorId
-                reservationCustomerId
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            locations
-            tier
-            createdAt
-            updatedAt
-            __typename
-          }
-          customer {
-            id
-            name
-            phone_number
-            email
-            reservation {
-              id
-              type
-              location
-              date
-              instructor {
-                id
-                name
-                phone_number
-                email
-                locations
-                tier
-                createdAt
-                updatedAt
-                __typename
-              }
-              customer {
-                id
-                name
-                phone_number
-                email
-                guest
-                createdAt
-                updatedAt
-                customerReservationId
-                __typename
-              }
-              createdAt
-              updatedAt
-              tier
-              status
-              instructorReservationsId
-              reservationInstructorId
-              reservationCustomerId
-              __typename
-            }
-            guest
-            createdAt
-            updatedAt
-            customerReservationId
-            __typename
-          }
+          instructorID
           createdAt
           updatedAt
           tier
           status
-          instructorReservationsId
-          reservationInstructorId
           reservationCustomerId
           __typename
         }
@@ -1097,4 +393,78 @@ export const listInstructors = /* GraphQL */ `query ListInstructors(
 ` as GeneratedQuery<
   APITypes.ListInstructorsQueryVariables,
   APITypes.ListInstructorsQuery
+>;
+export const reservationsByInstructorID = /* GraphQL */ `query ReservationsByInstructorID(
+  $instructorID: ID!
+  $sortDirection: ModelSortDirection
+  $filter: ModelReservationFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  reservationsByInstructorID(
+    instructorID: $instructorID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      type
+      location
+      date
+      instructorID
+      instructor {
+        id
+        name
+        phone_number
+        email
+        reservations {
+          nextToken
+          __typename
+        }
+        locations
+        tier
+        createdAt
+        updatedAt
+        __typename
+      }
+      customer {
+        id
+        name
+        phone_number
+        email
+        reservation {
+          id
+          type
+          location
+          date
+          instructorID
+          createdAt
+          updatedAt
+          tier
+          status
+          reservationCustomerId
+          __typename
+        }
+        guest
+        createdAt
+        updatedAt
+        customerReservationId
+        __typename
+      }
+      createdAt
+      updatedAt
+      tier
+      status
+      reservationCustomerId
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ReservationsByInstructorIDQueryVariables,
+  APITypes.ReservationsByInstructorIDQuery
 >;

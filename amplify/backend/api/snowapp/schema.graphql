@@ -9,8 +9,9 @@ type Reservation @model @auth(rules: [{ allow: public }]) {
   type: String!
   location: String!
   date: AWSDateTime! # Assuming you're using AWS AppSync, use AWSDateTime for dates
-  instructor: Instructor @hasOne
-  customer: Customer! @hasOne
+  instructorID: ID @index(name: "byInstructor")
+  instructor: Instructor @belongsTo(fields: ["instructorID"])
+  customer: Customer! @belongsTo
   createdAt: AWSDateTime!
   updatedAt: AWSDateTime
   tier: Int
@@ -31,7 +32,8 @@ type Instructor @model {
   name: String!
   phone_number: String
   email: String
-  reservations: [Reservation] @hasMany
+  reservations: [Reservation]
+    @hasMany(indexName: "byInstructor", fields: ["id"])
   locations: [String]
   tier: Int
 }
