@@ -76,7 +76,13 @@ function HomePage() {
           query: listReservations,
           variables: { filter: {} },
         });
-        setTrips(response.data.listReservations.items);
+        setTrips(
+          response.data.listReservations.items
+            .slice()
+            .sort(
+              (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+            )
+        );
         setLoading(false);
       } catch (error) {
         console.error("Error fetching trips:", error);
@@ -137,24 +143,18 @@ function HomePage() {
                 <>
                   <ResCard
                     userId={userID.id}
-                    reservations={trips}
+                    reservations={trips.filter(
+                      (res: any) => res.type === "Ski"
+                    )}
                     tag="one"
-                  ></ResCard>
-                  <ResCard
-                    userId={userID.id}
-                    reservations={trips}
-                    tag="onesws"
-                  ></ResCard>
-                  <ResCard
-                    userId={userID.id}
-                    reservations={trips}
-                    tag="onesww"
                   ></ResCard>
                 </>
               ) : (
                 <ResCard
                   userId={userID.id}
-                  reservations={trips}
+                  reservations={trips.filter(
+                    (res: any) => res.type === "Snowboard"
+                  )}
                   tag="onswswe"
                 ></ResCard>
               )}

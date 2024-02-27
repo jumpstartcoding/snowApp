@@ -87,7 +87,7 @@ color: white;
  
     display: flex;
     justify-content: left;
-
+flex-direction: row;
     width: 100%;
     overflow-y:hidden;
   height: 100vh;
@@ -95,6 +95,7 @@ color: white;
 }
 div.card{
   max-height: 25rem;
+  border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
 
@@ -278,4 +279,22 @@ ul {
 section.dropdown{
 padding: 5px;
   margin-bottom: 50px;
+}
+
+
+.card p{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.card header{
+  display: flex;
+  justify-content: space-between;
+}
+.card header button{
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
 }
