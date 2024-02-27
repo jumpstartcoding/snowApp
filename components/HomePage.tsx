@@ -1,23 +1,10 @@
 import ResCard from "./ResCard";
-
 import "./SignIn.css";
 import CreateRes from "./CreateRes";
 import { clientContext } from "../components/clientContext";
 import { useContext, useEffect, useState } from "react";
-
-import { listReservations } from "../src/graphql/queries";
 import { getCurrentUser } from "aws-amplify/auth";
 import { createInstructor } from "../src/graphql/mutations";
-export interface Reservations {
-  id: string;
-  firstName: string;
-  lastName: string;
-  phoneNumber: string;
-  guests: string;
-  date: string;
-  type: string;
-  tier: string;
-}
 
 async function createInstruct(client: any, userId: string, signInDetails: any) {
   try {
@@ -44,8 +31,6 @@ async function createInstruct(client: any, userId: string, signInDetails: any) {
   }
 }
 function HomePage() {
-  const [trips, setTrips] = useState<any>([]);
-  const [loading, setLoading] = useState<boolean>(true);
   const [resType, setResType] = useState<string>("Snowboard");
   const [userID, setUserID] = useState<{
     id: string;
@@ -69,29 +54,6 @@ function HomePage() {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    async function fetchTrips() {
-      try {
-        const response = await client.graphql({
-          query: listReservations,
-          variables: { filter: {} },
-        });
-        setTrips(
-          response.data.listReservations.items
-            .slice()
-            .sort(
-              (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
-            )
-        );
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching trips:", error);
-        setLoading(false);
-      }
-    }
-    fetchTrips();
-  }, [resType, client]);
-
   const handleClick = (type: string) => setResType(type);
 
   return (
@@ -100,12 +62,9 @@ function HomePage() {
         style={{
           display: "flex",
           flexDirection: "column",
-
           justifyContent: "flex-start",
-
           backgroundColor: "white",
           width: "100%",
-
           overflow: "auto",
         }}
       >
@@ -129,34 +88,14 @@ function HomePage() {
         >
           {resType === "create" ? (
             <CreateRes />
-          ) : loading ? (
-            <div
-              className="spinner-grow text-warning"
-              style={{ marginTop: "100px" }}
-              role="status"
-            >
-              <span className="visually-hidden">Loading...</span>
-            </div>
           ) : (
             <section className="trips">
               {resType === "Ski" ? (
                 <>
-                  <ResCard
-                    userId={userID.id}
-                    reservations={trips.filter(
-                      (res: any) => res.type === "Ski"
-                    )}
-                    tag="one"
-                  ></ResCard>
+                  <ResCard userId={userID.id} tag="Ski"></ResCard>
                 </>
               ) : (
-                <ResCard
-                  userId={userID.id}
-                  reservations={trips.filter(
-                    (res: any) => res.type === "Snowboard"
-                  )}
-                  tag="onswswe"
-                ></ResCard>
+                <ResCard userId={userID.id} tag="Snowboard"></ResCard>
               )}
             </section>
           )}

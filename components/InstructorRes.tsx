@@ -9,7 +9,7 @@ var instructorId: string = "";
 
 export default function InstructorRes(props: { instructorId?: string }) {
   const client = useContext(clientContext);
-  const [reservations, setReservations] = useState<any>([]);
+
   const [instructors, setInstructors] = useState<any>([]);
   const [refresh, setRefresh] = useState<boolean>(false);
 
@@ -35,7 +35,7 @@ export default function InstructorRes(props: { instructorId?: string }) {
         });
         console.log(response);
         console.log(inResponse);
-        setReservations(response.data.listReservations.items);
+
         setInstructors(inResponse.data.listInstructors.items);
         setRefresh(false);
       } catch (error) {
@@ -51,11 +51,7 @@ export default function InstructorRes(props: { instructorId?: string }) {
         {!refresh ? (
           <section style={{ display: "flex", flexDirection: "column" }}>
             <button onClick={() => setRefresh(true)}>Refresh</button>
-            <ResCard
-              reservations={reservations}
-              tag="one"
-              userId={instructorId}
-            />
+            <ResCard tag="one" userId={instructorId} />
           </section>
         ) : (
           <div

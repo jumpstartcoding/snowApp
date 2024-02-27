@@ -1,7 +1,8 @@
 import { Button } from "@aws-amplify/ui-react";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { clientContext } from "../components/clientContext";
 import { updateReservation } from "../src/graphql/mutations";
+import { listReservations } from "../src/graphql/queries";
 
 async function acceptReservation(
   userId: string,
@@ -37,21 +38,44 @@ async function acceptReservation(
   }
 }
 
-export default function ResCard(props: {
-  reservations: any[];
-  tag: string;
-  userId: string;
-}) {
+export default function ResCard(props: { tag: string; userId: string }) {
   const client = useContext(clientContext);
+  const [reservations, setReservations] = useState<any>([]);
   const [loading, setLoading] = useState(
-    Array(props.reservations.length).fill(false)
+    Array(reservations.length).fill(false)
   );
+
+  const [fetching, setFetching] = useState<boolean>(false);
+
+  useEffect(() => {
+    async function fetchTrips() {
+      try {
+        setFetching(true);
+        const response = await client.graphql({
+          query: listReservations,
+          variables: { filter: {} },
+        });
+        setReservations(
+          response.data.listReservations.items
+            .filter((res) => res.type === props.tag)
+            .slice()
+            .sort(
+              (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+            )
+        );
+      } catch (error) {
+        console.error("Error fetching trips:", error);
+      }
+    }
+    fetchTrips();
+    setFetching(false);
+  }, [reservations, client]);
 
   return (
     <>
-      {props.reservations.length > 0 ? (
+      {reservations.length > 0 ? (
         <>
-          {props.reservations.map((reservation, index) => (
+          {reservations.map((reservation: any, index: number) => (
             <div
               key={index}
               className="card"
@@ -112,7 +136,9 @@ export default function ResCard(props: {
                 </p>
                 <p>
                   <strong># of Guests</strong>
-                  {reservation.customer.guest}
+                  {reservation.customer.guest >= 0
+                    ? reservation.customer.guest
+                    : 0}
                 </p>
               </div>
             </div>
@@ -120,10 +146,22 @@ export default function ResCard(props: {
         </>
       ) : (
         <>
-          {loading.some((item) => item) ? (
-            <div>Loading</div>
+          {!fetching ? (
+            <div
+              className="spinner-grow text-warning"
+              style={{
+                top: "50%",
+                left: "50%",
+                position: "fixed",
+              }}
+              role="status"
+            >
+              <span className="visually-hidden">Loading...</span>
+            </div>
           ) : (
-            <>No Reservations</>
+            <>
+              <div>No Reservations</div>
+            </>
           )}
         </>
       )}
