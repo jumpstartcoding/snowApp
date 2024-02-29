@@ -87,7 +87,12 @@ function HomePage() {
           }}
         >
           {resType === "create" ? (
-            <CreateRes />
+            <div
+              className="container "
+              style={{ marginBottom: "100px", padding: "0px 50px" }}
+            >
+              <CreateRes />
+            </div>
           ) : (
             <section className="trips">
               {resType === "Ski" ? (

@@ -4,6 +4,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@aws-amplify/ui-react/styles.css";
+import ScrollToTop from "../components/ScrollToTop";
 import {
   Authenticator,
   Button,
@@ -213,6 +214,7 @@ const router = createBrowserRouter([
         element: (
           <NavBar>
             <Outlet />
+            <ScrollToTop />
           </NavBar>
         ),
         children: [

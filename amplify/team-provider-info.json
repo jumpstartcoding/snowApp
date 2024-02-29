@@ -23,6 +23,21 @@
       },
       "api": {
         "snowapp": {}
+      },
+      "analytics": {
+        "snowapp": {},
+        "Pinpoint": {
+          "Name": "snowapp-dev",
+          "Id": "f07fd726a1cd46d38e7015e85b3ba18e",
+          "Region": "us-east-2"
+        }
+      },
+      "notifications": {
+        "Pinpoint": {
+          "Name": "snowapp-dev",
+          "Id": "f07fd726a1cd46d38e7015e85b3ba18e",
+          "Region": "us-east-2"
+        }
       }
     }
   }

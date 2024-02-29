@@ -132,33 +132,31 @@ export default function CreateRes(props: { date?: Date }) {
 
   return (
     <>
-      <Form className="card createRes " onSubmit={onSubmit}>
-        <section>
-          <Label id="fNameLabel" htmlFor="firstName">
-            First Name
-          </Label>
-          <Label id="lNameLabel" htmlFor="lastName">
-            Last Name
-          </Label>
-        </section>
-        <section>
-          <Input
-            className="input"
-            type="text"
-            name="firstName"
-            id="firstName"
-            value={reservation.customer.firstName}
-            onChange={handleChange}
-          />
-          <Input
-            className="input"
-            type="text"
-            name="lastName"
-            id="lastName"
-            value={reservation.customer.lastName}
-            onChange={handleChange}
-          />
-        </section>
+      <Form onSubmit={onSubmit}>
+        <Label id="fNameLabel" htmlFor="firstName">
+          First Name
+        </Label>
+
+        <Input
+          className="input"
+          type="text"
+          name="firstName"
+          id="firstName"
+          value={reservation.customer.firstName}
+          onChange={handleChange}
+        />
+        <Label id="lNameLabel" htmlFor="lastName">
+          Last Name
+        </Label>
+        <Input
+          className="input"
+          type="text"
+          name="lastName"
+          id="lastName"
+          value={reservation.customer.lastName}
+          onChange={handleChange}
+        />
+
         <Label id="emailLabel" htmlFor="email">
           Email
         </Label>
