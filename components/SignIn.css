@@ -4,6 +4,7 @@
   --custom-peach-color: #f4b1b1;
   --custom-gray-color: #efecec;
   --custom-navy-color: #0c2d57;
+
 }
   [data-amplify-authenticator] button:hover{
     background-color: #05244da9;
@@ -49,9 +50,7 @@
      flex-direction: column;
      overflow-y: scroll;
      overflow-x: hidden;
-    
-   
-   
+
     }
     div.card{
       max-height: 20rem;
@@ -131,12 +130,15 @@ flex:1;
 
 .input {
 
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.921);
 
   border-radius: 10px;
   padding: 10px;
   border: 1px solid #ccc;
 
+}
+
+.input:hover{
+  box-shadow:  3.5px 5px 0px rgba(0, 0, 0, .2);
 }
 
 
@@ -300,3 +302,23 @@ padding: 5px;
 }
 
 
+
+.fc-view-harness {
+  height : 100vh !important; 
+}
+.fc {
+border-style: solid;
+overflow: auto;
+padding: 25px;
+border-radius: 5px;
+border-color: white;
+box-shadow:  -2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.create-res-label{
+  margin-top: 10px !important;
+}
+
+.fc thead{
+  background-color: aliceblue;
+}

@@ -76,7 +76,7 @@ export default function ResCard(props: { tag: string; userId: string }) {
     }
     fetchTrips();
     setFetching(false);
-  }, [reservations, client]);
+  }, [props.tag]);
 
   return (
     <>

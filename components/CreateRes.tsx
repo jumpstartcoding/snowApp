@@ -1,5 +1,5 @@
 import { Form } from "react-router-dom";
-import { Button, Input, Label } from "@aws-amplify/ui-react";
+import { Button, Input } from "@aws-amplify/ui-react";
 import "./SignIn.css";
 import {
   createReservation,
@@ -19,7 +19,7 @@ export default function CreateRes(props: { date?: Date }) {
   );
   useEffect(() => {
     if (props.date) setCurrentDate(props.date.toISOString().split("T")[0]);
-  });
+  }, []);
 
   const [reservation, setReservation] = useState({
     customer: {
@@ -30,6 +30,7 @@ export default function CreateRes(props: { date?: Date }) {
       guest: 0,
     },
     date: new Date(currentDate).toISOString(),
+    time: "12:00",
     type: "",
     tier: 1,
     location: "",
@@ -61,7 +62,11 @@ export default function CreateRes(props: { date?: Date }) {
         query: createReservation,
         variables: {
           input: {
-            date: reservation.date,
+            date: reservation.date.replace(
+              /T.*/,
+              "T" + reservation.time + ":00.000Z"
+            ),
+
             type: reservation.type,
             location: reservation.location,
             status: "new",
@@ -120,7 +125,16 @@ export default function CreateRes(props: { date?: Date }) {
         customer: { ...reservation.customer, [name]: value },
       });
     } else if (name === "date") {
-      setReservation({ ...reservation, [name]: new Date(value).toISOString() });
+      setReservation({
+        ...reservation,
+        [name]: new Date(value).toISOString(),
+      });
+      console.log("got her", reservation.time);
+      var elt = reservation.date.replace(
+        /T.*/,
+        "T" + reservation.time + ":00.000Z"
+      );
+      console.log("dssdsds", elt);
     } else {
       setReservation({
         ...reservation,
@@ -133,9 +147,9 @@ export default function CreateRes(props: { date?: Date }) {
   return (
     <>
       <Form onSubmit={onSubmit}>
-        <Label id="fNameLabel" htmlFor="firstName">
+        <label className="create-res-label" id="fNameLabel" htmlFor="firstName">
           First Name
-        </Label>
+        </label>
 
         <Input
           className="input"
@@ -145,9 +159,9 @@ export default function CreateRes(props: { date?: Date }) {
           value={reservation.customer.firstName}
           onChange={handleChange}
         />
-        <Label id="lNameLabel" htmlFor="lastName">
+        <label className="create-res-label" id="lNameLabel" htmlFor="lastName">
           Last Name
-        </Label>
+        </label>
         <Input
           className="input"
           type="text"
@@ -157,9 +171,9 @@ export default function CreateRes(props: { date?: Date }) {
           onChange={handleChange}
         />
 
-        <Label id="emailLabel" htmlFor="email">
+        <label className="create-res-label" id="emailLabel" htmlFor="email">
           Email
-        </Label>
+        </label>
         <Input
           className="input"
           type="email"
@@ -169,9 +183,13 @@ export default function CreateRes(props: { date?: Date }) {
           value={reservation.customer.email}
           onChange={handleChange}
         />
-        <Label id="phoneNumberLabel" htmlFor="phone">
+        <label
+          className="create-res-label"
+          id="phoneNumberLabel"
+          htmlFor="phone"
+        >
           Phone Number
-        </Label>
+        </label>
         <Input
           className="input"
           type="tel"
@@ -181,9 +199,9 @@ export default function CreateRes(props: { date?: Date }) {
           value={reservation.customer.phone}
           onChange={handleChange}
         />
-        <Label id="guestLabel" htmlFor="guests">
+        <label className="create-res-label" id="guestLabel" htmlFor="guests">
           # of Guests
-        </Label>
+        </label>
         <Input
           className="input"
           type="number"
@@ -201,9 +219,14 @@ export default function CreateRes(props: { date?: Date }) {
             value="Ski"
             onChange={handleChange}
           />
-          <Label id="skiLabel" style={{ marginRight: "10px" }} htmlFor="skiRes">
+          <label
+            className="create-res-label"
+            id="skiLabel"
+            style={{ marginRight: "10px" }}
+            htmlFor="skiRes"
+          >
             Ski
-          </Label>
+          </label>
           <input
             type="checkbox"
             name="type"
@@ -212,19 +235,27 @@ export default function CreateRes(props: { date?: Date }) {
             onChange={handleChange}
           />
 
-          <Label id="snowBoardResLabel" htmlFor="snowBoardRes">
+          <label
+            className="create-res-label"
+            id="snowBoardResLabel"
+            htmlFor="snowBoardRes"
+          >
             {" "}
             SnowBoard{" "}
-          </Label>
+          </label>
         </section>
-        <Label id="locationLabel" htmlFor="location">
+        <label
+          className="create-res-label"
+          id="locationLabel"
+          htmlFor="location"
+        >
           Location
-        </Label>
+        </label>
 
         <select
           name="location"
           id="location"
-          className="form-select"
+          className="form-select input"
           aria-label="Default select example"
           onChange={handleChange}
         >
@@ -234,9 +265,9 @@ export default function CreateRes(props: { date?: Date }) {
           <option value="Colorado">Colorado</option>
         </select>
 
-        <Label id="dateLabel" htmlFor="date">
+        <label className="create-res-label" id="dateLabel" htmlFor="date">
           Date
-        </Label>
+        </label>
         <Input
           className="input"
           type="date"
@@ -245,12 +276,16 @@ export default function CreateRes(props: { date?: Date }) {
           defaultValue={currentDate}
           onChange={handleChange}
         />
+        <label className="create-res-label" id="dateLabel" htmlFor="time">
+          Time
+        </label>
+        <Input onChange={handleChange} type="time" name="time" id="time" />
         <Button
           isLoading={loading}
           name="resButton"
           loadingText="Loading..."
           type="submit"
-          style={{ position: "relative", top: "1rem" }}
+          style={{ position: "relative", margin: "20px 0px" }}
         >
           Create
         </Button>

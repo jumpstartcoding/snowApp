@@ -57,7 +57,7 @@ export default function ResCalendar(props: {
         console.log("before", events);
         setEvents((prevData: any) => {
           const newData = [...prevData];
-          newData[index] = { title: elt.type, start: elt.date };
+          newData[index] = { title: elt.type, start: elt.date.slice(".") };
           return newData;
         });
         console.log("After", events);
@@ -67,7 +67,7 @@ export default function ResCalendar(props: {
 
   return (
     <>
-      <div style={{ marginTop: "50px", padding: "25px" }}>
+      <div style={{ marginTop: "50px", padding: "50px" }}>
         <FullCalendar
           plugins={[
             dayGridPlugin,
@@ -81,9 +81,9 @@ export default function ResCalendar(props: {
           dateClick={(info) => handleDateClick(info)}
           eventContent={renderEventContent}
           headerToolbar={{
-            right: "today,dayGridMonth,listYear",
-            left: "prev,next",
             center: "title",
+            right: "dayGridMonth,listYear",
+            left: "prev,next",
           }}
           events={events}
           eventDidMount={(info) => {

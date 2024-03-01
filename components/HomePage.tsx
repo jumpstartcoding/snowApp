@@ -52,7 +52,7 @@ function HomePage() {
       }
     }
     fetchData();
-  }, []);
+  }, [resType]);
 
   const handleClick = (type: string) => setResType(type);
 
@@ -89,7 +89,11 @@ function HomePage() {
           {resType === "create" ? (
             <div
               className="container "
-              style={{ marginBottom: "100px", padding: "0px 50px" }}
+              style={{
+                margin: "15px 0px 75px 0px",
+                padding: "0px 50px",
+                boxShadow: " -2px 0 5px rgba(0, 0, 0, 0.1)",
+              }}
             >
               <CreateRes />
             </div>

@@ -12,7 +12,9 @@ const ResList = (props: { reservations: any[] }) => {
           key={index}
         >
           <div className="event-header">
-            <span className="event-time">{reservation.location}</span>
+            <span className="event-time">
+              {new Date(reservation.date).toLocaleTimeString()}
+            </span>
             <span className="event-title">Tier {reservation.tier || "1"}</span>
           </div>
           <div
