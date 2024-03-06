@@ -56,6 +56,17 @@
       max-height: 20rem;
 
     }
+    .card.createRes {
+      margin: 10px;
+        } 
+        .fc {
+          box-shadow: none !important;
+        }
+
+        .fc-container{
+         padding: 0px !important;
+         }
+        
   }
   
 .navbar a {
@@ -176,12 +187,6 @@ bottom: 0;
 
 }
 
-
-@media (max-width:576px) {
-  .card.createRes {
-margin: 10px;
-  } 
-}
 
 
 .side-panel{
@@ -321,4 +326,21 @@ box-shadow:  -2px 0 5px rgba(0, 0, 0, 0.1);
 
 .fc thead{
   background-color: aliceblue;
+}
+
+
+.fc-container{
+ margin-top: 50px; padding: 50px;
+}
+
+
+.hide{  border:  none;
+  background-color: white;}
+.edit-input{
+
+
+ border-radius: 10px;
+ padding: 5px;
+ border: 1px solid #ccc;
+
 }

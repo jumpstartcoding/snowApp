@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from "react";
 import { clientContext } from "../components/clientContext";
 import { updateReservation } from "../src/graphql/mutations";
 import { listReservations } from "../src/graphql/queries";
-import CreateRes from "./CreateRes";
 
 async function acceptReservation(
   userId: string,
@@ -38,15 +37,32 @@ async function acceptReservation(
     });
   }
 }
-
+/*
+interface res {
+  name: string;
+  date: string;
+  number: string;
+  email: string;
+  guest: string;
+  location: string;
+  tier: string;
+}
+*/
 export default function ResCard(props: { tag: string; userId: string }) {
   const client = useContext(clientContext);
   const [reservations, setReservations] = useState<any>([]);
   const [loading, setLoading] = useState(
     Array(reservations.length).fill(false)
   );
-
+  /*
+  const handleChange = (
+    e: { target: { name: string; value: string } } | any
+  ) => {
+    e.preventDefault();
+  };
+  */
   const [fetching, setFetching] = useState<boolean>(false);
+
   const [edit, setEdit] = useState<boolean[]>([]);
   const toggleEditMode = (index: number) => {
     const newEditModes = [...edit];
@@ -98,7 +114,7 @@ export default function ResCard(props: { tag: string; userId: string }) {
                 }`,
               }}
             >
-              {!edit[index] ? (
+              {
                 <>
                   <header>
                     <h5 className="card-title">
@@ -109,6 +125,7 @@ export default function ResCard(props: { tag: string; userId: string }) {
                         isLoading={loading[index]}
                         onClick={async () => {
                           try {
+                            reservation.status = "accepted";
                             await acceptReservation(
                               props.userId,
                               reservation.id,
@@ -136,28 +153,51 @@ export default function ResCard(props: { tag: string; userId: string }) {
                   </h6>
                   <div className="card-body">
                     <p>
-                      <strong>Name</strong>
-                      {reservation.customer.name}
+                      <label htmlFor="name">Name</label>
+
+                      <input
+                        className={`${!edit[index] ? " " : "edit-input"} hide`}
+                        id="name"
+                        name="name"
+                        type="text"
+                        value={reservation.customer.name}
+                      />
                     </p>
                     <p>
-                      <strong>Phone Number</strong>
-                      {reservation.customer.phone_number}
+                      <label htmlFor="number">Phone Number</label>
+                      <input
+                        className={`${!edit[index] ? " " : "edit-input"} hide`}
+                        type="text"
+                        value={reservation.customer.phone_number}
+                      />
                     </p>
                     <p>
-                      <strong>Email</strong>
-                      {reservation.customer.email}
+                      <label htmlFor="email">Email</label>
+                      <input
+                        className={`${!edit[index] ? " " : "edit-input"} hide`}
+                        type="text"
+                        name="email"
+                        id="email"
+                        value={reservation.customer.email}
+                      />
                     </p>
                     <p>
-                      <strong># of Guests</strong>
-                      {reservation.customer.guest >= 0
-                        ? reservation.customer.guest
-                        : 0}
+                      <label htmlFor="guest"># of Guests</label>
+                      <input
+                        className={`${!edit[index] ? "" : "edit-input"} hide`}
+                        type="number "
+                        name="guest"
+                        id="guest"
+                        value={
+                          reservation.customer.guest >= 0
+                            ? reservation.customer.guest
+                            : 0
+                        }
+                      />
                     </p>
                   </div>
                 </>
-              ) : (
-                <CreateRes />
-              )}
+              }
               <button
                 id={`btnEdit${index}`}
                 style={{

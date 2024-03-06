@@ -64,35 +64,66 @@ export default function InstructorRes(props: { instructorId?: string }) {
           <span style={{ display: "flex", justifyContent: "center" }}>
             <h3>Instructors</h3>
           </span>
-          <table className="table" style={{ minHeight: "300px" }}>
-            <thead>
-              <tr>
-                <th>select</th>
-                <th>Name</th>
-                <th>Number</th>
-                <th>Email</th>
-              </tr>
-            </thead>
-            <tbody>
-              {instructors.map((instructor: any, index: number) => (
-                <>
-                  <tr key={index}>
-                    <td>
-                      <input
-                        type="checkbox"
-                        id={`btncheck${index}`}
-                        autoComplete="off"
-                      />
-                    </td>
-                    <td>{instructor.name} </td>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "5px",
+            }}
+          >
+            {instructors.map((instructor: any, index: number) => (
+              <>
+                <span
+                  key={index}
+                  style={{
+                    display: "flex",
+                    border: "3px solid blue",
 
-                    <td>{instructor.phone_number}</td>
-                    <td>{instructor.email}</td>
-                  </tr>
-                </>
-              ))}
-            </tbody>
-          </table>
+                    borderRadius: "40px",
+                    padding: "5px 15px ",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <header
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      gap: "10px",
+                    }}
+                  >
+                    <span id="ski" className="snowIcon"></span>
+                    <section>
+                      <strong>{instructor.name}</strong>
+                      <strong
+                        style={{
+                          display: "block",
+                          fontSize: "14px",
+                          color: "gray",
+                        }}
+                      >
+                        {instructor.number}
+                      </strong>
+                    </section>
+                  </header>
+                  <footer
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      overflow: "hidden",
+                      alignItems: "flex-end",
+                      alignSelf: "flex-end",
+                    }}
+                  >
+                    <h6 style={{ fontSize: "14px" }}>
+                      {" "}
+                      {instructor.type} Instructor
+                    </h6>
+                    {instructor.email}
+                  </footer>
+                </span>
+              </>
+            ))}
+          </div>
         </div>
       </div>
     </>

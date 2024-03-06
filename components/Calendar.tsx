@@ -54,20 +54,18 @@ export default function ResCalendar(props: {
       setTrips(response.data.listReservations.items);
       isLoading(false);
       response.data.listReservations.items.map((elt: any, index) => {
-        console.log("before", events);
         setEvents((prevData: any) => {
           const newData = [...prevData];
-          newData[index] = { title: elt.type, start: elt.date.slice(".") };
+          newData[index] = { title: elt.type, start: elt.date };
           return newData;
         });
-        console.log("After", events);
       });
     });
   }, [calendarView, createRes]);
 
   return (
     <>
-      <div style={{ marginTop: "50px", padding: "50px" }}>
+      <div className="fc-container">
         <FullCalendar
           plugins={[
             dayGridPlugin,
@@ -156,11 +154,12 @@ export default function ResCalendar(props: {
 
 function renderEventContent(eventInfo: {
   timeText: string;
-  event: { title: string };
+  event: { title: string; start: Date };
 }) {
+  console.log(eventInfo.event.start.toISOString());
   return (
     <>
-      <b>{eventInfo.timeText}</b>
+      <b>{eventInfo.event.start.toLocaleTimeString().split(":00")}</b>
       <i>{eventInfo.event.title}</i>
     </>
   );

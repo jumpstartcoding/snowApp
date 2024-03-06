@@ -17,6 +17,7 @@ export default function CreateRes(props: { date?: Date }) {
       ? props.date.toISOString().split("T")[0]
       : new Date().toISOString().split("T")[0]
   );
+
   useEffect(() => {
     if (props.date) setCurrentDate(props.date.toISOString().split("T")[0]);
   }, []);
@@ -279,7 +280,13 @@ export default function CreateRes(props: { date?: Date }) {
         <label className="create-res-label" id="dateLabel" htmlFor="time">
           Time
         </label>
-        <Input onChange={handleChange} type="time" name="time" id="time" />
+        <Input
+          className="input"
+          onChange={handleChange}
+          type="time"
+          name="time"
+          id="time"
+        />
         <Button
           isLoading={loading}
           name="resButton"
