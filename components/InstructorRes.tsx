@@ -3,7 +3,6 @@ import { useContext, useState } from "react";
 import { listInstructors, listReservations } from "../src/graphql/queries";
 import { clientContext } from "./clientContext";
 import { getCurrentUser } from "aws-amplify/auth";
-import ResCard from "./ResCard";
 
 var instructorId: string = "";
 
@@ -49,82 +48,75 @@ export default function InstructorRes(props: { instructorId?: string }) {
     <>
       <div style={{ marginTop: "50px", padding: "25px" }}>
         {!refresh ? (
-          <section style={{ display: "flex", flexDirection: "column" }}>
+          <>
             <button onClick={() => setRefresh(true)}>Refresh</button>
-            <ResCard tag="one" userId={instructorId} />
-          </section>
+            <div
+              className="card"
+              style={{ padding: "10px 30px", maxHeight: "100%" }}
+            >
+              <span style={{ alignSelf: "center" }}>
+                <h3>Instructors</h3>
+              </span>
+
+              {instructors.map((instructor: any, index: number) => (
+                <div
+                  key={index}
+                  data-bs-toggle="collapse"
+                  data-bs-target={`#collapseDetails${index}`}
+                  aria-expanded="false"
+                  aria-controls={`collapseDetails${index}`}
+                  role="button"
+                >
+                  <span
+                    style={{
+                      display: "flex",
+                      overflowX: "scroll",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      marginBottom: "10px",
+                    }}
+                  >
+                    <span id="ski" className="snowIcon"></span>
+
+                    <strong>{instructor.email}</strong>
+                  </span>
+                  <hr />
+                  <div className="collapse" id={`collapseDetails${index}`}>
+                    <h2>Details</h2>
+                    <section className="collaspe-content">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Contact Information</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th>Name</th>
+                            <td>{instructor.name || "N/A"}</td>
+                          </tr>
+                          <tr>
+                            <th>Email</th>
+                            <td>{instructor.email || "N/A"}</td>
+                          </tr>
+                          <tr>
+                            <th>Phone</th>
+                            <td>{instructor.phone_number || "N/A"}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </section>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
         ) : (
           <div
             style={{ position: "absolute", top: "50%", left: "50%" }}
             className="spinner-grow text-warning "
           ></div>
         )}
-
-        <div className="card" style={{ padding: "25px", overflow: "auto" }}>
-          <span style={{ display: "flex", justifyContent: "center" }}>
-            <h3>Instructors</h3>
-          </span>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "5px",
-            }}
-          >
-            {instructors.map((instructor: any, index: number) => (
-              <>
-                <span
-                  key={index}
-                  style={{
-                    display: "flex",
-                    border: "3px solid blue",
-
-                    borderRadius: "40px",
-                    padding: "5px 15px ",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <header
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      gap: "10px",
-                    }}
-                  >
-                    <span id="ski" className="snowIcon"></span>
-                    <section>
-                      <strong>{instructor.name}</strong>
-                      <strong
-                        style={{
-                          display: "block",
-                          fontSize: "14px",
-                          color: "gray",
-                        }}
-                      >
-                        {instructor.number}
-                      </strong>
-                    </section>
-                  </header>
-                  <footer
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      overflow: "hidden",
-                      alignItems: "flex-end",
-                      alignSelf: "flex-end",
-                    }}
-                  >
-                    <h6 style={{ fontSize: "14px" }}>
-                      {" "}
-                      {instructor.type} Instructor
-                    </h6>
-                    {instructor.email}
-                  </footer>
-                </span>
-              </>
-            ))}
-          </div>
-        </div>
       </div>
     </>
   );

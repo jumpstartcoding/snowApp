@@ -160,6 +160,7 @@ export default function ResCard(props: { tag: string; userId: string }) {
                         id="name"
                         name="name"
                         type="text"
+                        readOnly={!edit[index]}
                         value={reservation.customer.name}
                       />
                     </p>
@@ -168,6 +169,7 @@ export default function ResCard(props: { tag: string; userId: string }) {
                       <input
                         className={`${!edit[index] ? " " : "edit-input"} hide`}
                         type="text"
+                        readOnly={!edit[index]}
                         value={reservation.customer.phone_number}
                       />
                     </p>
@@ -178,6 +180,7 @@ export default function ResCard(props: { tag: string; userId: string }) {
                         type="text"
                         name="email"
                         id="email"
+                        readOnly={!edit[index]}
                         value={reservation.customer.email}
                       />
                     </p>
@@ -188,6 +191,7 @@ export default function ResCard(props: { tag: string; userId: string }) {
                         type="number "
                         name="guest"
                         id="guest"
+                        readOnly={!edit[index]}
                         value={
                           reservation.customer.guest >= 0
                             ? reservation.customer.guest

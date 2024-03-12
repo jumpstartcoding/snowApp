@@ -8,7 +8,7 @@ const ResList = (props: { reservations: any[] }) => {
           aria-expanded="false"
           aria-controls={`collapseDetails${index}`}
           role="button"
-          className=" event-item"
+          className="event-item"
           key={index}
         >
           <div className="event-header">

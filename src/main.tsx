@@ -247,10 +247,10 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <Authenticator
-      variation="modal" //make it the entire screen
+      variation="modal" //full screen
       components={components}
       formFields={formFields}
-      socialProviders={["facebook", "google"]}
+      socialProviders={["google"]}
     >
       <RouterProvider router={router} />
     </Authenticator>

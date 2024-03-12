@@ -13,7 +13,7 @@ async function createInstruct(client: any, userId: string, signInDetails: any) {
         id: userId,
         name: "empty",
         // Other optional fields can be added here
-        phone_number: "123456789",
+        phone_number: "123456789999",
         email: signInDetails.loginId,
         locations: ["Location1", "Location2"],
         tier: 1,
@@ -24,7 +24,7 @@ async function createInstruct(client: any, userId: string, signInDetails: any) {
           input: input,
         },
       });
-      console.log(response);
+      console.log("New Instructor", response);
     }
   } catch (error) {
     console.log(error);
