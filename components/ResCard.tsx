@@ -1,8 +1,28 @@
 import { Button } from "@aws-amplify/ui-react";
 import { useContext, useEffect, useState } from "react";
 import { clientContext } from "../components/clientContext";
-import { updateReservation } from "../src/graphql/mutations";
+import { updateCustomer, updateReservation } from "../src/graphql/mutations";
 import { listReservations } from "../src/graphql/queries";
+
+async function editReservation(reservation: res, resId: string, client: any) {
+  const input = {
+    id: resId,
+    name: reservation.name,
+    phone_number: reservation.number,
+    email: reservation.email,
+    guest: reservation.guest,
+  };
+
+  try {
+    const response = await client.graphql({
+      query: updateCustomer,
+      variables: { input: input },
+    });
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 async function acceptReservation(
   userId: string,
@@ -37,30 +57,23 @@ async function acceptReservation(
     });
   }
 }
-/*
 interface res {
   name: string;
   date: string;
   number: string;
   email: string;
-  guest: string;
+  guest: number;
   location: string;
   tier: string;
 }
-*/
+
 export default function ResCard(props: { tag: string; userId: string }) {
   const client = useContext(clientContext);
   const [reservations, setReservations] = useState<any>([]);
   const [loading, setLoading] = useState(
     Array(reservations.length).fill(false)
   );
-  /*
-  const handleChange = (
-    e: { target: { name: string; value: string } } | any
-  ) => {
-    e.preventDefault();
-  };
-  */
+
   const [fetching, setFetching] = useState<boolean>(false);
 
   const [edit, setEdit] = useState<boolean[]>([]);
@@ -68,6 +81,21 @@ export default function ResCard(props: { tag: string; userId: string }) {
     const newEditModes = [...edit];
     newEditModes[index] = !newEditModes[index];
     setEdit(newEditModes);
+  };
+  const [updateRes, setUpdateRes] = useState<res>({
+    name: "",
+    date: "",
+    number: "",
+    email: "",
+    guest: 0,
+    location: "",
+    tier: "",
+  });
+
+  const onChange = (e: { target: { name: any; value: any } }) => {
+    const { name, value } = e.target;
+
+    setUpdateRes({ ...updateRes, [name]: value });
   };
 
   useEffect(() => {
@@ -161,7 +189,8 @@ export default function ResCard(props: { tag: string; userId: string }) {
                         name="name"
                         type="text"
                         readOnly={!edit[index]}
-                        value={reservation.customer.name}
+                        onChange={onChange}
+                        defaultValue={reservation.customer.name}
                       />
                     </p>
                     <p>
@@ -169,8 +198,10 @@ export default function ResCard(props: { tag: string; userId: string }) {
                       <input
                         className={`${!edit[index] ? " " : "edit-input"} hide`}
                         type="text"
+                        name="number"
                         readOnly={!edit[index]}
-                        value={reservation.customer.phone_number}
+                        onChange={onChange}
+                        defaultValue={reservation.customer.phone_number}
                       />
                     </p>
                     <p>
@@ -181,24 +212,42 @@ export default function ResCard(props: { tag: string; userId: string }) {
                         name="email"
                         id="email"
                         readOnly={!edit[index]}
-                        value={reservation.customer.email}
+                        onChange={onChange}
+                        defaultValue={reservation.customer.email}
                       />
                     </p>
                     <p>
                       <label htmlFor="guest"># of Guests</label>
                       <input
                         className={`${!edit[index] ? "" : "edit-input"} hide`}
-                        type="number "
+                        type="number"
                         name="guest"
                         id="guest"
                         readOnly={!edit[index]}
-                        value={
+                        onChange={onChange}
+                        defaultValue={
                           reservation.customer.guest >= 0
                             ? reservation.customer.guest
                             : 0
                         }
                       />
                     </p>
+
+                    <button
+                      className="btn-primary btn"
+                      style={{
+                        display: `${!edit[index] ? "none" : "unset"} `,
+                      }}
+                      onClick={async () =>
+                        await editReservation(
+                          updateRes,
+                          reservation.customer.id,
+                          client
+                        )
+                      }
+                    >
+                      Submit
+                    </button>
                   </div>
                 </>
               }
