@@ -83,7 +83,10 @@ export default function InstructorRes(props: { instructorId?: string }) {
                   <hr />
                   <div className="collapse" id={`collapseDetails${index}`}>
                     <h2>Details</h2>
-                    <section className="collaspe-content">
+                    <section
+                      style={{ overflow: "auto" }}
+                      className="collaspe-content"
+                    >
                       <table>
                         <thead>
                           <tr>
