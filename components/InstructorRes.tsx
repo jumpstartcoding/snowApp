@@ -74,6 +74,7 @@ export default function InstructorRes(props: { instructorId?: string }) {
                       alignItems: "center",
                       justifyContent: "space-between",
                       marginBottom: "10px",
+                      gap: "10px",
                     }}
                   >
                     <span id="ski" className="snowIcon"></span>

@@ -12,7 +12,7 @@ export default function NotFound() {
       >
         <h1>Page Not Found</h1>
 
-        <Link to="/">go to HomePage</Link>
+        <Link to="/">Go To Home Page</Link>
       </div>
     </>
   );

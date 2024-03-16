@@ -4,7 +4,7 @@ import { clientContext } from "../components/clientContext";
 import { updateCustomer, updateReservation } from "../src/graphql/mutations";
 import { listReservations } from "../src/graphql/queries";
 
-async function editReservation(reservation: res, resId: string, client: any) {
+async function editReservation(reservation: any, resId: string, client: any) {
   const input = {
     id: resId,
     name: reservation.name,
@@ -57,47 +57,10 @@ async function acceptReservation(
     });
   }
 }
-interface res {
-  name: string;
-  date: string;
-  number: string;
-  email: string;
-  guest: number;
-  location: string;
-  tier: string;
-}
 
 export default function ResCard(props: { tag: string; userId: string }) {
   const client = useContext(clientContext);
   const [reservations, setReservations] = useState<any>([]);
-  const [loading, setLoading] = useState(
-    Array(reservations.length).fill(false)
-  );
-
-  const [fetching, setFetching] = useState<boolean>(false);
-
-  const [edit, setEdit] = useState<boolean[]>([]);
-  const toggleEditMode = (index: number) => {
-    const newEditModes = [...edit];
-    newEditModes[index] = !newEditModes[index];
-    setEdit(newEditModes);
-  };
-  const [updateRes, setUpdateRes] = useState<res>({
-    name: "",
-    date: "",
-    number: "",
-    email: "",
-    guest: 0,
-    location: "",
-    tier: "",
-  });
-
-  const onChange = (e: { target: { name: any; value: any } }) => {
-    const { name, value } = e.target;
-
-    setUpdateRes({ ...updateRes, [name]: value });
-  };
-
   useEffect(() => {
     async function fetchTrips() {
       try {
@@ -121,6 +84,39 @@ export default function ResCard(props: { tag: string; userId: string }) {
     fetchTrips();
     setFetching(false);
   }, [props.tag]);
+  const [loading, setLoading] = useState(
+    Array(reservations.length).fill(false)
+  );
+
+  const [fetching, setFetching] = useState<boolean>(false);
+
+  const [edit, setEdit] = useState<boolean[]>([]);
+  const toggleEditMode = (index: number) => {
+    const newEditModes = [...edit];
+    newEditModes[index] = !newEditModes[index];
+    setEdit(newEditModes);
+  };
+
+  const onChange = (
+    e: { target: { name: any; value: any } },
+    index: number
+  ) => {
+    const { name, value } = e.target;
+
+    setReservations((prevReservations: any[]) => {
+      const updatedReservations = [...prevReservations];
+
+      updatedReservations[index] = {
+        ...updatedReservations[index],
+        customer: {
+          ...updatedReservations[index].customer,
+          [name]: value,
+        },
+      };
+
+      return updatedReservations;
+    });
+  };
 
   return (
     <>
@@ -181,50 +177,51 @@ export default function ResCard(props: { tag: string; userId: string }) {
                   </h6>
                   <div className="card-body">
                     <p>
-                      <label htmlFor="name">Name</label>
+                      <label htmlFor={`name${index}`}>Name</label>
 
                       <input
                         className={`${!edit[index] ? " " : "edit-input"} hide`}
-                        id="name"
+                        id={`name${index}`}
                         name="name"
                         type="text"
                         readOnly={!edit[index]}
-                        onChange={onChange}
+                        onChange={(e) => onChange(e, index)}
                         defaultValue={reservation.customer.name}
                       />
                     </p>
                     <p>
-                      <label htmlFor="number">Phone Number</label>
+                      <label htmlFor={`number${index}`}>Phone Number</label>
                       <input
                         className={`${!edit[index] ? " " : "edit-input"} hide`}
                         type="text"
+                        id={`number${index}`}
                         name="number"
                         readOnly={!edit[index]}
-                        onChange={onChange}
+                        onChange={(e) => onChange(e, index)}
                         defaultValue={reservation.customer.phone_number}
                       />
                     </p>
                     <p>
-                      <label htmlFor="email">Email</label>
+                      <label htmlFor={`email${index}`}>Email</label>
                       <input
                         className={`${!edit[index] ? " " : "edit-input"} hide`}
-                        type="text"
+                        type="email"
                         name="email"
-                        id="email"
+                        id={`email${index}`}
                         readOnly={!edit[index]}
-                        onChange={onChange}
+                        onChange={(e) => onChange(e, index)}
                         defaultValue={reservation.customer.email}
                       />
                     </p>
                     <p>
-                      <label htmlFor="guest"># of Guests</label>
+                      <label htmlFor={`guest${index}`}># of Guests</label>
                       <input
                         className={`${!edit[index] ? "" : "edit-input"} hide`}
                         type="number"
                         name="guest"
-                        id="guest"
+                        id={`guest${index}`}
                         readOnly={!edit[index]}
-                        onChange={onChange}
+                        onChange={(e) => onChange(e, index)}
                         defaultValue={
                           reservation.customer.guest >= 0
                             ? reservation.customer.guest
@@ -240,8 +237,8 @@ export default function ResCard(props: { tag: string; userId: string }) {
                       }}
                       onClick={async () =>
                         await editReservation(
-                          updateRes,
-                          reservation.customer.id,
+                          reservations[index].customer, // Pass the correct reservation object
+                          reservation.customer.id, // Pass the reservation ID
                           client
                         )
                       }
