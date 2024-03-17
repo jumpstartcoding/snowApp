@@ -4,6 +4,7 @@ import CreateRes from "./CreateRes";
 import { clientContext } from "../components/clientContext";
 import { useContext, useEffect, useState } from "react";
 import { getCurrentUser } from "aws-amplify/auth";
+
 import { createInstructor } from "../src/graphql/mutations";
 
 async function createInstruct(client: any, userId: string, signInDetails: any) {
@@ -15,7 +16,6 @@ async function createInstruct(client: any, userId: string, signInDetails: any) {
         // Other optional fields can be added here
         phone_number: "123456789999",
         email: signInDetails.loginId,
-        locations: ["Location1", "Location2"],
         tier: 1,
       };
       const response = await client.graphql({
@@ -45,6 +45,8 @@ function HomePage() {
     async function fetchData() {
       try {
         const { userId, signInDetails } = await getCurrentUser();
+        const user = getCurrentUser();
+        console.log((await user).signInDetails);
         setUserID({ id: userId, signIn: signInDetails?.loginId });
         await createInstruct(client, userId, signInDetails);
       } catch (error) {
@@ -52,7 +54,7 @@ function HomePage() {
       }
     }
     fetchData();
-  }, [resType]);
+  }, []);
 
   const handleClick = (type: string) => setResType(type);
 

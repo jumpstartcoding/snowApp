@@ -13,7 +13,11 @@ const ResList = (props: { reservations: any[] }) => {
         >
           <div className="event-header">
             <span className="event-time">
-              {new Date(reservation.date).toLocaleTimeString()}
+              {new Date(reservation.date).toLocaleTimeString("en-US", {
+                hour: "numeric",
+                minute: "2-digit",
+                timeZone: "UTC",
+              })}
             </span>
             <span className="event-title">Tier {reservation.tier || "1"}</span>
           </div>

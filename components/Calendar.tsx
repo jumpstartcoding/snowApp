@@ -57,6 +57,7 @@ export default function ResCalendar(props: {
         setEvents((prevData: any) => {
           const newData = [...prevData];
           newData[index] = { title: elt.type, start: elt.date };
+          console.log(elt.date);
           return newData;
         });
       });
@@ -156,10 +157,17 @@ function renderEventContent(eventInfo: {
   timeText: string;
   event: { title: string; start: Date };
 }) {
-  console.log(eventInfo.event.start.toISOString());
+  //console.log(eventInfo.event.start.toISOString());
+
   return (
     <>
-      <b>{eventInfo.event.start.toLocaleTimeString().split(":00")}</b>
+      <b>
+        {eventInfo.event.start.toLocaleString("en-US", {
+          hour: "numeric",
+
+          timeZone: "UTC",
+        })}
+      </b>
       <i>{eventInfo.event.title}</i>
     </>
   );
