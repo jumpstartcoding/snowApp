@@ -44,7 +44,6 @@ export default function ResCalendar(props: {
     query: listReservations,
     variables: {
       filter: {
-        location: { contains: "" },
         status: { contains: "new" },
       },
     },

@@ -79,16 +79,11 @@ export default function ResCard(props: {
         const fetchAndFilterReservations = async () => {
           const user = (await getCurrentUser()).userId;
           return response.data.listReservations.items
-            .filter((res) => {
-              if (props.userReservations) {
-                if (user === res.instructorID) {
-                  console.log("User is instructor:", user, res);
-                }
-                return user === res.instructorID;
-              } else {
-                return res.type === props.tag;
-              }
-            })
+            .filter((res) =>
+              props.userReservations
+                ? user === res.instructorID
+                : res.type === props.tag
+            )
             .slice()
             .sort(
               (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
