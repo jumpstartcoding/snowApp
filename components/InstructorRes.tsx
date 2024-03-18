@@ -1,38 +1,26 @@
 import { useEffect } from "react";
 import { useContext, useState } from "react";
-import { listInstructors, listReservations } from "../src/graphql/queries";
+import { listInstructors } from "../src/graphql/queries";
 import { clientContext } from "./clientContext";
-import { getCurrentUser } from "aws-amplify/auth";
 
-var instructorId: string = "";
+import ResCard from "./ResCard";
 
-export default function InstructorRes(props: { instructorId?: string }) {
+export default function InstructorRes() {
   const client = useContext(clientContext);
 
   const [instructors, setInstructors] = useState<any>([]);
+
   const [refresh, setRefresh] = useState<boolean>(false);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        instructorId = props.instructorId
-          ? props.instructorId
-          : await getCurrentUser().then((response) => response.userId);
-        const response = await client.graphql({
-          query: listReservations,
-          variables: {
-            filter: {
-              instructorID: { eq: instructorId },
-            },
-          },
-        });
         const inResponse = await client.graphql({
           query: listInstructors,
           variables: {
             filter: {},
           },
         });
-        console.log(response);
         console.log(inResponse);
 
         setInstructors(inResponse.data.listInstructors.items);
@@ -52,7 +40,11 @@ export default function InstructorRes(props: { instructorId?: string }) {
             <button onClick={() => setRefresh(true)}>Refresh</button>
             <div
               className="card"
-              style={{ padding: "10px 30px", maxHeight: "100%" }}
+              style={{
+                padding: "10px 30px",
+                minHeight: "250px",
+                maxHeight: "100%",
+              }}
             >
               <span style={{ alignSelf: "center" }}>
                 <h3>Instructors</h3>
@@ -121,6 +113,17 @@ export default function InstructorRes(props: { instructorId?: string }) {
             className="spinner-grow text-warning "
           ></div>
         )}
+      </div>
+      <div
+        className="card"
+        style={{ margin: "15px", padding: "0px 50px", maxHeight: "100%" }}
+      >
+        <span style={{ alignSelf: "center" }}>
+          <h2>Reservations</h2>
+        </span>
+        <section className="trips">
+          <ResCard userReservations={true} />
+        </section>
       </div>
     </>
   );

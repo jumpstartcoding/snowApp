@@ -1,9 +1,10 @@
 import { Button } from "@aws-amplify/ui-react";
+
 import { useContext, useEffect, useState } from "react";
 import { clientContext } from "../components/clientContext";
 import { updateCustomer, updateReservation } from "../src/graphql/mutations";
 import { listReservations } from "../src/graphql/queries";
-
+import { getCurrentUser } from "aws-amplify/auth";
 async function editReservation(reservation: any, resId: string, client: any) {
   const input = {
     id: resId,
@@ -25,7 +26,7 @@ async function editReservation(reservation: any, resId: string, client: any) {
 }
 
 async function acceptReservation(
-  userId: string,
+  userId: any,
   resId: string,
   client: any,
   setLoading: any,
@@ -58,7 +59,11 @@ async function acceptReservation(
   }
 }
 
-export default function ResCard(props: { tag: string; userId: string }) {
+export default function ResCard(props: {
+  tag?: string;
+  userId?: string;
+  userReservations?: boolean;
+}) {
   const client = useContext(clientContext);
   const [reservations, setReservations] = useState<any>([]);
   useEffect(() => {
@@ -67,16 +72,32 @@ export default function ResCard(props: { tag: string; userId: string }) {
         setFetching(true);
         const response = await client.graphql({
           query: listReservations,
-          variables: { filter: {} },
+          variables: {
+            filter: {},
+          },
         });
-        setReservations(
-          response.data.listReservations.items
-            .filter((res) => res.type === props.tag)
+        const fetchAndFilterReservations = async () => {
+          const user = (await getCurrentUser()).userId;
+          return response.data.listReservations.items
+            .filter((res) => {
+              if (props.userReservations) {
+                if (user === res.instructorID) {
+                  console.log("User is instructor:", user, res);
+                }
+                return user === res.instructorID;
+              } else {
+                return res.type === props.tag;
+              }
+            })
             .slice()
             .sort(
               (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
-            )
-        );
+            );
+        };
+
+        fetchAndFilterReservations().then((filteredReservations) => {
+          setReservations(filteredReservations);
+        });
       } catch (error) {
         console.error("Error fetching trips:", error);
       }

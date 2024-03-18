@@ -3,7 +3,7 @@ import "./SignIn.css";
 import CreateRes from "./CreateRes";
 import { clientContext } from "../components/clientContext";
 import { useContext, useEffect, useState } from "react";
-import { getCurrentUser } from "aws-amplify/auth";
+import { getCurrentUser, fetchAuthSession } from "aws-amplify/auth";
 
 import { createInstructor } from "../src/graphql/mutations";
 
@@ -12,10 +12,12 @@ async function createInstruct(client: any, userId: string, signInDetails: any) {
     if (userId && signInDetails) {
       const input = {
         id: userId,
-        name: "empty",
+        name:
+          signInDetails.given_name + (" " + signInDetails.family_name || "") ||
+          "N/A",
         // Other optional fields can be added here
-        phone_number: "123456789999",
-        email: signInDetails.loginId,
+        phone_number: signInDetails.phone_number || "N/A",
+        email: signInDetails.email || "N/A",
         tier: 1,
       };
       const response = await client.graphql({
@@ -45,10 +47,10 @@ function HomePage() {
     async function fetchData() {
       try {
         const { userId, signInDetails } = await getCurrentUser();
-        const user = getCurrentUser();
-        console.log((await user).signInDetails);
+        const user = (await fetchAuthSession()).tokens?.idToken?.payload;
+        console.log(user);
         setUserID({ id: userId, signIn: signInDetails?.loginId });
-        await createInstruct(client, userId, signInDetails);
+        await createInstruct(client, userId, user);
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
