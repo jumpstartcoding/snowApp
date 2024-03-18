@@ -104,9 +104,7 @@ function HomePage() {
           ) : (
             <section className="trips">
               {resType === "Ski" ? (
-                <>
-                  <ResCard userId={userID.id} tag="Ski"></ResCard>
-                </>
+                <ResCard userId={userID.id} tag="Ski"></ResCard>
               ) : (
                 <ResCard userId={userID.id} tag="Snowboard"></ResCard>
               )}

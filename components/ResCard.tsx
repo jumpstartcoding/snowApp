@@ -95,10 +95,11 @@ export default function ResCard(props: {
         });
       } catch (error) {
         console.error("Error fetching trips:", error);
+      } finally {
+        setFetching(false);
       }
     }
     fetchTrips();
-    setFetching(false);
   }, [props.tag]);
   const [loading, setLoading] = useState(
     Array(reservations.length).fill(false)
@@ -145,7 +146,7 @@ export default function ResCard(props: {
               style={{
                 flex: "0 0 20rem",
                 maxHeight: "32rem",
-                margin: "25px",
+
                 padding: "25px",
                 borderColor: `${
                   reservation.status === "new" ? "green" : "red"
@@ -321,7 +322,7 @@ export default function ResCard(props: {
         </>
       ) : (
         <>
-          {!fetching ? (
+          {fetching ? (
             <div
               className="spinner-grow text-warning"
               style={{
@@ -335,7 +336,16 @@ export default function ResCard(props: {
             </div>
           ) : (
             <>
-              <div>No Reservations</div>
+              <div
+                style={{
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%,50%)",
+                  position: "absolute",
+                }}
+              >
+                <h3>No Reservations</h3>
+              </div>
             </>
           )}
         </>
