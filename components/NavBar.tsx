@@ -41,6 +41,11 @@ export default function NavBar({ children }: NavBarProps) {
                   Calendar
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/admin">
+                  Admin
+                </Link>
+              </li>
 
               <li className="nav-item dropdown "></li>
             </ul>

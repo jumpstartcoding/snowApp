@@ -3,16 +3,15 @@ import { useContext, useState } from "react";
 import { listInstructors } from "../src/graphql/queries";
 import { clientContext } from "./clientContext";
 
-import ResCard from "./ResCard";
-
 export default function InstructorRes() {
   const client = useContext(clientContext);
 
   const [instructors, setInstructors] = useState<any>([]);
 
-  const [refresh, setRefresh] = useState<boolean>(false);
+  const [fetching, setFetching] = useState<boolean>(false);
 
   useEffect(() => {
+    setFetching(true);
     async function fetchData() {
       try {
         const inResponse = await client.graphql({
@@ -24,20 +23,20 @@ export default function InstructorRes() {
         console.log(inResponse);
 
         setInstructors(inResponse.data.listInstructors.items);
-        setRefresh(false);
       } catch (error) {
         console.log(error);
+      } finally {
+        setFetching(false);
       }
     }
     fetchData();
-  }, [refresh]);
+  }, []);
 
   return (
     <>
       <div style={{ marginTop: "50px", padding: "25px" }}>
-        {!refresh ? (
+        {!fetching ? (
           <>
-            <button onClick={() => setRefresh(true)}>Refresh</button>
             <div
               className="card"
               style={{
@@ -113,17 +112,6 @@ export default function InstructorRes() {
             className="spinner-grow text-warning "
           ></div>
         )}
-      </div>
-      <div
-        className="card"
-        style={{ margin: "15px", padding: "0px 50px", maxHeight: "100%" }}
-      >
-        <span style={{ alignSelf: "center" }}>
-          <h2>Reservations</h2>
-        </span>
-        <section className="trips">
-          <ResCard userReservations={true} />
-        </section>
       </div>
     </>
   );

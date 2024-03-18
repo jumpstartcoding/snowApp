@@ -145,8 +145,7 @@ export default function ResCard(props: {
               style={{
                 flex: "0 0 23rem",
                 width: "20rem",
-                height: "22rem",
-                overflow: "auto",
+                minHeight: "fit-content",
                 margin: "25px",
                 padding: "25px",
                 borderColor: `${
@@ -245,73 +244,79 @@ export default function ResCard(props: {
                         }
                       />
                     </p>
-
-                    <button
-                      className="btn-primary btn"
+                    <footer
                       style={{
-                        display: `${!edit[index] ? "none" : "unset"} `,
+                        display: "flex",
+                        flexDirection: "column",
                       }}
-                      onClick={async () =>
-                        await editReservation(
-                          reservations[index].customer, // Pass the correct reservation object
-                          reservation.customer.id, // Pass the reservation ID
-                          client
-                        )
-                      }
                     >
-                      Submit
-                    </button>
+                      <button
+                        className="btn-primary btn"
+                        style={{
+                          display: `${!edit[index] ? "none" : "unset"} `,
+                        }}
+                        onClick={async () =>
+                          await editReservation(
+                            reservations[index].customer, // Pass the correct reservation object
+                            reservation.customer.id, // Pass the reservation ID
+                            client
+                          )
+                        }
+                      >
+                        Submit
+                      </button>
+                      <button
+                        id={`btnEdit${index}`}
+                        style={{
+                          width: "50px",
+                          backgroundColor: "white",
+                          border: "none",
+                          alignSelf: "flex-end",
+                          marginTop: `${edit[index] ? "10px" : ""}`,
+                        }}
+                        onClick={() => toggleEditMode(index)}
+                      >
+                        {!edit ? (
+                          <svg
+                            className="w-6 h-6 text-gray-800 dark:text-white"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M11.3 6.2H5a2 2 0 0 0-2 2V19a2 2 0 0 0 2 2h11c1.1 0 2-1 2-2.1V11l-4 4.2c-.3.3-.7.6-1.2.7l-2.7.6c-1.7.3-3.3-1.3-3-3.1l.6-2.9c.1-.5.4-1 .7-1.3l3-3.1Z"
+                              clip-rule="evenodd"
+                            />
+                            <path
+                              fill-rule="evenodd"
+                              d="M19.8 4.3a2.1 2.1 0 0 0-1-1.1 2 2 0 0 0-2.2.4l-.6.6 2.9 3 .5-.6a2.1 2.1 0 0 0 .6-1.5c0-.2 0-.5-.2-.8Zm-2.4 4.4-2.8-3-4.8 5-.1.3-.7 3c0 .3.3.7.6.6l2.7-.6.3-.1 4.7-5Z"
+                              clip-rule="evenodd"
+                            />
+                          </svg>
+                        ) : (
+                          <svg
+                            className="w-6 h-6 text-gray-800 dark:text-white"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              stroke="currentColor"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="m14.3 4.8 2.9 2.9M7 7H4a1 1 0 0 0-1 1v10c0 .6.4 1 1 1h11c.6 0 1-.4 1-1v-4.5m2.4-10a2 2 0 0 1 0 3l-6.8 6.8L8 14l.7-3.6 6.9-6.8a2 2 0 0 1 2.8 0Z"
+                            />
+                          </svg>
+                        )}
+                      </button>
+                    </footer>
                   </div>
                 </>
               }
-              <button
-                id={`btnEdit${index}`}
-                style={{
-                  width: "50px",
-                  backgroundColor: "white",
-                  border: "none",
-                  marginTop: `${edit ? "20px" : "0px"}`,
-                  alignSelf: "flex-start",
-                }}
-                onClick={() => toggleEditMode(index)}
-              >
-                {!edit ? (
-                  <svg
-                    className="w-6 h-6 text-gray-800 dark:text-white"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M11.3 6.2H5a2 2 0 0 0-2 2V19a2 2 0 0 0 2 2h11c1.1 0 2-1 2-2.1V11l-4 4.2c-.3.3-.7.6-1.2.7l-2.7.6c-1.7.3-3.3-1.3-3-3.1l.6-2.9c.1-.5.4-1 .7-1.3l3-3.1Z"
-                      clip-rule="evenodd"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      d="M19.8 4.3a2.1 2.1 0 0 0-1-1.1 2 2 0 0 0-2.2.4l-.6.6 2.9 3 .5-.6a2.1 2.1 0 0 0 .6-1.5c0-.2 0-.5-.2-.8Zm-2.4 4.4-2.8-3-4.8 5-.1.3-.7 3c0 .3.3.7.6.6l2.7-.6.3-.1 4.7-5Z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    className="w-6 h-6 text-gray-800 dark:text-white"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="m14.3 4.8 2.9 2.9M7 7H4a1 1 0 0 0-1 1v10c0 .6.4 1 1 1h11c.6 0 1-.4 1-1v-4.5m2.4-10a2 2 0 0 1 0 3l-6.8 6.8L8 14l.7-3.6 6.9-6.8a2 2 0 0 1 2.8 0Z"
-                    />
-                  </svg>
-                )}
-              </button>
             </div>
           ))}
         </>

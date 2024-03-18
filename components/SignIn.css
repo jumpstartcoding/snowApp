@@ -52,10 +52,7 @@
      overflow-x: hidden;
 
     }
-    div.card{
-      max-height: 20rem;
-
-    }
+ 
     .card.createRes {
       margin: 10px;
         } 
@@ -104,7 +101,7 @@ flex-direction: row;
 
 }
 div.card{
-  max-height: 25rem;
+
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }

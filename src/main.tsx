@@ -22,6 +22,7 @@ import NavBar from "../components/NavBar";
 import HomePage from "../components/HomePage";
 import NotFound from "../components/NotFound";
 import ResCalendar from "../components/Calendar";
+import Reservations from "../components/Reservations";
 import InstructorRes from "../components/InstructorRes";
 import "/components/SignIn.css";
 
@@ -232,6 +233,10 @@ const router = createBrowserRouter([
           },
           {
             path: "/reservations",
+            element: <Reservations />,
+          },
+          {
+            path: "/admin",
             element: <InstructorRes />,
           },
         ],
