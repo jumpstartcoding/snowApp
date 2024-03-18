@@ -4,6 +4,7 @@ export default function Reservations() {
   return (
     <>
       <div
+        className="trips"
         style={{
           display: "flex",
           flexDirection: "column",

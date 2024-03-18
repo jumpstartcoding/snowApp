@@ -143,9 +143,8 @@ export default function ResCard(props: {
               key={index}
               className="card"
               style={{
-                flex: "0 0 23rem",
-                width: "20rem",
-                minHeight: "fit-content",
+                flex: "0 0 20rem",
+                maxHeight: "32rem",
                 margin: "25px",
                 padding: "25px",
                 borderColor: `${
