@@ -32,10 +32,10 @@ export default function ResCalendar(props: {
 
   const client = useContext(clientContext);
 
-  const handleDateClick = (arg: DateClickArg) => {
-    console.log("Date clicked:", arg?.allDay);
+  const handleDateClick = (arg: Date) => {
+    console.log("Date clicked:", arg);
     setCalendarView("listWeek"); // Switch to list view
-    setSelectedDate(arg.date);
+    setSelectedDate(arg);
   };
   const [trips, setTrips] = useState<any | undefined>([]);
   const [loading, isLoading] = useState(true);
@@ -73,10 +73,9 @@ export default function ResCalendar(props: {
             timeGridPlugin,
             interactionPlugin,
           ]}
-          editable={true}
-          selectable={true}
+          eventDisplay={"block"}
           initialView={calendarView}
-          dateClick={(info) => handleDateClick(info)}
+          dateClick={(info) => handleDateClick(info.date)}
           eventContent={renderEventContent}
           headerToolbar={{
             center: "title",
@@ -156,18 +155,15 @@ function renderEventContent(eventInfo: {
   timeText: string;
   event: { title: string; start: Date };
 }) {
-  //console.log(eventInfo.event.start.toISOString());
-
   return (
     <>
       <b>
         {eventInfo.event.start.toLocaleString("en-US", {
           hour: "numeric",
-
           timeZone: "UTC",
         })}
       </b>
-      <i>{eventInfo.event.title}</i>
+      <i style={{ paddingLeft: "5px" }}>{eventInfo.event.title}</i>
     </>
   );
 }

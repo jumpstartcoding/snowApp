@@ -100,7 +100,7 @@ export default function ResCard(props: {
       }
     }
     fetchTrips();
-  }, [props.tag]);
+  }, []);
   const [loading, setLoading] = useState(
     Array(reservations.length).fill(false)
   );

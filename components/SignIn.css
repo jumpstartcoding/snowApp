@@ -44,6 +44,7 @@
 
 
   @media (max-width: 576px) {
+  
  
     main .trips{
      align-items: center;
@@ -67,6 +68,10 @@
         .fc-container{
          padding: 0px !important;
          }
+         .fc .fc-toolbar-title{
+          padding-left: 5px;
+         
+        }
         
   }
   
@@ -177,7 +182,8 @@ margin: 10px;
 #snow{
   background-image: url(https://www.svgrepo.com/show/231966/snowboarder.svg);
 }
-#ski{background-image: url(https://www.svgrepo.com/show/231962/skier.svg);}
+#ski{background-image: url(https://www.svgrepo.com/show/231962/skier.svg);
+}
 #createIcon{
   background-image: url(https://www.svgrepo.com/show/435930/register.svg);
   border-radius: 5%; 
@@ -326,6 +332,10 @@ border-color: white;
 box-shadow:  -2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
+.fc .fc-daygrid-day-frame {
+  height: 8.5rem !important;
+  overflow:hidden scroll;
+}
 .create-res-label{
   margin-top: 10px !important;
 }
@@ -337,6 +347,7 @@ box-shadow:  -2px 0 5px rgba(0, 0, 0, 0.1);
 
 .fc-container{
  margin-top: 50px; padding: 50px;
+
 }
 
 
