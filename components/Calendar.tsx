@@ -5,7 +5,6 @@ import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction";
 
 import { useState } from "react";
-import { DateClickArg } from "fullcalendar";
 import CreateRes from "./CreateRes";
 import { Button } from "@aws-amplify/ui-react";
 
