@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useContext, useState } from "react";
 import { listInstructors } from "../src/graphql/queries";
 import { clientContext } from "./clientContext";
+import ResCard from "./ResCard";
 
 export default function InstructorRes() {
   const client = useContext(clientContext);
@@ -119,6 +120,22 @@ export default function InstructorRes() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            <div
+              className=" card"
+              style={{
+                padding: "50px 0px",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "10px",
+              }}
+            >
+              <h3> All Reservations</h3>
+              <section className="trips" style={{ width: "100%" }}>
+                {" "}
+                <ResCard />
+              </section>
             </div>
           </>
         ) : (
