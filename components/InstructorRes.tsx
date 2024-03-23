@@ -42,8 +42,6 @@ export default function InstructorRes() {
               className="card"
               style={{
                 padding: "10px 30px",
-                minHeight: "250px",
-                maxHeight: "100%",
               }}
             >
               <span style={{ alignSelf: "center" }}>
@@ -123,9 +121,9 @@ export default function InstructorRes() {
             </div>
 
             <div
-              className=" card"
+              className="card"
               style={{
-                padding: "50px 0px",
+                padding: "10px 5px",
                 flexDirection: "column",
                 alignItems: "center",
                 gap: "10px",
@@ -133,7 +131,6 @@ export default function InstructorRes() {
             >
               <h3> All Reservations</h3>
               <section className="trips" style={{ width: "100%" }}>
-                {" "}
                 <ResCard />
               </section>
             </div>

@@ -252,21 +252,21 @@ export default function ResCard(props: {
                         flexDirection: "column",
                       }}
                     >
-                      <button
+                      <Button
                         className="btn-primary btn"
                         style={{
                           display: `${!edit[index] ? "none" : "unset"} `,
                         }}
-                        onClick={async () =>
+                        onClick={async () => {
                           await editReservation(
                             reservations[index].customer, // Pass the correct reservation object
                             reservation.customer.id, // Pass the reservation ID
                             client
-                          )
-                        }
+                          );
+                        }}
                       >
                         Submit
-                      </button>
+                      </Button>
 
                       {!props.tag && !props.userReservations && (
                         <button
@@ -276,7 +276,7 @@ export default function ResCard(props: {
                             backgroundColor: "white",
                             border: "none",
                             alignSelf: "flex-end",
-                            marginTop: `${edit[index] ? "10px" : ""}`,
+                            marginTop: `${edit[index] ? "10px" : "100px"}`,
                           }}
                           onClick={() => toggleEditMode(index)}
                         >

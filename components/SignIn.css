@@ -53,6 +53,7 @@
      overflow-x: hidden;
      padding-left: unset;
 
+
     }
   
     div.card{
@@ -103,12 +104,11 @@ color: white;
  
     display: flex;
     justify-content: left;
-flex-direction: row;
-    width: 100%;
-    overflow-y:hidden;
-  height: 100vh;
+ flex-direction: row;
+  width: 100%;
+  overflow-y:hidden;
   gap: 15px;
-  padding-left: 10px;
+  padding: 0px 10px;
 
 }
 div.card{
@@ -167,7 +167,8 @@ flex:1;
   background-color: rgba(0,0,0,0);
   border: none;
 
-margin: 10px;
+margin: 10px 0px 0px 10px;
+
  
  }
  .snowIcon{

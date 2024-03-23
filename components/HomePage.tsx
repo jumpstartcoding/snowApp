@@ -112,7 +112,7 @@ function HomePage() {
           )}
         </main>
       </div>
-      <div className="sideBarIcons ">
+      <div className="sideBarIcons">
         <button onClick={() => handleClick("Snowboard")}>
           <span id="snow" className="snowIcon"></span>
         </button>
