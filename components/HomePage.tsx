@@ -1,6 +1,6 @@
 import ResCard from "./ResCard";
 import "./SignIn.css";
-import CreateRes from "./CreateRes";
+
 import { clientContext } from "../components/clientContext";
 import { useContext, useEffect, useState } from "react";
 import { getCurrentUser, fetchAuthSession } from "aws-amplify/auth";
@@ -91,16 +91,7 @@ function HomePage() {
           }}
         >
           {resType === "create" ? (
-            <div
-              className="container "
-              style={{
-                margin: "15px 0px 75px 0px",
-                padding: "0px 50px",
-                boxShadow: " -2px 0 5px rgba(0, 0, 0, 0.1)",
-              }}
-            >
-              <CreateRes />
-            </div>
+            <></>
           ) : (
             <section className="trips">
               {resType === "Ski" ? (
@@ -118,9 +109,6 @@ function HomePage() {
         </button>
         <button onClick={() => handleClick("Ski")}>
           <span id="ski" className="snowIcon"></span>
-        </button>
-        <button onClick={async () => handleClick("create")}>
-          <span id="createIcon" className="snowIcon"></span>
         </button>
       </div>
     </>

@@ -147,156 +147,173 @@ export default function CreateRes(props: { date?: Date }) {
 
   return (
     <>
-      <Form onSubmit={onSubmit}>
-        <label className="create-res-label" id="fNameLabel" htmlFor="firstName">
-          First Name
-        </label>
+      <div
+        className="container "
+        style={{
+          marginBottom: "50px",
+          padding: "0px 50px",
+          boxShadow: " -2px 0 5px rgba(0, 0, 0, 0.1)",
+        }}
+      >
+        <Form onSubmit={onSubmit}>
+          <label
+            className="create-res-label"
+            id="fNameLabel"
+            htmlFor="firstName"
+          >
+            First Name
+          </label>
 
-        <Input
-          className="input"
-          type="text"
-          name="firstName"
-          id="firstName"
-          value={reservation.customer.firstName}
-          onChange={handleChange}
-        />
-        <label className="create-res-label" id="lNameLabel" htmlFor="lastName">
-          Last Name
-        </label>
-        <Input
-          className="input"
-          type="text"
-          name="lastName"
-          id="lastName"
-          value={reservation.customer.lastName}
-          onChange={handleChange}
-        />
-
-        <label className="create-res-label" id="emailLabel" htmlFor="email">
-          Email
-        </label>
-        <Input
-          className="input"
-          type="email"
-          name="email"
-          autoComplete="email"
-          id="email"
-          value={reservation.customer.email}
-          onChange={handleChange}
-        />
-        <label
-          className="create-res-label"
-          id="phoneNumberLabel"
-          htmlFor="phone"
-        >
-          Phone Number
-        </label>
-        <Input
-          className="input"
-          type="tel"
-          name="phone"
-          autoComplete="phone"
-          id="phone"
-          value={reservation.customer.phone}
-          onChange={handleChange}
-        />
-        <label className="create-res-label" id="guestLabel" htmlFor="guests">
-          # of Guests
-        </label>
-        <Input
-          className="input"
-          type="number"
-          name="guest"
-          id="guests"
-          value={reservation.customer.guest}
-          onChange={handleChange}
-        />
-
-        <section style={{ justifyContent: "center" }}>
-          <input
-            type="checkbox"
-            name="type"
-            id="skiRes"
-            value="Ski"
+          <Input
+            className="input"
+            type="text"
+            name="firstName"
+            id="firstName"
+            value={reservation.customer.firstName}
             onChange={handleChange}
           />
           <label
             className="create-res-label"
-            id="skiLabel"
-            style={{ marginRight: "10px" }}
-            htmlFor="skiRes"
+            id="lNameLabel"
+            htmlFor="lastName"
           >
-            Ski
+            Last Name
           </label>
-          <input
-            type="checkbox"
-            name="type"
-            id="snowBoardRes"
-            value="Snowboard"
+          <Input
+            className="input"
+            type="text"
+            name="lastName"
+            id="lastName"
+            value={reservation.customer.lastName}
             onChange={handleChange}
           />
 
+          <label className="create-res-label" id="emailLabel" htmlFor="email">
+            Email
+          </label>
+          <Input
+            className="input"
+            type="email"
+            name="email"
+            autoComplete="email"
+            id="email"
+            value={reservation.customer.email}
+            onChange={handleChange}
+          />
           <label
             className="create-res-label"
-            id="snowBoardResLabel"
-            htmlFor="snowBoardRes"
+            id="phoneNumberLabel"
+            htmlFor="phone"
           >
-            {" "}
-            SnowBoard{" "}
+            Phone Number
           </label>
-        </section>
-        <label
-          className="create-res-label"
-          id="locationLabel"
-          htmlFor="location"
-        >
-          Location
-        </label>
+          <Input
+            className="input"
+            type="tel"
+            name="phone"
+            autoComplete="phone"
+            id="phone"
+            value={reservation.customer.phone}
+            onChange={handleChange}
+          />
+          <label className="create-res-label" id="guestLabel" htmlFor="guests">
+            # of Guests
+          </label>
+          <Input
+            className="input"
+            type="number"
+            name="guest"
+            id="guests"
+            value={reservation.customer.guest}
+            onChange={handleChange}
+          />
 
-        <select
-          name="location"
-          id="location"
-          className="form-select input"
-          aria-label="Default select example"
-          onChange={handleChange}
-        >
-          <option value="CamelBack">CamelBack</option>
-          <option value="Vermont">Vermont</option>
-          <option value="NYC">NYC</option>
-          <option value="Colorado">Colorado</option>
-        </select>
+          <section style={{ justifyContent: "center" }}>
+            <input
+              type="checkbox"
+              name="type"
+              id="skiRes"
+              value="Ski"
+              onChange={handleChange}
+            />
+            <label
+              className="create-res-label"
+              id="skiLabel"
+              style={{ marginRight: "10px" }}
+              htmlFor="skiRes"
+            >
+              Ski
+            </label>
+            <input
+              type="checkbox"
+              name="type"
+              id="snowBoardRes"
+              value="Snowboard"
+              onChange={handleChange}
+            />
 
-        <label className="create-res-label" id="dateLabel" htmlFor="date">
-          Date
-        </label>
-        <Input
-          className="input"
-          type="date"
-          id="date"
-          name="date"
-          defaultValue={currentDate}
-          onChange={handleChange}
-        />
-        <label className="create-res-label" id="dateLabel" htmlFor="time">
-          Time
-        </label>
-        <Input
-          className="input"
-          onChange={handleChange}
-          type="time"
-          name="time"
-          id="time"
-        />
-        <Button
-          isLoading={loading}
-          name="resButton"
-          loadingText="Loading..."
-          type="submit"
-          style={{ position: "relative", margin: "20px 0px" }}
-        >
-          Create
-        </Button>
-      </Form>
+            <label
+              className="create-res-label"
+              id="snowBoardResLabel"
+              htmlFor="snowBoardRes"
+            >
+              {" "}
+              SnowBoard{" "}
+            </label>
+          </section>
+          <label
+            className="create-res-label"
+            id="locationLabel"
+            htmlFor="location"
+          >
+            Location
+          </label>
+
+          <select
+            name="location"
+            id="location"
+            className="form-select input"
+            aria-label="Default select example"
+            onChange={handleChange}
+          >
+            <option value="CamelBack">CamelBack</option>
+            <option value="Vermont">Vermont</option>
+            <option value="NYC">NYC</option>
+            <option value="Colorado">Colorado</option>
+          </select>
+
+          <label className="create-res-label" id="dateLabel" htmlFor="date">
+            Date
+          </label>
+          <Input
+            className="input"
+            type="date"
+            id="date"
+            name="date"
+            defaultValue={currentDate}
+            onChange={handleChange}
+          />
+          <label className="create-res-label" id="dateLabel" htmlFor="time">
+            Time
+          </label>
+          <Input
+            className="input"
+            onChange={handleChange}
+            type="time"
+            name="time"
+            id="time"
+          />
+          <Button
+            isLoading={loading}
+            name="resButton"
+            loadingText="Loading..."
+            type="submit"
+            style={{ position: "relative", margin: "20px 0px" }}
+          >
+            Create
+          </Button>
+        </Form>
+      </div>
     </>
   );
 }

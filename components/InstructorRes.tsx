@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useContext, useState } from "react";
 import { listInstructors } from "../src/graphql/queries";
 import { clientContext } from "./clientContext";
-import ResCard from "./ResCard";
+import { Loading } from "./Crud";
 
 export default function InstructorRes() {
   const client = useContext(clientContext);
@@ -35,7 +35,14 @@ export default function InstructorRes() {
 
   return (
     <>
-      <div style={{ marginTop: "50px", padding: "25px" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "50px",
+          padding: "25px",
+        }}
+      >
         {!fetching ? (
           <>
             <div
@@ -119,27 +126,9 @@ export default function InstructorRes() {
                 </div>
               ))}
             </div>
-
-            <div
-              className="card"
-              style={{
-                padding: "10px 5px",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: "10px",
-              }}
-            >
-              <h3> All Reservations</h3>
-              <section className="trips" style={{ width: "100%" }}>
-                <ResCard />
-              </section>
-            </div>
           </>
         ) : (
-          <div
-            style={{ position: "absolute", top: "50%", left: "50%" }}
-            className="spinner-grow text-warning "
-          ></div>
+          <Loading fetching={true} />
         )}
       </div>
     </>

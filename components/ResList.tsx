@@ -1,4 +1,8 @@
 const ResList = (props: { reservations: any[] }) => {
+  props.reservations.sort(
+    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+  );
+
   return (
     <div className="reservation-list">
       {props.reservations.map((reservation: any, index) => (
@@ -11,7 +15,7 @@ const ResList = (props: { reservations: any[] }) => {
           className="event-item"
           key={index}
         >
-          <div className="event-header">
+          <header className="event-header">
             <span className="event-time">
               {new Date(reservation.date).toLocaleTimeString("en-US", {
                 hour: "numeric",
@@ -19,8 +23,11 @@ const ResList = (props: { reservations: any[] }) => {
                 timeZone: "UTC",
               })}
             </span>
+
+            <span className="event-title">{reservation.type}</span>
+
             <span className="event-title">Tier {reservation.tier || "1"}</span>
-          </div>
+          </header>
           <div
             className="collapse collaspe-content"
             id={`collapseDetails${index}`}

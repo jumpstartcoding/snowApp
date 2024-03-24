@@ -23,7 +23,7 @@ import HomePage from "../components/HomePage";
 import NotFound from "../components/NotFound";
 import ResCalendar from "../components/Calendar";
 import Reservations from "../components/Reservations";
-import InstructorRes from "../components/InstructorRes";
+import AdminPage from "../components/AdminPage";
 import "/components/SignIn.css";
 
 Amplify.configure(config);
@@ -237,7 +237,7 @@ const router = createBrowserRouter([
           },
           {
             path: "/admin",
-            element: <InstructorRes />,
+            element: <AdminPage />,
           },
         ],
       },
