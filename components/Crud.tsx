@@ -11,9 +11,13 @@ import { ListReservationsQuery } from "../src/API";
 export async function removeReservation(
   resID: string,
   custID: string,
-  client: V6Client<never>
+  client: V6Client<never>,
+  setLoading: React.Dispatch<React.SetStateAction<boolean[]>>,
+  loading: boolean[],
+  index: number
 ) {
   try {
+    setLoading({ ...loading, [index]: true });
     const response = await client.graphql({
       query: deleteReservation,
       variables: { input: { id: resID } },
@@ -29,6 +33,8 @@ export async function removeReservation(
   } catch (error) {
     console.log(error);
     alert("Deleting Reservation Failed");
+  } finally {
+    setLoading({ ...loading, [index]: false });
   }
 }
 

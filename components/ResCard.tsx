@@ -7,6 +7,7 @@ import {
   acceptReservation,
   Loading,
   getReservations,
+  removeReservation,
 } from "../components/Crud";
 
 import { getCurrentUser } from "aws-amplify/auth";
@@ -17,8 +18,7 @@ export default function ResCard(props: {
   userReservations?: boolean;
   new?: boolean;
 }) {
-  const client = useContext(clientContext);
-  const [reservations, setReservations] = useState<any>([]);
+  const [deleteLoading, setDeleteLoading] = useState<boolean[]>([]);
   useEffect(() => {
     async function fetchTrips() {
       try {
@@ -43,6 +43,7 @@ export default function ResCard(props: {
         };
 
         fetchAndFilterReservations().then((filteredReservations) => {
+          console.log(filteredReservations);
           setReservations(filteredReservations);
         });
       } catch (error) {
@@ -52,11 +53,13 @@ export default function ResCard(props: {
       }
     }
     fetchTrips();
-  }, []);
+  }, [deleteLoading]);
+
+  const client = useContext(clientContext);
+  const [reservations, setReservations] = useState<any>([]);
+
   const [loading, setLoading] = useState<boolean[]>([]);
-
   const [fetching, setFetching] = useState<boolean>(false);
-
   const [edit, setEdit] = useState<boolean[]>([]);
   const toggleEditMode = (index: number) => {
     const newEditModes = [...edit];
@@ -91,7 +94,7 @@ export default function ResCard(props: {
         <>
           {reservations.map((reservation: any, index: number) => (
             <div
-              key={index}
+              key={reservation.id}
               className="card"
               style={{
                 flex: "0 0 20rem",
@@ -111,7 +114,7 @@ export default function ResCard(props: {
                     >
                       {new Date(reservation.date).toLocaleDateString()}
                     </h5>
-                    {reservation.status === "new" && !edit[index] && (
+                    {reservation.status === "new" && !edit[index] ? (
                       <Button
                         isLoading={loading[index]}
                         onClick={async () => {
@@ -136,6 +139,29 @@ export default function ResCard(props: {
                       >
                         Accept
                       </Button>
+                    ) : (
+                      edit[index] && (
+                        <Button
+                          style={{ backgroundColor: "red" }}
+                          isLoading={deleteLoading[index]}
+                          onClick={async () =>
+                            await removeReservation(
+                              reservation.id,
+                              reservation.reservationCustomerId,
+                              client,
+                              setDeleteLoading,
+                              deleteLoading,
+                              index
+                            ).then(() => {
+                              const temp = [...edit];
+                              temp[index] = false;
+                              setEdit(temp);
+                            })
+                          }
+                        >
+                          Delete
+                        </Button>
+                      )
                     )}
                   </header>
 
@@ -217,7 +243,11 @@ export default function ResCard(props: {
                             loading,
                             index,
                             client
-                          );
+                          ).then(() => {
+                            const temp = [...edit];
+                            temp[index] = false;
+                            setEdit(temp);
+                          });
                         }}
                       >
                         Submit
@@ -225,66 +255,48 @@ export default function ResCard(props: {
 
                       {!props.tag && !props.userReservations && (
                         <>
-                          <div
+                          <button
+                            id={`btnEdit${index}`}
                             style={{
-                              display: "flex",
-                              justifyContent: "space-between",
+                              width: "50px",
+                              backgroundColor: "white",
+                              border: "none",
+                              alignSelf: "flex-end",
+                              marginTop: `${edit[index] ? "10px" : ""}`,
                             }}
+                            onClick={() => toggleEditMode(index)}
                           >
-                            {" "}
-                            <button
-                              style={{
-                                marginTop: `${edit[index] ? "10px" : "100px"}`,
-
-                                height: "25px",
-                                width: "25px",
-                              }}
-                            >
-                              X
-                            </button>
-                            <button
-                              id={`btnEdit${index}`}
-                              style={{
-                                width: "50px",
-                                backgroundColor: "white",
-                                border: "none",
-                                alignSelf: "flex-end",
-                                marginTop: `${edit[index] ? "10px" : "100px"}`,
-                              }}
-                              onClick={() => toggleEditMode(index)}
-                            >
-                              {!edit[index] ? (
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="32"
-                                  height="32"
-                                  fill="currentColor"
-                                  className="bi bi-pencil-square"
-                                  viewBox="0 0 16 16"
-                                >
-                                  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                  <path
-                                    fillRule="evenodd"
-                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"
-                                  />
-                                </svg>
-                              ) : (
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="32"
-                                  height="32"
-                                  fill="currentColor"
-                                  className="bi bi-arrow-left-square"
-                                  viewBox="0 0 16 16"
-                                >
-                                  <path
-                                    fillRule="evenodd"
-                                    d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"
-                                  />
-                                </svg>
-                              )}
-                            </button>
-                          </div>
+                            {!edit[index] ? (
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="32"
+                                height="32"
+                                fill="currentColor"
+                                className="bi bi-pencil-square"
+                                viewBox="0 0 16 16"
+                              >
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path
+                                  fillRule="evenodd"
+                                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"
+                                />
+                              </svg>
+                            ) : (
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="32"
+                                height="32"
+                                fill="currentColor"
+                                className="bi bi-arrow-left-square"
+                                viewBox="0 0 16 16"
+                              >
+                                <path
+                                  fillRule="evenodd"
+                                  d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"
+                                />
+                              </svg>
+                            )}
+                          </button>
                         </>
                       )}
                     </footer>

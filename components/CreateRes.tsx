@@ -55,7 +55,8 @@ export default function CreateRes(props: { date?: Date }) {
               reservation.customer.lastName,
             email: reservation.customer.email,
             phone_number: reservation.customer.phone,
-            guest: reservation.customer.guest,
+            guest:
+              reservation.customer.guest < 0 ? 0 : reservation.customer.guest,
           },
         },
       });
