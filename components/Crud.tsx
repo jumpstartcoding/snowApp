@@ -129,11 +129,11 @@ export const Loading = (props: { fetching: boolean }) => {
 export async function getReservations(
   client: V6Client
 ): Promise<GraphQLResult<ListReservationsQuery>> {
-  const response = await client.graphql({
+  const response = (await client.graphql<ListReservationsQuery>({
     query: listReservations,
     variables: {
       filter: {},
     },
-  });
+  })) as GraphQLResult<ListReservationsQuery>;
   return response;
 }
