@@ -5,8 +5,7 @@ import {
   deleteCustomer,
 } from "../src/graphql/mutations";
 import { listReservations } from "../src/graphql/queries";
-import { V6Client, GraphQLResult } from "@aws-amplify/api-graphql";
-import { ListReservationsQuery } from "../src/API";
+import { V6Client } from "@aws-amplify/api-graphql";
 
 export async function removeReservation(
   resID: string,
@@ -126,14 +125,12 @@ export const Loading = (props: { fetching: boolean }) => {
   );
 };
 
-export async function getReservations(
-  client: V6Client
-): Promise<GraphQLResult<ListReservationsQuery>> {
-  const response = (await client.graphql<ListReservationsQuery>({
+export async function getReservations(client: V6Client) {
+  const response = await client.graphql({
     query: listReservations,
     variables: {
       filter: {},
     },
-  })) as GraphQLResult<ListReservationsQuery>;
+  });
   return response;
 }
