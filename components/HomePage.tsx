@@ -42,20 +42,29 @@ function HomePage() {
     signIn: undefined,
   });
   const client = useContext(clientContext);
-
   useEffect(() => {
+    let isMounted = true;
+
     async function fetchData() {
       try {
         const { userId, signInDetails } = await getCurrentUser();
         const user = (await fetchAuthSession()).tokens?.idToken?.payload;
-        console.log(user);
-        setUserID({ id: userId, signIn: signInDetails?.loginId });
-        await createInstruct(client, userId, user);
+        if (isMounted) {
+          console.log(user);
+          setUserID({ id: userId, signIn: signInDetails?.loginId });
+          await createInstruct(client, userId, user);
+        }
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
     }
+
     fetchData();
+
+    // Define the cleanup function directly
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const handleClick = (type: string) => setResType(type);

@@ -1,8 +1,8 @@
 import { useState } from "react";
-
 import CreateRes from "./CreateRes";
 import ResCard from "./ResCard";
 import InstructorRes from "./InstructorRes";
+
 export default function AdminPage() {
   const [pageElement, setPageElement] = useState<string>("instructors");
   const handleClick = (e: string) => setPageElement(e);

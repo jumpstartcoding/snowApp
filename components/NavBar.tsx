@@ -46,8 +46,6 @@ export default function NavBar({ children }: NavBarProps) {
                   Admin
                 </Link>
               </li>
-
-              <li className="nav-item dropdown "></li>
             </ul>
           </div>
         </div>

@@ -11,13 +11,9 @@ import { Button } from "@aws-amplify/ui-react";
 import ResList from "./ResList";
 import { clientContext } from "../components/clientContext";
 import { useContext, useEffect } from "react";
+import { getReservations } from "./Crud";
 
-import { listReservations } from "../src/graphql/queries";
-
-export default function ResCalendar(props: {
-  events?: { title: string; start: Date };
-}) {
-  console.log(props);
+export default function ResCalendar() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [createRes, setCreateRes] = useState<boolean>(false);
   const [events, setEvents] = useState<any | undefined>([]);
@@ -39,23 +35,15 @@ export default function ResCalendar(props: {
   const [trips, setTrips] = useState<any | undefined>([]);
   const [loading, isLoading] = useState(true);
 
-  const ye = client.graphql({
-    query: listReservations,
-    variables: {
-      filter: {
-        status: { contains: "new" },
-      },
-    },
-  });
   useEffect(() => {
-    ye.then((response) => {
-      setTrips(response.data.listReservations.items);
+    const reservation = getReservations(client);
+    reservation.then((response) => {
+      setTrips(response.data.listReservations?.items);
       isLoading(false);
-      response.data.listReservations.items.map((elt: any, index) => {
+      response.data.listReservations?.items.map((elt: any, index) => {
         setEvents((prevData: any) => {
           const newData = [...prevData];
           newData[index] = { title: elt.type, start: elt.date };
-          console.log(elt.date);
           return newData;
         });
       });
