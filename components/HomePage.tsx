@@ -1,13 +1,17 @@
 import ResCard from "./ResCard";
 import "./SignIn.css";
-
+import UserDetails from "./UserDetails";
 import { clientContext } from "../components/clientContext";
 import { useContext, useEffect, useState } from "react";
-import { getCurrentUser, fetchAuthSession } from "aws-amplify/auth";
+import { fetchUserAttributes } from "aws-amplify/auth";
 
 import { createInstructor } from "../src/graphql/mutations";
 
-async function createInstruct(client: any, userId: string, signInDetails: any) {
+async function createInstruct(
+  client: any,
+  userId: string | undefined,
+  signInDetails: any
+) {
   try {
     if (userId && signInDetails) {
       const input = {
@@ -32,27 +36,26 @@ async function createInstruct(client: any, userId: string, signInDetails: any) {
     console.log(error);
   }
 }
+
 function HomePage() {
   const [resType, setResType] = useState<string>("Snowboard");
-  const [userID, setUserID] = useState<{
-    id: string;
-    signIn: string | undefined;
-  }>({
-    id: "",
-    signIn: undefined,
-  });
+  const [user, setUser] = useState<any>();
+  const [userID, setUserID] = useState<string | undefined>("");
+  const [loading, setLoading] = useState<boolean>(true); // Introduce loading state
+  const [userCredentials, setUserCredentials] = useState<boolean>(false);
+
   const client = useContext(clientContext);
   useEffect(() => {
     let isMounted = true;
 
     async function fetchData() {
       try {
-        const { userId, signInDetails } = await getCurrentUser();
-        const user = (await fetchAuthSession()).tokens?.idToken?.payload;
+        const user = await fetchUserAttributes();
         if (isMounted) {
-          console.log(user);
-          setUserID({ id: userId, signIn: signInDetails?.loginId });
-          await createInstruct(client, userId, user);
+          setUserID(user.sub);
+          setUser(user);
+          await createInstruct(client, user.sub, user);
+          setLoading(false); // Data loaded, set loading state to false
         }
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -65,11 +68,20 @@ function HomePage() {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [userCredentials]);
 
   const handleClick = (type: string) => setResType(type);
+  function retrievedUserCredentials() {
+    setUserCredentials(true);
+  }
 
-  return (
+  return !loading && !user?.given_name ? (
+    <UserDetails
+      client={client}
+      user={user}
+      retrievedUserCredentials={retrievedUserCredentials}
+    />
+  ) : (
     <>
       <div
         style={{
@@ -81,6 +93,7 @@ function HomePage() {
           overflow: "auto",
         }}
       >
+        <div></div>
         <h1 style={{ textAlign: "center", marginTop: "4rem" }}>
           {resType === "create" ? (
             <>Create Reservation</>
@@ -104,9 +117,9 @@ function HomePage() {
           ) : (
             <section className="trips">
               {resType === "Ski" ? (
-                <ResCard key="1" userId={userID.id} tag="Ski"></ResCard>
+                <ResCard key="1" userId={userID} tag="Ski"></ResCard>
               ) : (
-                <ResCard key="2" userId={userID.id} tag="Snowboard"></ResCard>
+                <ResCard key="2" userId={userID} tag="Snowboard"></ResCard>
               )}
             </section>
           )}
@@ -123,4 +136,5 @@ function HomePage() {
     </>
   );
 }
+
 export default HomePage;

@@ -9,7 +9,10 @@ interface NavBarProps {
 export default function NavBar({ children }: NavBarProps) {
   return (
     <>
-      <nav className="navbar  fixed-top text-center navbar-expand-sm bg-body-tertiary ">
+      <nav
+        style={{ position: "fixed" }}
+        className="navbar  fixed-top text-center navbar-expand-sm bg-body-tertiary "
+      >
         <div className="container-fluid">
           <button
             className="navbar-toggler"

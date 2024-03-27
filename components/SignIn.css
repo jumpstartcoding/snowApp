@@ -42,7 +42,12 @@
   }
 
 
-
+@media (min-width:576px) {
+  
+#instructorCard{
+  min-width: 35rem;
+}
+}
   @media (max-width: 576px) {
   
     div.card{
@@ -201,11 +206,10 @@ bottom: 0;
   position: fixed;
   top: 50px;
   right: 0;
-  width: 350px; /* Adjust width as needed */
   height: 100%;
   z-index: 1;
   padding: 20px;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Add shadow to create depth */
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); 
   overflow-y: auto; 
   
 }
@@ -280,11 +284,12 @@ ul {
 .collaspe-content{
   border-radius: 2px;
   padding: 20px;
-  margin: 10px;
   background-color: white;
-
-
 }
+.reservation-list .collaspe-content{
+  margin: 10px;
+}
+
 
 
 .event-details> h5{
@@ -314,21 +319,14 @@ padding: 5px;
   padding: 8px 20px;
 }
 
-.fc-view-harness {
-  height : 100vh !important; 
-
-}
 .fc {
-border-style: solid;
 overflow: auto;
 padding: 25px;
-border-radius: 5px;
-border-color: white;
-box-shadow:  -2px 0 5px rgba(0, 0, 0, 0.1);
+height : 100vh !important; 
 }
 
 .fc .fc-daygrid-day-frame {
-  height: 8.5rem !important;
+
   overflow:hidden scroll;
 }
 .create-res-label{
@@ -341,7 +339,7 @@ box-shadow:  -2px 0 5px rgba(0, 0, 0, 0.1);
 
 
 .fc-container{
- margin-top: 50px; padding: 50px;
+ margin-top: 50px;
 
 }
 
@@ -360,3 +358,21 @@ box-shadow:  -2px 0 5px rgba(0, 0, 0, 0.1);
 
 
 .shadow{  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+
+
+
+.userDetails{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+
+  
+}
+.userDetails >input{
+  width:50%;
+}
+

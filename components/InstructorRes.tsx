@@ -55,12 +55,14 @@ export default function InstructorRes() {
           <>
             <div
               className="card"
+              id="instructorCard"
               style={{
                 padding: "10px 30px",
+                gap: "10px",
               }}
             >
               <span style={{ alignSelf: "center" }}>
-                <h3>Instructors</h3>
+                <h2>Instructors</h2>
               </span>
 
               {instructors.map((instructor: any, index: number) => (
@@ -103,17 +105,12 @@ export default function InstructorRes() {
                   </span>
                   <hr />
                   <div className="collapse" id={`collapseDetails${index}`}>
-                    <h2>Details</h2>
+                    <h5>Contact Information</h5>
                     <section
                       style={{ overflow: "auto" }}
                       className="collaspe-content"
                     >
                       <table>
-                        <thead>
-                          <tr>
-                            <th>Contact Information</th>
-                          </tr>
-                        </thead>
                         <tbody>
                           <tr>
                             <th>Name</th>

@@ -90,8 +90,9 @@ export default function ResCalendar() {
             <header
               style={{
                 display: "flex",
-                margin: "1em 0",
+                marginBottom: "10px",
                 justifyContent: "space-between",
+                gap: "50px",
               }}
             >
               <Button

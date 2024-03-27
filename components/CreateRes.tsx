@@ -70,7 +70,10 @@ export default function CreateRes(props: { date?: Date }) {
             ),
 
             type: reservation.type,
-            location: reservation.location,
+            location:
+              reservation.location.length <= 0
+                ? "CamelBack"
+                : reservation.location,
             status: "new",
             reservationCustomerId: cust.data.createCustomer.id,
           },
@@ -172,6 +175,7 @@ export default function CreateRes(props: { date?: Date }) {
             id="firstName"
             value={reservation.customer.firstName}
             onChange={handleChange}
+            autoComplete="given-name"
           />
           <label
             className="create-res-label"
@@ -187,6 +191,7 @@ export default function CreateRes(props: { date?: Date }) {
             id="lastName"
             value={reservation.customer.lastName}
             onChange={handleChange}
+            autoComplete="family-name"
           />
 
           <label className="create-res-label" id="emailLabel" htmlFor="email">
@@ -212,7 +217,7 @@ export default function CreateRes(props: { date?: Date }) {
             className="input"
             type="tel"
             name="phone"
-            autoComplete="phone"
+            autoComplete="tel"
             id="phone"
             value={reservation.customer.phone}
             onChange={handleChange}

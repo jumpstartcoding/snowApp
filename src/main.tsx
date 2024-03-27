@@ -213,10 +213,13 @@ const router = createBrowserRouter([
     children: [
       {
         element: (
-          <NavBar>
-            <Outlet />
+          <>
+            <NavBar>
+              <Outlet></Outlet>
+            </NavBar>
+
             <ScrollToTop />
-          </NavBar>
+          </>
         ),
         children: [
           {
