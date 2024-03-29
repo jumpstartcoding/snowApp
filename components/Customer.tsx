@@ -65,14 +65,7 @@ export default function Customer() {
           </Link>
         </header>
 
-        <div
-          id="reserve"
-          style={{
-            position: "relative",
-            padding: "50px 100px",
-            backgroundColor: "white",
-          }}
-        >
+        <div id="reserve">
           <h1 style={{ textAlign: "center" }}>Book Your Reservation</h1>
           <CreateRes />
         </div>

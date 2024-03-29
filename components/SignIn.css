@@ -47,8 +47,12 @@
 #instructorCard{
   min-width: 35rem;
 }
+
 }
   @media (max-width: 576px) {
+    #reserve{
+      padding: 0px !important ;
+    }
   
     div.card{
       margin: 10px auto !important ;
@@ -428,6 +432,7 @@ display: flex;
 justify-content: center;
 flex-direction: column;
 min-height: 500px;
+margin-bottom: 100px;
 
   }
   .location{
@@ -435,3 +440,8 @@ min-height: 500px;
   flex:0 0 18rem;
   }
 
+
+  #reserve{
+ position: relative;
+padding: 50px 100px;
+background-color: white;}
