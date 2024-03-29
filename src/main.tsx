@@ -24,6 +24,7 @@ import NotFound from "../components/NotFound";
 import ResCalendar from "../components/Calendar";
 import Reservations from "../components/Reservations";
 import AdminPage from "../components/AdminPage";
+import Customer from "../components/Customer";
 import "/components/SignIn.css";
 
 Amplify.configure(config);
@@ -212,40 +213,46 @@ const router = createBrowserRouter([
     ),
     children: [
       {
+        path: "/",
+        element: <Customer />,
+      },
+      {
+        path: "home",
         element: (
           <>
-            <NavBar>
-              <Outlet></Outlet>
-            </NavBar>
-
-            <ScrollToTop />
+            <Authenticator
+              variation="modal" //full screen
+              components={components}
+              formFields={formFields}
+              socialProviders={["google"]}
+            >
+              <NavBar>
+                <Outlet></Outlet>
+                <ScrollToTop />
+              </NavBar>
+            </Authenticator>
           </>
         ),
         children: [
+          { path: "", element: <HomePage /> },
+
           {
-            path: "/",
-            element: <HomePage />,
-          },
-          {
-            path: "/home",
-            element: <HomePage />,
-          },
-          {
-            path: "/calendar",
+            path: "calendar",
             element: <ResCalendar />,
           },
           {
-            path: "/reservations",
+            path: "reservations",
             element: <Reservations />,
           },
           {
-            path: "/admin",
+            path: "admin",
             element: <AdminPage />,
           },
         ],
       },
     ],
   },
+
   {
     path: "*",
     element: <NotFound />,
@@ -254,13 +261,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <Authenticator
-      variation="modal" //full screen
-      components={components}
-      formFields={formFields}
-      socialProviders={["google"]}
-    >
-      <RouterProvider router={router} />
-    </Authenticator>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );

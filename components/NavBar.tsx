@@ -35,17 +35,17 @@ export default function NavBar({ children }: NavBarProps) {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/reservations">
+                <Link className="nav-link" to="/home/reservations">
                   Reservations
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/calendar">
+                <Link className="nav-link" to="/home/calendar">
                   Calendar
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/admin">
+                <Link className="nav-link" to="/home/admin">
                   Admin
                 </Link>
               </li>

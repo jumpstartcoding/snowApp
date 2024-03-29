@@ -1,6 +1,6 @@
 :root{
   
-  --custom-orange-color: #fc6736; /* custom color code */
+  --custom-orange-color: rgb(252, 103, 54); /* custom color code */
   --custom-peach-color: #f4b1b1;
   --custom-gray-color: #efecec;
   --custom-navy-color: #0c2d57;
@@ -76,10 +76,13 @@ font-family:sans-serif,'Lucida Grande';
 color: white;
 }
   
+#clientNav{
 
+opacity: .8;
+}
 
 .navbar{
-  position: absolute;
+ 
   background: radial-gradient(
     circle at left,
    
@@ -375,4 +378,60 @@ height : 100vh !important;
 .userDetails >input{
   width:50%;
 }
+
+
+.image-container{
+  height: 100vh;
+  width: 100%;
+  background-image: url("/src/assets/bkg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  position: fixed;
+  overflow-y:scroll ;
+
+}
+.image-container:before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0,0.5);
+}
+.title{
+  position: relative;
+  text-align: center;
+  margin:  250px 0px;
+  width: 100%; 
+  height: auto; 
+  
+  }
+  .title h1{
+    font-size: 60px;
+  }
+  
+  .title a{
+    min-width: 30%;
+    background-color:var(--custom-orange-color);
+   color: white !important;
+    
+  }
+  .title a:hover{
+    background-color: rgb(252, 127, 85);
+  }
+
+
+  .clientTrips{
+display: flex;
+justify-content: center;
+flex-direction: column;
+min-height: 500px;
+
+  }
+  .location{
+  border: none;
+  flex:0 0 18rem;
+  }
 
