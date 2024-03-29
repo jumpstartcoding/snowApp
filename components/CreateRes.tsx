@@ -282,10 +282,10 @@ export default function CreateRes(props: { date?: Date }) {
             aria-label="Default select example"
             onChange={handleChange}
           >
+            <option value="Blue Mountain">Blue Mountain</option>
             <option value="CamelBack">CamelBack</option>
-            <option value="Vermont">Vermont</option>
-            <option value="NYC">NYC</option>
-            <option value="Colorado">Colorado</option>
+            <option value="Jack Frost">Jack Frost</option>
+            <option value="Shawnee Mountain">Shawnee Mountain</option>
           </select>
 
           <label className="create-res-label" id="dateLabel" htmlFor="date">

@@ -53,6 +53,13 @@
     #reserve{
       padding: 0px !important ;
     }
+
+
+.text{
+  padding: 25px 0px !important;
+
+ 
+}
   
     div.card{
       margin: 10px auto !important ;
@@ -445,3 +452,9 @@ margin-bottom: 100px;
  position: relative;
 padding: 50px 100px;
 background-color: white;}
+
+.text{
+  padding: 25px 50px;
+  font-size: x-large;
+ 
+}

@@ -29,7 +29,7 @@ export default function Locations() {
           position: "relative",
         }}
       >
-        Summits
+        <strong> Summits</strong>
       </h1>
 
       <div

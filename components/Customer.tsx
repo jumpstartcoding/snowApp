@@ -64,15 +64,41 @@ export default function Customer() {
             <strong> Reserve Now</strong>
           </Link>
         </header>
-
-        <div id="reserve">
-          <h1 style={{ textAlign: "center" }}>Book Your Reservation</h1>
-          <CreateRes />
-        </div>
+        <section
+          style={{
+            display: "block",
+            minHeight: "500px",
+            padding: "50px",
+            backgroundColor: "white",
+            position: "relative",
+          }}
+        >
+          <h1>
+            {" "}
+            <strong style={{ color: "var(--custom-orange-color)" }}>
+              Our Philosophy
+            </strong>
+          </h1>
+          <hr />
+          <p className="text">
+            We believe that skiing and snowboarding are more than just sports;
+            they're ways of life. Our philosophy is rooted in a love for the
+            mountains and a passion for sharing that love with others. <br />{" "}
+            <br />
+            Whether you're carving down groomed runs, navigating through powder,
+            or mastering the terrain park, our instructors will help you build
+            confidence, improve technique, and achieve your personal best on the
+            slopes.
+          </p>
+        </section>
 
         <section id="summits" className="clientTrips">
           <Locations />
         </section>
+        <div id="reserve">
+          <h1 style={{ textAlign: "center" }}>Book Your Reservation</h1>
+          <CreateRes />
+        </div>
       </div>
     </>
   );
