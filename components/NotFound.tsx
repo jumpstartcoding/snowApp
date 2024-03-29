@@ -8,9 +8,12 @@ export default function NotFound() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          justifyContent: "center",
+          height: "100vh",
+          backgroundColor: "var(--custom-gray-color)",
         }}
       >
-        <h1>Page Not Found</h1>
+        <h1>404 Page Not Found</h1>
 
         <Link to="/">Go To Home Page</Link>
       </div>

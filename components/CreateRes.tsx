@@ -9,7 +9,10 @@ import {
 import { useContext, useEffect, useState } from "react";
 import { clientContext } from "./clientContext";
 
-export default function CreateRes(props: { date?: Date }) {
+export default function CreateRes(props: {
+  date?: Date;
+  customerInput?: boolean;
+}) {
   const client = useContext(clientContext);
   const [loading, isLoading] = useState<boolean>(false);
   const [currentDate, setCurrentDate] = useState(
@@ -17,6 +20,7 @@ export default function CreateRes(props: { date?: Date }) {
       ? props.date.toISOString().split("T")[0]
       : new Date().toISOString().split("T")[0]
   );
+  const [resSubmitted, setResSubmitted] = useState<boolean>(false);
 
   useEffect(() => {
     if (props.date) setCurrentDate(props.date.toISOString().split("T")[0]);
@@ -108,11 +112,13 @@ export default function CreateRes(props: { date?: Date }) {
         tier: 1,
         location: " ",
       });
+      setResSubmitted(true);
     } catch (e) {
       console.log("submit error", e);
       alert("Reservation Not Submitted Please try again");
+    } finally {
+      isLoading(false);
     }
-    isLoading(false);
   };
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
@@ -157,6 +163,7 @@ export default function CreateRes(props: { date?: Date }) {
           marginBottom: "50px",
           padding: "0px 50px",
           boxShadow: " -2px 0 5px rgba(0, 0, 0, 0.1)",
+          maxWidth: "600px",
         }}
       >
         <Form onSubmit={onSubmit}>
@@ -176,6 +183,7 @@ export default function CreateRes(props: { date?: Date }) {
             value={reservation.customer.firstName}
             onChange={handleChange}
             autoComplete="given-name"
+            required
           />
           <label
             className="create-res-label"
@@ -205,6 +213,7 @@ export default function CreateRes(props: { date?: Date }) {
             id="email"
             value={reservation.customer.email}
             onChange={handleChange}
+            required
           />
           <label
             className="create-res-label"
@@ -221,6 +230,7 @@ export default function CreateRes(props: { date?: Date }) {
             id="phone"
             value={reservation.customer.phone}
             onChange={handleChange}
+            required
           />
           <label className="create-res-label" id="guestLabel" htmlFor="guests">
             # of Guests
@@ -320,6 +330,42 @@ export default function CreateRes(props: { date?: Date }) {
           </Button>
         </Form>
       </div>
+      {props.customerInput === true && resSubmitted === true && (
+        <div
+          className="modal"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "3rem",
+          }}
+        >
+          <div
+            className="card "
+            style={{
+              padding: "10px ",
+              maxWidth: "500px",
+              height: "fit-content",
+            }}
+          >
+            <button
+              type="button"
+              className="btn btn-primary"
+              style={{ width: "100px" }}
+              onClick={() => setResSubmitted(false)}
+            >
+              {" "}
+              Close{" "}
+            </button>
+            <p style={{ fontSize: "36px", margin: "100px 25px" }}>
+              <strong>
+                Thank You {reservation.customer.firstName} For Reserving With
+                Summit Sessions!
+              </strong>
+            </p>
+          </div>
+        </div>
+      )}
     </>
   );
 }

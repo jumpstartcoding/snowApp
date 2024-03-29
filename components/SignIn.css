@@ -345,6 +345,10 @@ height : 100vh !important;
 }
 .create-res-label{
   margin-top: 10px !important;
+  font-weight: 900;
+ font-size: large;
+
+  color: var(--custom-navy-color);
 }
 
 .fc thead{
@@ -458,3 +462,10 @@ background-color: white;}
   font-size: x-large;
  
 }
+
+
+
+.fc .fc-daygrid-day-events {
+  max-height: 6rem;
+}
+

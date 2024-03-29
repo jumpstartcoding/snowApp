@@ -56,6 +56,7 @@ export default function Customer() {
         <header className="title">
           <h1 style={{ color: "white" }}>Summit Sessions</h1>
           <Link
+            style={{ minWidth: "200px" }}
             to="#reserve"
             className="btn"
             type="button"
@@ -97,7 +98,7 @@ export default function Customer() {
         </section>
         <div id="reserve">
           <h1 style={{ textAlign: "center" }}>Book Your Reservation</h1>
-          <CreateRes />
+          <CreateRes customerInput={true} />
         </div>
       </div>
     </>
