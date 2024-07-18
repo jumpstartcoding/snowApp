@@ -21,6 +21,7 @@ import config from "./amplifyconfiguration.json";
 import NavBar from "../components/NavBar";
 import HomePage from "../components/HomePage";
 import NotFound from "../components/NotFound";
+import Feedback from "../components/Feedback";
 import ResCalendar from "../components/Calendar";
 import Reservations from "../components/Reservations";
 import AdminPage from "../components/AdminPage";
@@ -216,6 +217,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <Customer />,
       },
+      { path: "review", element: <Feedback /> },
       {
         path: "home",
         element: (

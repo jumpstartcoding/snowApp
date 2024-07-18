@@ -89,7 +89,7 @@ color: white;
   
 #clientNav{
 
-opacity: .8;
+opacity: .9;
 }
 
 .navbar{
@@ -418,9 +418,10 @@ height : 100vh !important;
 .title{
   position: relative;
   text-align: center;
-  margin:  250px 0px;
+  
+  margin:  45vh 0px;
   width: 100%; 
-  height: auto; 
+
   
   }
   .title h1{
@@ -469,3 +470,66 @@ background-color: white;}
   max-height: 6rem;
 }
 
+
+
+
+.feedback{
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+  position: relative;
+
+  margin: 50px 0px;
+padding: 50px;
+
+ 
+}
+
+.feedback button{
+  display:block;
+  margin: 10px 0px;
+
+}
+
+.feedback button:hover{
+  background-color: rgb(109, 243, 109);
+}
+.feedback h1 {
+  color: var(--custom-navy-color);
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1), 2px 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 2.5rem; /* Adjust the font size for better visibility */
+  font-weight: bold; /* Make the text bold for emphasis */
+  padding: 10px 20px; /* Add padding for better spacing */
+
+
+
+}
+
+
+
+.styled-textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px;
+  font-size: 1rem;
+  font-family: Arial, sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: vertical; /* Allow the user to resize the textarea vertically */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  outline: none; /* Remove the default outline */
+}
+
+.styled-textarea:focus {
+  border-color: #007bff; /* Change border color on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a glow effect on focus */
+}
+
+.styled-textarea::placeholder {
+  color: #999;
+  font-style: italic;
+}

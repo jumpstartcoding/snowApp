@@ -1,3 +1,4 @@
+import { Button } from "@aws-amplify/ui-react";
 import { Link } from "react-router-dom";
 import CreateRes from "./CreateRes";
 import Locations from "./Locations";
@@ -33,11 +34,6 @@ export default function Customer() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link " aria-current="page" to="/home">
-                  Portal
-                </Link>
-              </li>
-              <li className="nav-item">
                 <Link
                   className="nav-link"
                   to="#summits"
@@ -45,6 +41,11 @@ export default function Customer() {
                   onClick={() => scrollToElement("summits")}
                 >
                   Summits
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link " aria-current="page" to="/home">
+                  Employee Portal
                 </Link>
               </li>
             </ul>
@@ -98,7 +99,7 @@ export default function Customer() {
         </section>
         <div id="reserve">
           <h1 style={{ textAlign: "center" }}>Book Your Reservation</h1>
-          <CreateRes customerInput={true} />
+          <CreateRes customerInput={true}> </CreateRes>
         </div>
       </div>
     </>

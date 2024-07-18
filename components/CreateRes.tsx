@@ -6,12 +6,13 @@ import {
   createCustomer,
   updateCustomer,
 } from "../src/graphql/mutations";
-import { useContext, useEffect, useState } from "react";
+import { ReactNode, useContext, useEffect, useState } from "react";
 import { clientContext } from "./clientContext";
 
 export default function CreateRes(props: {
   date?: Date;
   customerInput?: boolean;
+  children?: ReactNode;
 }) {
   const client = useContext(clientContext);
   const [loading, isLoading] = useState<boolean>(false);
@@ -38,7 +39,7 @@ export default function CreateRes(props: {
     time: "12:00",
     type: "",
     tier: 1,
-    location: "",
+    location: "Blue Mountain",
     status: "new",
   });
 
@@ -166,7 +167,8 @@ export default function CreateRes(props: {
           maxWidth: "600px",
         }}
       >
-        <Form onSubmit={onSubmit}>
+        <Form method="post" onSubmit={onSubmit}>
+          {props.children}
           <label
             className="create-res-label"
             id="fNameLabel"
