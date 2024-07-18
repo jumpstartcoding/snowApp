@@ -54,16 +54,18 @@ export default function Customer() {
 
       <div className="image-container">
         <header className="title">
-          <h1 style={{ color: "white" }}>Summit Sessions</h1>
-          <Link
-            style={{ minWidth: "200px" }}
-            to="#reserve"
-            className="btn"
-            type="button"
-            onClick={() => scrollToElement("reserve")}
-          >
-            <strong> Reserve Now</strong>
-          </Link>
+          <section className="title-container">
+            <h1 style={{ color: "white" }}>Summit Sessions</h1>
+            <Link
+              style={{ minWidth: "200px" }}
+              to="#reserve"
+              className="btn"
+              type="button"
+              onClick={() => scrollToElement("reserve")}
+            >
+              <strong> Reserve Now</strong>
+            </Link>
+          </section>
         </header>
         <section
           style={{

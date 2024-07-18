@@ -326,7 +326,7 @@ export default function CreateRes(props: {
             name="resButton"
             loadingText="Loading..."
             type="submit"
-            style={{ position: "relative", margin: "20px 0px" }}
+            style={{ position: "relative", margin: "30px 0px" }}
           >
             Create
           </Button>
