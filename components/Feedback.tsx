@@ -1,6 +1,6 @@
 import { Button } from "@aws-amplify/ui-react";
+import feedbackImg from "/./src/assets/feedback.jpg";
 
-const feedbackImg = "./src/assets/feedback.jpg";
 export default function Feedback() {
   return (
     <>
