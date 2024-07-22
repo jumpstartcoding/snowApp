@@ -1,42 +1,42 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-snowapp-dev-164129-authRole",
-      "UnauthRoleArn": "arn:aws:iam::457245890540:role/amplify-snowapp-dev-164129-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::457245890540:role/amplify-snowapp-dev-164129-authRole",
+      "AuthRoleName": "amplify-snowapp-dev-172718-authRole",
+      "UnauthRoleArn": "arn:aws:iam::457245890540:role/amplify-snowapp-dev-172718-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::457245890540:role/amplify-snowapp-dev-172718-authRole",
       "Region": "us-east-2",
-      "DeploymentBucketName": "amplify-snowapp-dev-164129-deployment",
-      "UnauthRoleName": "amplify-snowapp-dev-164129-unauthRole",
-      "StackName": "amplify-snowapp-dev-164129",
-      "StackId": "arn:aws:cloudformation:us-east-2:457245890540:stack/amplify-snowapp-dev-164129/a7068680-cab8-11ee-8c78-0a989beae5bf",
-      "AmplifyAppId": "df5m0t3vxfz15"
+      "DeploymentBucketName": "amplify-snowapp-dev-172718-deployment",
+      "UnauthRoleName": "amplify-snowapp-dev-172718-unauthRole",
+      "StackName": "amplify-snowapp-dev-172718",
+      "StackId": "arn:aws:cloudformation:us-east-2:457245890540:stack/amplify-snowapp-dev-172718/2d21d130-4871-11ef-924f-02c641f8017d",
+      "AmplifyAppId": "d6yfo3hn69din",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-snowapp-dev-172718-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
+      "api": {
+        "snowapp": {}
+      },
       "hosting": {
         "amplifyhosting": {
-          "appId": "df5m0t3vxfz15",
+          "appId": "d6yfo3hn69din",
           "type": "cicd"
         }
       },
       "auth": {
-        "snowappe3bc7239": {}
+        "snowapp726c94fa": {}
       },
-      "api": {
-        "snowapp": {}
-      },
-      "analytics": {
-        "snowapp": {},
-        "Pinpoint": {
-          "Name": "snowapp-dev",
-          "Id": "f07fd726a1cd46d38e7015e85b3ba18e",
-          "Region": "us-east-2"
-        }
-      },
-      "notifications": {
-        "Pinpoint": {
-          "Name": "snowapp-dev",
-          "Id": "f07fd726a1cd46d38e7015e85b3ba18e",
-          "Region": "us-east-2"
+      "function": {
+        "snowapp726c94faCustomMessage": {
+          "REDIRECTURL": "https://master.d6yfo3hn69din.amplifyapp.com/home/",
+          "EMAILSUBJECT": "Verify Your Email Address",
+          "EMAILMESSAGE": "Thank you for signing up for Summit Sessions! To complete your registration, please confirm your email address.",
+          "deploymentBucketName": "amplify-snowapp-dev-172718-deployment",
+          "s3Key": "amplify-builds/snowapp726c94faCustomMessage-43684f6b367048572f57-build.zip"
+        },
+        "snowapp726c94faPostConfirmation": {
+          "GROUP": "employees",
+          "deploymentBucketName": "amplify-snowapp-dev-172718-deployment",
+          "s3Key": "amplify-builds/snowapp726c94faPostConfirmation-34784b6970716e543370-build.zip"
         }
       }
     }

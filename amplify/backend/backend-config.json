@@ -1,10 +1,4 @@
 {
-  "analytics": {
-    "snowapp": {
-      "providerPlugin": "awscloudformation",
-      "service": "Pinpoint"
-    }
-  },
   "api": {
     "snowapp": {
       "dependsOn": [],
@@ -13,9 +7,9 @@
           "additionalAuthenticationProviders": [],
           "defaultAuthentication": {
             "apiKeyConfig": {
-              "apiKeyExpirationDate": "2024-03-16T04:40:32.257Z",
-              "apiKeyExpirationDays": 20,
-              "description": "temp"
+              "apiKeyExpirationDate": "2025-07-22T21:28:44.868Z",
+              "apiKeyExpirationDays": 365,
+              "description": "prod"
             },
             "authenticationType": "API_KEY"
           }
@@ -26,9 +20,28 @@
     }
   },
   "auth": {
-    "snowappe3bc7239": {
+    "snowapp726c94fa": {
       "customAuth": false,
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "snowapp726c94faCustomMessage",
+          "triggerProvider": "Cognito"
+        },
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "snowapp726c94faPostConfirmation",
+          "triggerProvider": "Cognito"
+        }
+      ],
       "frontendAuthConfig": {
         "mfaConfiguration": "OFF",
         "mfaTypes": [
@@ -56,43 +69,87 @@
       "service": "Cognito"
     }
   },
+  "function": {
+    "snowapp726c94faCustomMessage": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "snowapp726c94faPostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
   "hosting": {
     "amplifyhosting": {
-      "lastPushTimeStamp": "2024-02-13T21:48:57.228Z",
+      "lastPushTimeStamp": "2024-07-22T21:40:33.234Z",
       "service": "amplifyhosting",
       "type": "cicd"
     }
   },
-  "notifications": {
-    "snowapp": {
-      "channels": [
-        "Email"
-      ],
-      "service": "Pinpoint"
-    }
-  },
   "parameters": {
-    "AMPLIFY_analytics_Pinpoint_Id": {
+    "AMPLIFY_function_snowapp726c94faCustomMessage_EMAILMESSAGE": {
       "usedBy": [
         {
-          "category": "analytics",
-          "resourceName": "Pinpoint"
+          "category": "function",
+          "resourceName": "snowapp726c94faCustomMessage"
         }
       ]
     },
-    "AMPLIFY_analytics_Pinpoint_Name": {
+    "AMPLIFY_function_snowapp726c94faCustomMessage_EMAILSUBJECT": {
       "usedBy": [
         {
-          "category": "analytics",
-          "resourceName": "Pinpoint"
+          "category": "function",
+          "resourceName": "snowapp726c94faCustomMessage"
         }
       ]
     },
-    "AMPLIFY_analytics_Pinpoint_Region": {
+    "AMPLIFY_function_snowapp726c94faCustomMessage_REDIRECTURL": {
       "usedBy": [
         {
-          "category": "analytics",
-          "resourceName": "Pinpoint"
+          "category": "function",
+          "resourceName": "snowapp726c94faCustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_snowapp726c94faCustomMessage_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowapp726c94faCustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_snowapp726c94faCustomMessage_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowapp726c94faCustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_snowapp726c94faPostConfirmation_GROUP": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowapp726c94faPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_snowapp726c94faPostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowapp726c94faPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_snowapp726c94faPostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "snowapp726c94faPostConfirmation"
         }
       ]
     },
@@ -109,30 +166,6 @@
         {
           "category": "hosting",
           "resourceName": "amplifyhosting"
-        }
-      ]
-    },
-    "AMPLIFY_notifications_Pinpoint_Id": {
-      "usedBy": [
-        {
-          "category": "notifications",
-          "resourceName": "Pinpoint"
-        }
-      ]
-    },
-    "AMPLIFY_notifications_Pinpoint_Name": {
-      "usedBy": [
-        {
-          "category": "notifications",
-          "resourceName": "Pinpoint"
-        }
-      ]
-    },
-    "AMPLIFY_notifications_Pinpoint_Region": {
-      "usedBy": [
-        {
-          "category": "notifications",
-          "resourceName": "Pinpoint"
         }
       ]
     }

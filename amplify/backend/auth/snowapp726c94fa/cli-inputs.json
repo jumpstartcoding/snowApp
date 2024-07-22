@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "snowappe3bc7239_identitypool_e3bc7239",
-    "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "snowape3bc7239",
-    "userPoolName": "snowappe3bc7239_userpool_e3bc7239",
+    "identityPoolName": "snowapp726c94fa_identitypool_726c94fa",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "snowap726c94fa",
+    "userPoolName": "snowapp726c94fa_userpool_726c94fa",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -31,44 +31,34 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "snowape3bc7239_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "snowap726c94fa_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "e3bc7239",
-    "resourceName": "snowappe3bc7239",
+    "sharedId": "726c94fa",
+    "resourceName": "snowapp726c94fa",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "defaultSocial",
     "hostedUI": true,
     "usernameAttributes": [
       "email, phone_number"
     ],
-    "triggers": {},
-    "hostedUIDomainName": "snowappdev",
+    "triggers": {
+      "CustomMessage": [
+        "verification-link"
+      ],
+      "PostConfirmation": [
+        "add-to-group"
+      ]
+    },
+    "hostedUIDomainName": "summitsessions",
     "authProvidersUserPool": [
       "Google"
     ],
     "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:5173/auth/callback/\",\"https://master.d6yfo3hn69din.amplifyapp.com/auth/callback/\"],\"LogoutURLs\":[\"https://master.d6yfo3hn69din.amplifyapp.com/portal/\",\"http://localhost:5173/portal/\"]}",
     "userPoolGroupList": [],
     "serviceName": "Cognito",
+    "verificationBucketName": "snowapp726c94faverificationbucket",
     "usernameCaseSensitive": false,
-    "useEnabledMfas": true,
-    "authRoleArn": {
-      "Fn::GetAtt": [
-        "AuthRole",
-        "Arn"
-      ]
-    },
-    "unauthRoleArn": {
-      "Fn::GetAtt": [
-        "UnauthRole",
-        "Arn"
-      ]
-    },
-    "breakCircularDependency": true,
-    "dependsOn": [],
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://master.df5m0t3vxfz15.amplifyapp.com/home/\",\"http://localhost:5173/home/\"],\"LogoutURLs\":[\"https://master.df5m0t3vxfz15.amplifyapp.com/\",\"http://localhost:5173/\"]}",
-    "parentStack": {
-      "Ref": "AWS::StackId"
-    },
-    "permissions": []
+    "useEnabledMfas": true
   }
 }

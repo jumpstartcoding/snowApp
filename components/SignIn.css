@@ -478,7 +478,38 @@ background-color: white;}
 .fc .fc-daygrid-day-events {
   max-height: 6rem;
 }
+.feedback-popup button{
+ align-self: flex-start;
+ 
+}
+.feedback-popup button:hover{
+  background-color: red;
+  color: white;
+  border: none;
 
+}
+.feedback-popup a{
+text-decoration: none;
+}
+.feedback-popup{
+
+  flex-direction: column;
+  place-items: center;
+ box-shadow: 3px 5px var(--custom-navy-color);
+
+  padding: 25px;
+  position: fixed;
+  transform: translate(-50%,-50%);
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  border-radius: 20px;
+  max-width: 400px;
+
+
+ 
+
+}
 
 
 
@@ -496,9 +527,9 @@ background-color: white;}
  
 }
 .feedback label{
-  font-family:Courier, monospace;
+  font-family: 'Times New Roman', Times, serif;
   font-size: 1.1rem;
-  color: var(--custom-navy-color);
+  color: rgb(48, 45, 45);
   font-weight: bold;
 
 }

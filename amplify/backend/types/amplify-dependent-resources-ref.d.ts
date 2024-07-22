@@ -1,11 +1,4 @@
 export type AmplifyDependentResourcesAttributes = {
-  "analytics": {
-    "snowapp": {
-      "Id": "string",
-      "Region": "string",
-      "appName": "string"
-    }
-  },
   "api": {
     "snowapp": {
       "GraphQLAPIEndpointOutput": "string",
@@ -14,7 +7,7 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "auth": {
-    "snowappe3bc7239": {
+    "snowapp726c94fa": {
       "AppClientID": "string",
       "AppClientIDWeb": "string",
       "HostedUIDomain": "string",
@@ -24,6 +17,22 @@ export type AmplifyDependentResourcesAttributes = {
       "UserPoolArn": "string",
       "UserPoolId": "string",
       "UserPoolName": "string"
+    }
+  },
+  "function": {
+    "snowapp726c94faCustomMessage": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
+    "snowapp726c94faPostConfirmation": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
     }
   }
 }
