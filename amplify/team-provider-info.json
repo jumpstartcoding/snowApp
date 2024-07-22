@@ -13,9 +13,6 @@
       "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-snowapp-dev-172718-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
-      "api": {
-        "snowapp": {}
-      },
       "hosting": {
         "amplifyhosting": {
           "appId": "d6yfo3hn69din",

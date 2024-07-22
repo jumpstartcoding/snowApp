@@ -22,6 +22,62 @@ export const onCreateReservation = /* GraphQL */ `subscription OnCreateReservati
       name
       phone_number
       email
+      reservations {
+        items {
+          id
+          type
+          location
+          date
+          instructorID
+          instructor {
+            id
+            name
+            phone_number
+            email
+            reservations {
+              nextToken
+              __typename
+            }
+            locations
+            tier
+            createdAt
+            updatedAt
+            __typename
+          }
+          customer {
+            id
+            name
+            phone_number
+            email
+            reservation {
+              id
+              type
+              location
+              date
+              instructorID
+              createdAt
+              updatedAt
+              tier
+              status
+              reservationCustomerId
+              __typename
+            }
+            guest
+            createdAt
+            updatedAt
+            customerReservationId
+            __typename
+          }
+          createdAt
+          updatedAt
+          tier
+          status
+          reservationCustomerId
+          __typename
+        }
+        nextToken
+        __typename
+      }
       locations
       tier
       createdAt
@@ -33,6 +89,93 @@ export const onCreateReservation = /* GraphQL */ `subscription OnCreateReservati
       name
       phone_number
       email
+      reservation {
+        id
+        type
+        location
+        date
+        instructorID
+        instructor {
+          id
+          name
+          phone_number
+          email
+          reservations {
+            items {
+              id
+              type
+              location
+              date
+              instructorID
+              createdAt
+              updatedAt
+              tier
+              status
+              reservationCustomerId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          locations
+          tier
+          createdAt
+          updatedAt
+          __typename
+        }
+        customer {
+          id
+          name
+          phone_number
+          email
+          reservation {
+            id
+            type
+            location
+            date
+            instructorID
+            instructor {
+              id
+              name
+              phone_number
+              email
+              locations
+              tier
+              createdAt
+              updatedAt
+              __typename
+            }
+            customer {
+              id
+              name
+              phone_number
+              email
+              guest
+              createdAt
+              updatedAt
+              customerReservationId
+              __typename
+            }
+            createdAt
+            updatedAt
+            tier
+            status
+            reservationCustomerId
+            __typename
+          }
+          guest
+          createdAt
+          updatedAt
+          customerReservationId
+          __typename
+        }
+        createdAt
+        updatedAt
+        tier
+        status
+        reservationCustomerId
+        __typename
+      }
       guest
       createdAt
       updatedAt
@@ -65,6 +208,62 @@ export const onUpdateReservation = /* GraphQL */ `subscription OnUpdateReservati
       name
       phone_number
       email
+      reservations {
+        items {
+          id
+          type
+          location
+          date
+          instructorID
+          instructor {
+            id
+            name
+            phone_number
+            email
+            reservations {
+              nextToken
+              __typename
+            }
+            locations
+            tier
+            createdAt
+            updatedAt
+            __typename
+          }
+          customer {
+            id
+            name
+            phone_number
+            email
+            reservation {
+              id
+              type
+              location
+              date
+              instructorID
+              createdAt
+              updatedAt
+              tier
+              status
+              reservationCustomerId
+              __typename
+            }
+            guest
+            createdAt
+            updatedAt
+            customerReservationId
+            __typename
+          }
+          createdAt
+          updatedAt
+          tier
+          status
+          reservationCustomerId
+          __typename
+        }
+        nextToken
+        __typename
+      }
       locations
       tier
       createdAt
@@ -76,6 +275,93 @@ export const onUpdateReservation = /* GraphQL */ `subscription OnUpdateReservati
       name
       phone_number
       email
+      reservation {
+        id
+        type
+        location
+        date
+        instructorID
+        instructor {
+          id
+          name
+          phone_number
+          email
+          reservations {
+            items {
+              id
+              type
+              location
+              date
+              instructorID
+              createdAt
+              updatedAt
+              tier
+              status
+              reservationCustomerId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          locations
+          tier
+          createdAt
+          updatedAt
+          __typename
+        }
+        customer {
+          id
+          name
+          phone_number
+          email
+          reservation {
+            id
+            type
+            location
+            date
+            instructorID
+            instructor {
+              id
+              name
+              phone_number
+              email
+              locations
+              tier
+              createdAt
+              updatedAt
+              __typename
+            }
+            customer {
+              id
+              name
+              phone_number
+              email
+              guest
+              createdAt
+              updatedAt
+              customerReservationId
+              __typename
+            }
+            createdAt
+            updatedAt
+            tier
+            status
+            reservationCustomerId
+            __typename
+          }
+          guest
+          createdAt
+          updatedAt
+          customerReservationId
+          __typename
+        }
+        createdAt
+        updatedAt
+        tier
+        status
+        reservationCustomerId
+        __typename
+      }
       guest
       createdAt
       updatedAt
@@ -108,6 +394,62 @@ export const onDeleteReservation = /* GraphQL */ `subscription OnDeleteReservati
       name
       phone_number
       email
+      reservations {
+        items {
+          id
+          type
+          location
+          date
+          instructorID
+          instructor {
+            id
+            name
+            phone_number
+            email
+            reservations {
+              nextToken
+              __typename
+            }
+            locations
+            tier
+            createdAt
+            updatedAt
+            __typename
+          }
+          customer {
+            id
+            name
+            phone_number
+            email
+            reservation {
+              id
+              type
+              location
+              date
+              instructorID
+              createdAt
+              updatedAt
+              tier
+              status
+              reservationCustomerId
+              __typename
+            }
+            guest
+            createdAt
+            updatedAt
+            customerReservationId
+            __typename
+          }
+          createdAt
+          updatedAt
+          tier
+          status
+          reservationCustomerId
+          __typename
+        }
+        nextToken
+        __typename
+      }
       locations
       tier
       createdAt
@@ -119,6 +461,93 @@ export const onDeleteReservation = /* GraphQL */ `subscription OnDeleteReservati
       name
       phone_number
       email
+      reservation {
+        id
+        type
+        location
+        date
+        instructorID
+        instructor {
+          id
+          name
+          phone_number
+          email
+          reservations {
+            items {
+              id
+              type
+              location
+              date
+              instructorID
+              createdAt
+              updatedAt
+              tier
+              status
+              reservationCustomerId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          locations
+          tier
+          createdAt
+          updatedAt
+          __typename
+        }
+        customer {
+          id
+          name
+          phone_number
+          email
+          reservation {
+            id
+            type
+            location
+            date
+            instructorID
+            instructor {
+              id
+              name
+              phone_number
+              email
+              locations
+              tier
+              createdAt
+              updatedAt
+              __typename
+            }
+            customer {
+              id
+              name
+              phone_number
+              email
+              guest
+              createdAt
+              updatedAt
+              customerReservationId
+              __typename
+            }
+            createdAt
+            updatedAt
+            tier
+            status
+            reservationCustomerId
+            __typename
+          }
+          guest
+          createdAt
+          updatedAt
+          customerReservationId
+          __typename
+        }
+        createdAt
+        updatedAt
+        tier
+        status
+        reservationCustomerId
+        __typename
+      }
       guest
       createdAt
       updatedAt
@@ -149,6 +578,119 @@ export const onCreateCustomer = /* GraphQL */ `subscription OnCreateCustomer($fi
       location
       date
       instructorID
+      instructor {
+        id
+        name
+        phone_number
+        email
+        reservations {
+          items {
+            id
+            type
+            location
+            date
+            instructorID
+            instructor {
+              id
+              name
+              phone_number
+              email
+              locations
+              tier
+              createdAt
+              updatedAt
+              __typename
+            }
+            customer {
+              id
+              name
+              phone_number
+              email
+              guest
+              createdAt
+              updatedAt
+              customerReservationId
+              __typename
+            }
+            createdAt
+            updatedAt
+            tier
+            status
+            reservationCustomerId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        locations
+        tier
+        createdAt
+        updatedAt
+        __typename
+      }
+      customer {
+        id
+        name
+        phone_number
+        email
+        reservation {
+          id
+          type
+          location
+          date
+          instructorID
+          instructor {
+            id
+            name
+            phone_number
+            email
+            reservations {
+              nextToken
+              __typename
+            }
+            locations
+            tier
+            createdAt
+            updatedAt
+            __typename
+          }
+          customer {
+            id
+            name
+            phone_number
+            email
+            reservation {
+              id
+              type
+              location
+              date
+              instructorID
+              createdAt
+              updatedAt
+              tier
+              status
+              reservationCustomerId
+              __typename
+            }
+            guest
+            createdAt
+            updatedAt
+            customerReservationId
+            __typename
+          }
+          createdAt
+          updatedAt
+          tier
+          status
+          reservationCustomerId
+          __typename
+        }
+        guest
+        createdAt
+        updatedAt
+        customerReservationId
+        __typename
+      }
       createdAt
       updatedAt
       tier
@@ -179,6 +721,119 @@ export const onUpdateCustomer = /* GraphQL */ `subscription OnUpdateCustomer($fi
       location
       date
       instructorID
+      instructor {
+        id
+        name
+        phone_number
+        email
+        reservations {
+          items {
+            id
+            type
+            location
+            date
+            instructorID
+            instructor {
+              id
+              name
+              phone_number
+              email
+              locations
+              tier
+              createdAt
+              updatedAt
+              __typename
+            }
+            customer {
+              id
+              name
+              phone_number
+              email
+              guest
+              createdAt
+              updatedAt
+              customerReservationId
+              __typename
+            }
+            createdAt
+            updatedAt
+            tier
+            status
+            reservationCustomerId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        locations
+        tier
+        createdAt
+        updatedAt
+        __typename
+      }
+      customer {
+        id
+        name
+        phone_number
+        email
+        reservation {
+          id
+          type
+          location
+          date
+          instructorID
+          instructor {
+            id
+            name
+            phone_number
+            email
+            reservations {
+              nextToken
+              __typename
+            }
+            locations
+            tier
+            createdAt
+            updatedAt
+            __typename
+          }
+          customer {
+            id
+            name
+            phone_number
+            email
+            reservation {
+              id
+              type
+              location
+              date
+              instructorID
+              createdAt
+              updatedAt
+              tier
+              status
+              reservationCustomerId
+              __typename
+            }
+            guest
+            createdAt
+            updatedAt
+            customerReservationId
+            __typename
+          }
+          createdAt
+          updatedAt
+          tier
+          status
+          reservationCustomerId
+          __typename
+        }
+        guest
+        createdAt
+        updatedAt
+        customerReservationId
+        __typename
+      }
       createdAt
       updatedAt
       tier
@@ -209,6 +864,119 @@ export const onDeleteCustomer = /* GraphQL */ `subscription OnDeleteCustomer($fi
       location
       date
       instructorID
+      instructor {
+        id
+        name
+        phone_number
+        email
+        reservations {
+          items {
+            id
+            type
+            location
+            date
+            instructorID
+            instructor {
+              id
+              name
+              phone_number
+              email
+              locations
+              tier
+              createdAt
+              updatedAt
+              __typename
+            }
+            customer {
+              id
+              name
+              phone_number
+              email
+              guest
+              createdAt
+              updatedAt
+              customerReservationId
+              __typename
+            }
+            createdAt
+            updatedAt
+            tier
+            status
+            reservationCustomerId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        locations
+        tier
+        createdAt
+        updatedAt
+        __typename
+      }
+      customer {
+        id
+        name
+        phone_number
+        email
+        reservation {
+          id
+          type
+          location
+          date
+          instructorID
+          instructor {
+            id
+            name
+            phone_number
+            email
+            reservations {
+              nextToken
+              __typename
+            }
+            locations
+            tier
+            createdAt
+            updatedAt
+            __typename
+          }
+          customer {
+            id
+            name
+            phone_number
+            email
+            reservation {
+              id
+              type
+              location
+              date
+              instructorID
+              createdAt
+              updatedAt
+              tier
+              status
+              reservationCustomerId
+              __typename
+            }
+            guest
+            createdAt
+            updatedAt
+            customerReservationId
+            __typename
+          }
+          createdAt
+          updatedAt
+          tier
+          status
+          reservationCustomerId
+          __typename
+        }
+        guest
+        createdAt
+        updatedAt
+        customerReservationId
+        __typename
+      }
       createdAt
       updatedAt
       tier
@@ -236,6 +1004,93 @@ export const onCreateInstructor = /* GraphQL */ `subscription OnCreateInstructor
     phone_number
     email
     reservations {
+      items {
+        id
+        type
+        location
+        date
+        instructorID
+        instructor {
+          id
+          name
+          phone_number
+          email
+          reservations {
+            items {
+              id
+              type
+              location
+              date
+              instructorID
+              createdAt
+              updatedAt
+              tier
+              status
+              reservationCustomerId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          locations
+          tier
+          createdAt
+          updatedAt
+          __typename
+        }
+        customer {
+          id
+          name
+          phone_number
+          email
+          reservation {
+            id
+            type
+            location
+            date
+            instructorID
+            instructor {
+              id
+              name
+              phone_number
+              email
+              locations
+              tier
+              createdAt
+              updatedAt
+              __typename
+            }
+            customer {
+              id
+              name
+              phone_number
+              email
+              guest
+              createdAt
+              updatedAt
+              customerReservationId
+              __typename
+            }
+            createdAt
+            updatedAt
+            tier
+            status
+            reservationCustomerId
+            __typename
+          }
+          guest
+          createdAt
+          updatedAt
+          customerReservationId
+          __typename
+        }
+        createdAt
+        updatedAt
+        tier
+        status
+        reservationCustomerId
+        __typename
+      }
       nextToken
       __typename
     }
@@ -259,6 +1114,93 @@ export const onUpdateInstructor = /* GraphQL */ `subscription OnUpdateInstructor
     phone_number
     email
     reservations {
+      items {
+        id
+        type
+        location
+        date
+        instructorID
+        instructor {
+          id
+          name
+          phone_number
+          email
+          reservations {
+            items {
+              id
+              type
+              location
+              date
+              instructorID
+              createdAt
+              updatedAt
+              tier
+              status
+              reservationCustomerId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          locations
+          tier
+          createdAt
+          updatedAt
+          __typename
+        }
+        customer {
+          id
+          name
+          phone_number
+          email
+          reservation {
+            id
+            type
+            location
+            date
+            instructorID
+            instructor {
+              id
+              name
+              phone_number
+              email
+              locations
+              tier
+              createdAt
+              updatedAt
+              __typename
+            }
+            customer {
+              id
+              name
+              phone_number
+              email
+              guest
+              createdAt
+              updatedAt
+              customerReservationId
+              __typename
+            }
+            createdAt
+            updatedAt
+            tier
+            status
+            reservationCustomerId
+            __typename
+          }
+          guest
+          createdAt
+          updatedAt
+          customerReservationId
+          __typename
+        }
+        createdAt
+        updatedAt
+        tier
+        status
+        reservationCustomerId
+        __typename
+      }
       nextToken
       __typename
     }
@@ -282,6 +1224,93 @@ export const onDeleteInstructor = /* GraphQL */ `subscription OnDeleteInstructor
     phone_number
     email
     reservations {
+      items {
+        id
+        type
+        location
+        date
+        instructorID
+        instructor {
+          id
+          name
+          phone_number
+          email
+          reservations {
+            items {
+              id
+              type
+              location
+              date
+              instructorID
+              createdAt
+              updatedAt
+              tier
+              status
+              reservationCustomerId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          locations
+          tier
+          createdAt
+          updatedAt
+          __typename
+        }
+        customer {
+          id
+          name
+          phone_number
+          email
+          reservation {
+            id
+            type
+            location
+            date
+            instructorID
+            instructor {
+              id
+              name
+              phone_number
+              email
+              locations
+              tier
+              createdAt
+              updatedAt
+              __typename
+            }
+            customer {
+              id
+              name
+              phone_number
+              email
+              guest
+              createdAt
+              updatedAt
+              customerReservationId
+              __typename
+            }
+            createdAt
+            updatedAt
+            tier
+            status
+            reservationCustomerId
+            __typename
+          }
+          guest
+          createdAt
+          updatedAt
+          customerReservationId
+          __typename
+        }
+        createdAt
+        updatedAt
+        tier
+        status
+        reservationCustomerId
+        __typename
+      }
       nextToken
       __typename
     }

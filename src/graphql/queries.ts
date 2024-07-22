@@ -20,6 +20,62 @@ export const getReservation = /* GraphQL */ `query GetReservation($id: ID!) {
       name
       phone_number
       email
+      reservations {
+        items {
+          id
+          type
+          location
+          date
+          instructorID
+          instructor {
+            id
+            name
+            phone_number
+            email
+            reservations {
+              nextToken
+              __typename
+            }
+            locations
+            tier
+            createdAt
+            updatedAt
+            __typename
+          }
+          customer {
+            id
+            name
+            phone_number
+            email
+            reservation {
+              id
+              type
+              location
+              date
+              instructorID
+              createdAt
+              updatedAt
+              tier
+              status
+              reservationCustomerId
+              __typename
+            }
+            guest
+            createdAt
+            updatedAt
+            customerReservationId
+            __typename
+          }
+          createdAt
+          updatedAt
+          tier
+          status
+          reservationCustomerId
+          __typename
+        }
+        nextToken
+        __typename
+      }
       locations
       tier
       createdAt
@@ -31,6 +87,93 @@ export const getReservation = /* GraphQL */ `query GetReservation($id: ID!) {
       name
       phone_number
       email
+      reservation {
+        id
+        type
+        location
+        date
+        instructorID
+        instructor {
+          id
+          name
+          phone_number
+          email
+          reservations {
+            items {
+              id
+              type
+              location
+              date
+              instructorID
+              createdAt
+              updatedAt
+              tier
+              status
+              reservationCustomerId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          locations
+          tier
+          createdAt
+          updatedAt
+          __typename
+        }
+        customer {
+          id
+          name
+          phone_number
+          email
+          reservation {
+            id
+            type
+            location
+            date
+            instructorID
+            instructor {
+              id
+              name
+              phone_number
+              email
+              locations
+              tier
+              createdAt
+              updatedAt
+              __typename
+            }
+            customer {
+              id
+              name
+              phone_number
+              email
+              guest
+              createdAt
+              updatedAt
+              customerReservationId
+              __typename
+            }
+            createdAt
+            updatedAt
+            tier
+            status
+            reservationCustomerId
+            __typename
+          }
+          guest
+          createdAt
+          updatedAt
+          customerReservationId
+          __typename
+        }
+        createdAt
+        updatedAt
+        tier
+        status
+        reservationCustomerId
+        __typename
+      }
       guest
       createdAt
       updatedAt
@@ -61,6 +204,119 @@ export const listReservations = /* GraphQL */ `query ListReservations(
       location
       date
       instructorID
+      instructor {
+        id
+        name
+        phone_number
+        email
+        reservations {
+          items {
+            id
+            type
+            location
+            date
+            instructorID
+            instructor {
+              id
+              name
+              phone_number
+              email
+              locations
+              tier
+              createdAt
+              updatedAt
+              __typename
+            }
+            customer {
+              id
+              name
+              phone_number
+              email
+              guest
+              createdAt
+              updatedAt
+              customerReservationId
+              __typename
+            }
+            createdAt
+            updatedAt
+            tier
+            status
+            reservationCustomerId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        locations
+        tier
+        createdAt
+        updatedAt
+        __typename
+      }
+      customer {
+        id
+        name
+        phone_number
+        email
+        reservation {
+          id
+          type
+          location
+          date
+          instructorID
+          instructor {
+            id
+            name
+            phone_number
+            email
+            reservations {
+              nextToken
+              __typename
+            }
+            locations
+            tier
+            createdAt
+            updatedAt
+            __typename
+          }
+          customer {
+            id
+            name
+            phone_number
+            email
+            reservation {
+              id
+              type
+              location
+              date
+              instructorID
+              createdAt
+              updatedAt
+              tier
+              status
+              reservationCustomerId
+              __typename
+            }
+            guest
+            createdAt
+            updatedAt
+            customerReservationId
+            __typename
+          }
+          createdAt
+          updatedAt
+          tier
+          status
+          reservationCustomerId
+          __typename
+        }
+        guest
+        createdAt
+        updatedAt
+        customerReservationId
+        __typename
+      }
       createdAt
       updatedAt
       tier
@@ -88,6 +344,119 @@ export const getCustomer = /* GraphQL */ `query GetCustomer($id: ID!) {
       location
       date
       instructorID
+      instructor {
+        id
+        name
+        phone_number
+        email
+        reservations {
+          items {
+            id
+            type
+            location
+            date
+            instructorID
+            instructor {
+              id
+              name
+              phone_number
+              email
+              locations
+              tier
+              createdAt
+              updatedAt
+              __typename
+            }
+            customer {
+              id
+              name
+              phone_number
+              email
+              guest
+              createdAt
+              updatedAt
+              customerReservationId
+              __typename
+            }
+            createdAt
+            updatedAt
+            tier
+            status
+            reservationCustomerId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        locations
+        tier
+        createdAt
+        updatedAt
+        __typename
+      }
+      customer {
+        id
+        name
+        phone_number
+        email
+        reservation {
+          id
+          type
+          location
+          date
+          instructorID
+          instructor {
+            id
+            name
+            phone_number
+            email
+            reservations {
+              nextToken
+              __typename
+            }
+            locations
+            tier
+            createdAt
+            updatedAt
+            __typename
+          }
+          customer {
+            id
+            name
+            phone_number
+            email
+            reservation {
+              id
+              type
+              location
+              date
+              instructorID
+              createdAt
+              updatedAt
+              tier
+              status
+              reservationCustomerId
+              __typename
+            }
+            guest
+            createdAt
+            updatedAt
+            customerReservationId
+            __typename
+          }
+          createdAt
+          updatedAt
+          tier
+          status
+          reservationCustomerId
+          __typename
+        }
+        guest
+        createdAt
+        updatedAt
+        customerReservationId
+        __typename
+      }
       createdAt
       updatedAt
       tier
@@ -117,6 +486,93 @@ export const listCustomers = /* GraphQL */ `query ListCustomers(
       name
       phone_number
       email
+      reservation {
+        id
+        type
+        location
+        date
+        instructorID
+        instructor {
+          id
+          name
+          phone_number
+          email
+          reservations {
+            items {
+              id
+              type
+              location
+              date
+              instructorID
+              createdAt
+              updatedAt
+              tier
+              status
+              reservationCustomerId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          locations
+          tier
+          createdAt
+          updatedAt
+          __typename
+        }
+        customer {
+          id
+          name
+          phone_number
+          email
+          reservation {
+            id
+            type
+            location
+            date
+            instructorID
+            instructor {
+              id
+              name
+              phone_number
+              email
+              locations
+              tier
+              createdAt
+              updatedAt
+              __typename
+            }
+            customer {
+              id
+              name
+              phone_number
+              email
+              guest
+              createdAt
+              updatedAt
+              customerReservationId
+              __typename
+            }
+            createdAt
+            updatedAt
+            tier
+            status
+            reservationCustomerId
+            __typename
+          }
+          guest
+          createdAt
+          updatedAt
+          customerReservationId
+          __typename
+        }
+        createdAt
+        updatedAt
+        tier
+        status
+        reservationCustomerId
+        __typename
+      }
       guest
       createdAt
       updatedAt
@@ -138,6 +594,93 @@ export const getInstructor = /* GraphQL */ `query GetInstructor($id: ID!) {
     phone_number
     email
     reservations {
+      items {
+        id
+        type
+        location
+        date
+        instructorID
+        instructor {
+          id
+          name
+          phone_number
+          email
+          reservations {
+            items {
+              id
+              type
+              location
+              date
+              instructorID
+              createdAt
+              updatedAt
+              tier
+              status
+              reservationCustomerId
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          locations
+          tier
+          createdAt
+          updatedAt
+          __typename
+        }
+        customer {
+          id
+          name
+          phone_number
+          email
+          reservation {
+            id
+            type
+            location
+            date
+            instructorID
+            instructor {
+              id
+              name
+              phone_number
+              email
+              locations
+              tier
+              createdAt
+              updatedAt
+              __typename
+            }
+            customer {
+              id
+              name
+              phone_number
+              email
+              guest
+              createdAt
+              updatedAt
+              customerReservationId
+              __typename
+            }
+            createdAt
+            updatedAt
+            tier
+            status
+            reservationCustomerId
+            __typename
+          }
+          guest
+          createdAt
+          updatedAt
+          customerReservationId
+          __typename
+        }
+        createdAt
+        updatedAt
+        tier
+        status
+        reservationCustomerId
+        __typename
+      }
       nextToken
       __typename
     }
@@ -163,6 +706,62 @@ export const listInstructors = /* GraphQL */ `query ListInstructors(
       name
       phone_number
       email
+      reservations {
+        items {
+          id
+          type
+          location
+          date
+          instructorID
+          instructor {
+            id
+            name
+            phone_number
+            email
+            reservations {
+              nextToken
+              __typename
+            }
+            locations
+            tier
+            createdAt
+            updatedAt
+            __typename
+          }
+          customer {
+            id
+            name
+            phone_number
+            email
+            reservation {
+              id
+              type
+              location
+              date
+              instructorID
+              createdAt
+              updatedAt
+              tier
+              status
+              reservationCustomerId
+              __typename
+            }
+            guest
+            createdAt
+            updatedAt
+            customerReservationId
+            __typename
+          }
+          createdAt
+          updatedAt
+          tier
+          status
+          reservationCustomerId
+          __typename
+        }
+        nextToken
+        __typename
+      }
       locations
       tier
       createdAt
@@ -230,6 +829,119 @@ export const reservationsByInstructorID = /* GraphQL */ `query ReservationsByIns
       location
       date
       instructorID
+      instructor {
+        id
+        name
+        phone_number
+        email
+        reservations {
+          items {
+            id
+            type
+            location
+            date
+            instructorID
+            instructor {
+              id
+              name
+              phone_number
+              email
+              locations
+              tier
+              createdAt
+              updatedAt
+              __typename
+            }
+            customer {
+              id
+              name
+              phone_number
+              email
+              guest
+              createdAt
+              updatedAt
+              customerReservationId
+              __typename
+            }
+            createdAt
+            updatedAt
+            tier
+            status
+            reservationCustomerId
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        locations
+        tier
+        createdAt
+        updatedAt
+        __typename
+      }
+      customer {
+        id
+        name
+        phone_number
+        email
+        reservation {
+          id
+          type
+          location
+          date
+          instructorID
+          instructor {
+            id
+            name
+            phone_number
+            email
+            reservations {
+              nextToken
+              __typename
+            }
+            locations
+            tier
+            createdAt
+            updatedAt
+            __typename
+          }
+          customer {
+            id
+            name
+            phone_number
+            email
+            reservation {
+              id
+              type
+              location
+              date
+              instructorID
+              createdAt
+              updatedAt
+              tier
+              status
+              reservationCustomerId
+              __typename
+            }
+            guest
+            createdAt
+            updatedAt
+            customerReservationId
+            __typename
+          }
+          createdAt
+          updatedAt
+          tier
+          status
+          reservationCustomerId
+          __typename
+        }
+        guest
+        createdAt
+        updatedAt
+        customerReservationId
+        __typename
+      }
       createdAt
       updatedAt
       tier
