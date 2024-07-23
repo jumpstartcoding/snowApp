@@ -35,6 +35,9 @@
           "deploymentBucketName": "amplify-snowapp-dev-172718-deployment",
           "s3Key": "amplify-builds/snowapp726c94faPostConfirmation-34784b6970716e543370-build.zip"
         }
+      },
+      "api": {
+        "snowapp": {}
       }
     }
   }

@@ -480,7 +480,7 @@ background-color: white;}
 }
 .feedback-popup button{
  align-self: flex-start;
- 
+
 }
 .feedback-popup button:hover{
   background-color: red;
@@ -585,5 +585,15 @@ text-decoration: none;
 .styled-textarea::placeholder {
   color: #999;
   font-style: italic;
+}
+
+.reviews{
+  display: flex;
+  place-items: center;
+  flex-direction: column;
+  
+  margin-top: 100px;
+  border: 1px solid orange;
+
 }
 

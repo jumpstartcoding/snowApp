@@ -1,12 +1,13 @@
 import {
   updateCustomer,
+  createReview,
   updateReservation,
   deleteReservation,
   deleteCustomer,
 } from "../src/graphql/mutations";
-import { listReservations } from "../src/graphql/queries";
+import { listReservations, listReviews } from "../src/graphql/queries";
 import { V6Client, GraphQLResult } from "@aws-amplify/api-graphql";
-import { ListReservationsQuery } from "../src/API";
+import { ListReservationsQuery, ListReviewsQuery } from "../src/API";
 
 export async function removeReservation(
   resID: string,
@@ -35,6 +36,32 @@ export async function removeReservation(
     alert("Deleting Reservation Failed");
   } finally {
     setLoading({ ...loading, [index]: false });
+  }
+}
+
+export async function allReviews(
+  client: V6Client<never>
+): Promise<GraphQLResult<ListReviewsQuery>> {
+  const response = await client.graphql({
+    query: listReviews,
+    variables: {
+      filter: {},
+    },
+  });
+
+  return response;
+}
+
+export async function postReview(data: string, client: V6Client<never>) {
+  const input = { content: data };
+  try {
+    const response = await client.graphql({
+      query: createReview,
+      variables: { input: input },
+    });
+    console.log(response);
+  } catch (error) {
+    console.log(error);
   }
 }
 

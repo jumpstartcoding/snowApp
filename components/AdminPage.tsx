@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CreateRes from "./CreateRes";
 import ResCard from "./ResCard";
+import Reviews from "./Reviews";
 import InstructorRes from "./InstructorRes";
 
 export default function AdminPage() {
@@ -18,6 +19,8 @@ export default function AdminPage() {
             </h3>
             <CreateRes />
           </>
+        ) : pageElement === "reviews" ? (
+          <Reviews />
         ) : (
           <div
             style={{
@@ -47,6 +50,9 @@ export default function AdminPage() {
         </button>
         <button onClick={async () => handleClick("create")}>
           <span id="createIcon" className="snowIcon"></span>
+        </button>
+        <button onClick={async () => handleClick("reviews")}>
+          <span id="reviewsIcon" className="snowIcon"></span>
         </button>
       </div>
     </>
