@@ -9,7 +9,13 @@ export default function Reviews() {
   useEffect(() => {
     async function fetchData() {
       const reviews = await allReviews(client);
-      setReviews(reviews.data.listReviews?.items);
+      setReviews(
+        reviews.data.listReviews?.items.sort(
+          (a, b) =>
+            new Date(a?.createdAt ?? "").getTime() -
+            new Date(b?.createdAt ?? "").getTime()
+        )
+      );
       console.log(reviews.data.listReviews?.items);
     }
     fetchData();
@@ -21,10 +27,11 @@ export default function Reviews() {
       {reviewss.map((review: any, index: number) => (
         <div key={index}>
           {" "}
-          <h1>
-            {index + 1}: {review.createdAt}
-          </h1>
-          {review.content} hot cake
+          <header>
+            {index + 1}.
+            <h5>{new Date(review.createdAt).toLocaleDateString()}</h5>
+          </header>
+          <p>{review.content}</p>
         </div>
       ))}
     </section>

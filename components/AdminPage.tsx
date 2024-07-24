@@ -14,13 +14,24 @@ export default function AdminPage() {
           <InstructorRes />
         ) : pageElement === "create" ? (
           <>
-            <h3 style={{ textAlign: "center", marginTop: "4rem" }}>
+            <h3
+              className="section-title"
+              style={{ textAlign: "center", marginTop: "4rem" }}
+            >
               Create Reservation
             </h3>
             <CreateRes />
           </>
         ) : pageElement === "reviews" ? (
-          <Reviews />
+          <>
+            <h3
+              className="section-title"
+              style={{ textAlign: "center", marginTop: "4rem" }}
+            >
+              Reviews
+            </h3>
+            <Reviews />
+          </>
         ) : (
           <div
             style={{
@@ -30,7 +41,10 @@ export default function AdminPage() {
               gap: "10px",
             }}
           >
-            <h3 style={{ textAlign: "center", marginTop: "4rem" }}>
+            <h3
+              className="section-title"
+              style={{ textAlign: "center", marginTop: "4rem" }}
+            >
               {" "}
               All Reservations
             </h3>
