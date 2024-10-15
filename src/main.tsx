@@ -28,7 +28,7 @@ import AdminPage from "../components/AdminPage";
 import Customer from "../components/Customer";
 import MapComponent from "../components/Map";
 
-import { APIProvider, MapCameraChangedEvent } from "@vis.gl/react-google-maps";
+import { APIProvider } from "@vis.gl/react-google-maps";
 
 import "/components/SignIn.css";
 

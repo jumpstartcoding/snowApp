@@ -21,7 +21,7 @@ export default function MapComponent() {
     content: "Javid & Aysel Hideout",
     position: null,
   });
-  const [loadMap, setLoadMap] = useState<boolean>(true);
+
   const mapRef = useRef<google.maps.Map | null>(null);
   const [windowState, setWindowState] = useState<string>("None");
 
@@ -431,7 +431,7 @@ export default function MapComponent() {
             </div>
           )
         )}
-        {loadMap ? (
+        {true ? (
           <Map
             id="map"
             defaultZoom={5}
