@@ -26,6 +26,10 @@ import ResCalendar from "../components/Calendar";
 import Reservations from "../components/Reservations";
 import AdminPage from "../components/AdminPage";
 import Customer from "../components/Customer";
+import MapComponent from "../components/Map";
+
+import { APIProvider, MapCameraChangedEvent } from "@vis.gl/react-google-maps";
+
 import "/components/SignIn.css";
 
 Amplify.configure(config);
@@ -219,48 +223,47 @@ const router = createBrowserRouter([
       },
       { path: "review", element: <Feedback /> },
       {
+        path: "map",
+        element: (
+          <APIProvider
+            apiKey={"AIzaSyBdi5fJp7dfj0puO9M-OGQ03wdXtsPCXXQ"} // Replace with your actual API key
+            onLoad={() => console.log("Maps API has loaded.")}
+          >
+            <MapComponent />
+          </APIProvider>
+        ),
+      },
+      {
         path: "home",
         element: (
-          <>
-            <Authenticator
-              variation="modal" //full screen
-              components={components}
-              formFields={formFields}
-              socialProviders={["google"]}
-            >
-              <NavBar>
-                <Outlet></Outlet>
-                <ScrollToTop />
-              </NavBar>
-            </Authenticator>
-          </>
+          <Authenticator
+            variation="modal" // Full screen
+            components={components}
+            formFields={formFields}
+            socialProviders={["google"]}
+          >
+            <NavBar>
+              <Outlet />
+              <ScrollToTop />
+            </NavBar>
+          </Authenticator>
         ),
         children: [
           { path: "", element: <HomePage /> },
-
-          {
-            path: "calendar",
-            element: <ResCalendar />,
-          },
-          {
-            path: "reservations",
-            element: <Reservations />,
-          },
-          {
-            path: "admin",
-            element: <AdminPage />,
-          },
+          { path: "calendar", element: <ResCalendar /> },
+          { path: "reservations", element: <Reservations /> },
+          { path: "admin", element: <AdminPage /> },
         ],
       },
     ],
   },
-
   {
     path: "*",
     element: <NotFound />,
   },
 ]);
 
+// Render the Application
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <RouterProvider router={router} />
