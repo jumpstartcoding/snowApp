@@ -10,6 +10,9 @@ import {
   InfoWindow,
   Pin,
 } from "@vis.gl/react-google-maps";
+import cabinImage from "/src/assets/cabin.jpg";
+import slopeImage from "/src/assets/slope.jpg";
+import bkgImage from "/src/assets/bkg.jpg";
 
 export default function MapComponent() {
   const [markerInfo, setMarkerInfo] = useState<{
@@ -348,11 +351,7 @@ export default function MapComponent() {
 
         <div className="partnerships">
           <div className="partnership">
-            <img
-              loading="lazy"
-              src="/src/assets/cabin.jpg"
-              alt="Accommodation"
-            />
+            <img loading="lazy" src={cabinImage} alt="Accommodation" />
             <h3>Accommodations</h3>
             <p>
               We've curated a selection of Airbnb, VRBO, and private listings
@@ -362,7 +361,7 @@ export default function MapComponent() {
             </p>
           </div>
           <div className="partnership">
-            <img loading="lazy" src="/src/assets/slope.jpg" alt="Ski Slope" />
+            <img loading="lazy" src={slopeImage} alt="Ski Slope" />
             <h3>Ski Slopes</h3>
             <p>
               Discover the best ski slopes where you can enhance your skills
@@ -394,7 +393,7 @@ export default function MapComponent() {
               <h3> {markerInfo.title}</h3>
             </header>
 
-            <img src="/src/assets/bkg.jpg" alt="Image" />
+            <img src={bkgImage} alt="Image" />
             <h5 className="link-container">
               {" "}
               <a
