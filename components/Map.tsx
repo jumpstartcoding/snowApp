@@ -31,199 +31,199 @@ export default function MapComponent() {
   type Poi = { key: string; location: google.maps.LatLngLiteral };
   const locations: Poi[] = [
     {
-      key: "Buxton Lodge - Melissa Kane Pagotto",
+      key: "Buxton Lodge",
       location: { lat: 41.11898, lng: -75.05232 },
     },
     {
-      key: "Cozy Cabin - Kate Flanagan",
+      key: "Cozy Cabin",
       location: { lat: 41.25551, lng: -75.47079 },
     },
     {
-      key: "Cozy Mountain Lakehouse - Avi Rose",
+      key: "Cozy Mountain Lakehouse",
       location: { lat: 41.0606423, lng: -75.5910219 },
     },
     {
-      key: "The Hideout Chalet - CG Vacation Rental Prop Management",
+      key: "The Hideout Chalet",
       location: { lat: 41.4196276, lng: -75.3472886 },
     },
     {
-      key: "Just Breathe - CG Vacation Rental Prop Management",
+      key: "Just Breathe",
       location: { lat: 41.4309425, lng: -75.352273 },
     },
     {
-      key: "The Lightforest Chalet - CG Vacation Rental Prop Management",
+      key: "The Lightforest Chalet",
       location: { lat: 41.4247878, lng: -75.338322 },
     },
     {
-      key: "Up Cabin - CG Vacation Rental Prop Management",
+      key: "Up Cabin",
       location: { lat: 41.4466568, lng: -75.3429261 },
     },
     {
-      key: "Willow’s Place - CG Vacation Rental Prop Management",
+      key: "Willow’s Place",
       location: { lat: 41.4298275, lng: -75.3431131 },
     },
     {
-      key: "Meadowview Manor - CG Vacation Rental Prop Management",
+      key: "Meadowview Manor",
       location: { lat: 41.4393323, lng: -75.364341 },
     },
     {
-      key: "Shiff Shack - CG Vacation Rental Prop Management",
+      key: "Shiff Shack",
       location: { lat: 41.4524227, lng: -75.3449826 },
     },
     {
-      key: "Fawn Chateau - CG Vacation Rental Prop Management",
+      key: "Fawn Chateau",
       location: { lat: 41.4486341, lng: -75.3432691 },
     },
     {
-      key: "Sky’s the Limit - CG Vacation Rental Prop Management",
+      key: "Sky’s the Limit",
       location: { lat: 41.4540975, lng: -75.3237248 },
     },
     {
-      key: "The Regal Lodge - CG Vacation Rental Prop Management",
+      key: "The Regal Lodge",
       location: { lat: 41.4355231, lng: -75.3402843 },
     },
     {
-      key: "Vacation Station - CG Vacation Rental Prop Management",
+      key: "Vacation Station",
       location: { lat: 41.4569553, lng: -75.325709 },
     },
     {
-      key: "Cozy Cabin - CG Vacation Rental Prop Management (Estimate)",
+      key: "Cozy Cabin 2",
       location: { lat: 41.4157344, lng: -75.3570409 },
     },
     {
-      key: "Tree House - CG Vacation Rental Prop Management (Estimate)",
+      key: "Tree House",
       location: { lat: 41.4482893, lng: -75.3422964 },
     },
     {
-      key: "Loch Nest Mtn. - CG Vacation Rental Prop Management",
+      key: "Loch Nest Mtn.",
       location: { lat: 41.4590676, lng: -75.3388106 },
     },
     {
-      key: "Pine Lodge - CG Vacation Rental Prop Management",
+      key: "Pine Lodge",
       location: { lat: 41.4616204, lng: -75.3189202 },
     },
     {
-      key: "The Escape at The Hideout - CG Vacation Rental Prop Management",
+      key: "The Escape at The Hideout",
       location: { lat: 41.4560149, lng: -75.3156846 },
     },
     {
-      key: "It’s 5 O’Clock Somewhere - CG Vacation Rental Prop Management",
+      key: "It’s 5 O’Clock Somewhere",
       location: { lat: 41.4385772, lng: -75.3596001 },
     },
     {
-      key: "The Fox Den - CG Vacation Rental Prop Management",
+      key: "The Fox Den",
       location: { lat: 41.4151749, lng: -75.3484843 },
     },
     {
-      key: "Lake Ariel Cottage - CG Vacation Rental Prop Management",
+      key: "Lake Ariel Cottage",
       location: { lat: 41.4266608, lng: -75.3388115 },
     },
     {
-      key: "The Dacha - CG Vacation Rental Prop Management",
+      key: "The Dacha",
       location: { lat: 41.4263758, lng: -75.3548349 },
     },
     {
-      key: "Palm Hideaway - CG Vacation Rental Prop Management",
+      key: "Palm Hideaway",
       location: { lat: 41.413305, lng: -75.346938 },
     },
     {
-      key: "A Frame of Mind - CG Vacation Rental Prop Management",
+      key: "A Frame of Mind",
       location: { lat: 41.4500161, lng: -75.4412575 },
     },
     {
-      key: "The Boulders - CG Vacation Rental Prop Management",
+      key: "The Boulders",
       location: { lat: 41.4497799, lng: -75.3474151 },
     },
     {
-      key: "The Treehouse Retreat - CG Vacation Rental Prop Management",
+      key: "The Treehouse Retreat",
       location: { lat: 41.4327877, lng: -75.3430975 },
     },
     {
-      key: "House in the Trees - CG Vacation Rental Prop Management",
+      key: "House in the Trees",
       location: { lat: 41.4275142, lng: -75.35502 },
     },
     {
-      key: "Brentwood Chalet - CG Vacation Rental Prop Management",
+      key: "Brentwood Chalet",
       location: { lat: 41.4325663, lng: -75.3584066 },
     },
     {
-      key: "Sunset View - CG Vacation Rental Prop Management",
+      key: "Sunset View",
       location: { lat: 41.4604726, lng: -75.3288758 },
     },
     {
-      key: "On the Rocks - CG Vacation Rental Prop Management (Estimate)",
+      key: "On the Rocks",
       location: { lat: 41.4107232, lng: -75.341797 },
     },
     {
-      key: "Tree House - CG Vacation Rental Prop Management (Estimate) 2",
+      key: "Tree House 2",
       location: { lat: 41.4107232, lng: -75.341797 },
     },
     {
-      key: "Family Ties - CG Vacation Rental Prop Management (Same as On the Rocks)",
+      key: "Family Ties",
       location: { lat: 41.4107232, lng: -75.341797 },
     },
     {
-      key: "Tree House - CG Vacation Rental Prop Management",
+      key: "Tree House 3",
       location: { lat: 41.4477956, lng: -75.3415566 },
     },
     {
-      key: "Deer Run Retreat - James Breese",
+      key: "Deer Run Retreat",
       location: { lat: 41.218724, lng: -75.363915 },
     },
     {
-      key: "Home Away from Home - Anna Fledchun",
+      key: "Home Away from Home",
       location: { lat: 41.053268, lng: -75.368113 },
     },
     {
-      key: "Paradise Retreat - Anna Fledchun",
+      key: "Paradise Retreat",
       location: { lat: 41.050857, lng: -75.363556 },
     },
     {
-      key: "Shawnee Mtn - Anna Fledchun (Estimate)",
+      key: "Shawnee Mtn",
       location: { lat: 41.043138, lng: -75.082993 },
     },
     {
-      key: "Great Summer Escape - Javid & Aysel (Estimate)",
+      key: "Great Summer Escape",
       location: { lat: 41.4403, lng: -75.353285 },
     },
     {
-      key: "Kelly Property - Kelly Mongillo (Estimate)",
+      key: "Kelly Property",
       location: { lat: 41.00254, lng: -75.528982 },
     },
     {
-      key: "Lake Breeze Hideaway - Erika Stark",
+      key: "Lake Breeze Hideaway",
       location: { lat: 41.16291, lng: -75.554776 },
     },
     {
-      key: "Ski Chalet in Arrowhead Lake - Nena",
+      key: "Ski Chalet in Arrowhead Lake",
       location: { lat: 41.144829, lng: -75.561227 },
     },
     {
-      key: "Summit Bear - Zbigniew Stankiewicz (Estimate)",
+      key: "Summit Bear",
       location: { lat: 41.116341, lng: -75.396687 },
     },
     {
-      key: "Three Daughters Properties - Don Mccollum",
+      key: "Three Daughters Properties",
       location: { lat: 41.053397, lng: -75.36819 },
     },
     {
-      key: "Little Summit Location - Don Mccollum (Estimate)",
+      key: "Little Summit Location",
       location: { lat: 41.084789, lng: -75.412782 },
     },
     {
-      key: "Boulder Lake Location - Don Mccollum (Estimate)",
+      key: "Boulder Lake Location",
       location: { lat: 41.05373, lng: -75.592474 },
     },
     {
-      key: "Emerald Estate - Don Mccollum (Estimate)",
+      key: "Emerald Estate",
       location: { lat: 41.0853644, lng: -75.4314456 },
     },
     {
-      key: "Luxury Lakefront - Liz Grant (Estimate)",
+      key: "Luxury Lakefront",
       location: { lat: 41.0600317, lng: -75.5987751 },
     },
     {
-      key: "Lake Harmony - Liz Grant (Estimate)",
+      key: "Lake Harmony",
       location: { lat: 41.0563215, lng: -75.6054331 },
     },
   ];
@@ -450,7 +450,9 @@ export default function MapComponent() {
               <InfoWindow
                 pixelOffset={[0, -40]}
                 position={markerInfo.position}
-                headerContent={<div>{markerInfo.title}</div>}
+                headerContent={
+                  <div className="infoWindow">{markerInfo.title}</div>
+                }
               />
             )}
           </Map>
