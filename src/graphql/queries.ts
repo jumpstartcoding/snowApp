@@ -779,6 +779,8 @@ export const listInstructors = /* GraphQL */ `query ListInstructors(
 export const getReview = /* GraphQL */ `query GetReview($id: ID!) {
   getReview(id: $id) {
     id
+    name
+    date
     content
     rating
     createdAt
@@ -795,6 +797,8 @@ export const listReviews = /* GraphQL */ `query ListReviews(
   listReviews(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
+      name
+      date
       content
       rating
       createdAt

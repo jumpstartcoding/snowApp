@@ -1328,6 +1328,8 @@ export const onDeleteInstructor = /* GraphQL */ `subscription OnDeleteInstructor
 export const onCreateReview = /* GraphQL */ `subscription OnCreateReview($filter: ModelSubscriptionReviewFilterInput) {
   onCreateReview(filter: $filter) {
     id
+    name
+    date
     content
     rating
     createdAt
@@ -1342,6 +1344,8 @@ export const onCreateReview = /* GraphQL */ `subscription OnCreateReview($filter
 export const onUpdateReview = /* GraphQL */ `subscription OnUpdateReview($filter: ModelSubscriptionReviewFilterInput) {
   onUpdateReview(filter: $filter) {
     id
+    name
+    date
     content
     rating
     createdAt
@@ -1356,6 +1360,8 @@ export const onUpdateReview = /* GraphQL */ `subscription OnUpdateReview($filter
 export const onDeleteReview = /* GraphQL */ `subscription OnDeleteReview($filter: ModelSubscriptionReviewFilterInput) {
   onDeleteReview(filter: $filter) {
     id
+    name
+    date
     content
     rating
     createdAt

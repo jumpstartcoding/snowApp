@@ -26,11 +26,21 @@ export default function Reviews() {
     <section className="reviews">
       {reviewss.map((review: any, index: number) => (
         <div key={index}>
-          {" "}
           <header>
             {index + 1}.
             <h5>{new Date(review.createdAt).toLocaleDateString()}</h5>
           </header>
+          <h4>
+            {" "}
+            <strong>Name: </strong>
+            {review.name}
+          </h4>
+
+          <h4>
+            {" "}
+            <strong>Date of Lesson: </strong>
+            {new Date(review.date).toLocaleDateString()}
+          </h4>
           <p>{review.content}</p>
         </div>
       ))}

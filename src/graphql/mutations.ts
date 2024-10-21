@@ -1346,6 +1346,8 @@ export const createReview = /* GraphQL */ `mutation CreateReview(
 ) {
   createReview(input: $input, condition: $condition) {
     id
+    name
+    date
     content
     rating
     createdAt
@@ -1363,6 +1365,8 @@ export const updateReview = /* GraphQL */ `mutation UpdateReview(
 ) {
   updateReview(input: $input, condition: $condition) {
     id
+    name
+    date
     content
     rating
     createdAt
@@ -1380,6 +1384,8 @@ export const deleteReview = /* GraphQL */ `mutation DeleteReview(
 ) {
   deleteReview(input: $input, condition: $condition) {
     id
+    name
+    date
     content
     rating
     createdAt

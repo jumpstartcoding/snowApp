@@ -40,6 +40,8 @@ type Instructor @model {
 
 type Review @model {
   id: ID!
+  name: String
+  date: AWSDateTime
   content: String!
   rating: Int
   createdAt: AWSDateTime!

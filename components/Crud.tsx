@@ -51,9 +51,21 @@ export async function allReviews(
 
   return response;
 }
+export async function postReview(
+  review: { name: string; feedback: string; date: string },
+  client: V6Client<never>
+) {
+  // Ensure the date is properly formatted
+  const formattedDate = review.date.includes("T")
+    ? review.date
+    : new Date(review.date).toISOString();
 
-export async function postReview(data: string, client: V6Client<never>) {
-  const input = { content: data };
+  const input = {
+    name: review.name,
+    date: formattedDate,
+    content: review.feedback,
+  };
+
   try {
     const response = await client.graphql({
       query: createReview,
@@ -61,7 +73,7 @@ export async function postReview(data: string, client: V6Client<never>) {
     });
     console.log(response);
   } catch (error) {
-    console.log(error);
+    console.error("Error posting review:", error);
   }
 }
 

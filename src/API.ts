@@ -231,12 +231,16 @@ export type DeleteInstructorInput = {
 
 export type CreateReviewInput = {
   id?: string | null,
+  name?: string | null,
+  date?: string | null,
   content: string,
   rating?: number | null,
   createdAt?: string | null,
 };
 
 export type ModelReviewConditionInput = {
+  name?: ModelStringInput | null,
+  date?: ModelStringInput | null,
   content?: ModelStringInput | null,
   rating?: ModelIntInput | null,
   createdAt?: ModelStringInput | null,
@@ -248,6 +252,8 @@ export type ModelReviewConditionInput = {
 export type Review = {
   __typename: "Review",
   id: string,
+  name?: string | null,
+  date?: string | null,
   content: string,
   rating?: number | null,
   createdAt: string,
@@ -256,6 +262,8 @@ export type Review = {
 
 export type UpdateReviewInput = {
   id: string,
+  name?: string | null,
+  date?: string | null,
   content?: string | null,
   rating?: number | null,
   createdAt?: string | null,
@@ -319,6 +327,8 @@ export type ModelInstructorConnection = {
 
 export type ModelReviewFilterInput = {
   id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  date?: ModelStringInput | null,
   content?: ModelStringInput | null,
   rating?: ModelIntInput | null,
   createdAt?: ModelStringInput | null,
@@ -418,6 +428,8 @@ export type ModelSubscriptionInstructorFilterInput = {
 
 export type ModelSubscriptionReviewFilterInput = {
   id?: ModelSubscriptionIDInput | null,
+  name?: ModelSubscriptionStringInput | null,
+  date?: ModelSubscriptionStringInput | null,
   content?: ModelSubscriptionStringInput | null,
   rating?: ModelSubscriptionIntInput | null,
   createdAt?: ModelSubscriptionStringInput | null,
@@ -1757,6 +1769,8 @@ export type CreateReviewMutation = {
   createReview?:  {
     __typename: "Review",
     id: string,
+    name?: string | null,
+    date?: string | null,
     content: string,
     rating?: number | null,
     createdAt: string,
@@ -1773,6 +1787,8 @@ export type UpdateReviewMutation = {
   updateReview?:  {
     __typename: "Review",
     id: string,
+    name?: string | null,
+    date?: string | null,
     content: string,
     rating?: number | null,
     createdAt: string,
@@ -1789,6 +1805,8 @@ export type DeleteReviewMutation = {
   deleteReview?:  {
     __typename: "Review",
     id: string,
+    name?: string | null,
+    date?: string | null,
     content: string,
     rating?: number | null,
     createdAt: string,
@@ -2572,6 +2590,8 @@ export type GetReviewQuery = {
   getReview?:  {
     __typename: "Review",
     id: string,
+    name?: string | null,
+    date?: string | null,
     content: string,
     rating?: number | null,
     createdAt: string,
@@ -2591,6 +2611,8 @@ export type ListReviewsQuery = {
     items:  Array< {
       __typename: "Review",
       id: string,
+      name?: string | null,
+      date?: string | null,
       content: string,
       rating?: number | null,
       createdAt: string,
@@ -4063,6 +4085,8 @@ export type OnCreateReviewSubscription = {
   onCreateReview?:  {
     __typename: "Review",
     id: string,
+    name?: string | null,
+    date?: string | null,
     content: string,
     rating?: number | null,
     createdAt: string,
@@ -4078,6 +4102,8 @@ export type OnUpdateReviewSubscription = {
   onUpdateReview?:  {
     __typename: "Review",
     id: string,
+    name?: string | null,
+    date?: string | null,
     content: string,
     rating?: number | null,
     createdAt: string,
@@ -4093,6 +4119,8 @@ export type OnDeleteReviewSubscription = {
   onDeleteReview?:  {
     __typename: "Review",
     id: string,
+    name?: string | null,
+    date?: string | null,
     content: string,
     rating?: number | null,
     createdAt: string,
