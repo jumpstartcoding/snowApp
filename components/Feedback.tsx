@@ -2,6 +2,7 @@ import { Button } from "@aws-amplify/ui-react";
 import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import feedbackImg from "/./src/assets/feedback.jpg";
+
 import { postReview } from "./Crud";
 import { clientContext } from "./clientContext";
 
@@ -65,13 +66,10 @@ export default function Feedback() {
         style={{ display: `${!closePopUp ? "none" : "flex"}` }}
       >
         <Button onClick={() => setClosePopUp(!closePopUp)}> X</Button>
-        <img
-          className="feedback-img"
-          style={{ maxWidth: "300px" }}
-          src={feedbackImg}
-          alt="feedback image"
-        />
-        <h1 style={{ textAlign: "center" }}>Thank You For Sharing</h1>
+
+        <h1 style={{ textAlign: "center" }}>
+          <strong>Thank You For Sharing</strong>
+        </h1>
         <Link to="/"> Go To Homepage</Link>
       </section>
     </>
