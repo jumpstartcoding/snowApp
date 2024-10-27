@@ -1373,3 +1373,57 @@ export const onDeleteReview = /* GraphQL */ `subscription OnDeleteReview($filter
   APITypes.OnDeleteReviewSubscriptionVariables,
   APITypes.OnDeleteReviewSubscription
 >;
+export const onCreateListing = /* GraphQL */ `subscription OnCreateListing($filter: ModelSubscriptionListingFilterInput) {
+  onCreateListing(filter: $filter) {
+    id
+    lat
+    long
+    title
+    description
+    url
+    image
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnCreateListingSubscriptionVariables,
+  APITypes.OnCreateListingSubscription
+>;
+export const onUpdateListing = /* GraphQL */ `subscription OnUpdateListing($filter: ModelSubscriptionListingFilterInput) {
+  onUpdateListing(filter: $filter) {
+    id
+    lat
+    long
+    title
+    description
+    url
+    image
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnUpdateListingSubscriptionVariables,
+  APITypes.OnUpdateListingSubscription
+>;
+export const onDeleteListing = /* GraphQL */ `subscription OnDeleteListing($filter: ModelSubscriptionListingFilterInput) {
+  onDeleteListing(filter: $filter) {
+    id
+    lat
+    long
+    title
+    description
+    url
+    image
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnDeleteListingSubscriptionVariables,
+  APITypes.OnDeleteListingSubscription
+>;

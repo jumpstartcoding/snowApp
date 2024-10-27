@@ -3,6 +3,7 @@ import CreateRes from "./CreateRes";
 import ResCard from "./ResCard";
 import Reviews from "./Reviews";
 import InstructorRes from "./InstructorRes";
+import ListingsPage from "./ListingsPage";
 
 export default function AdminPage() {
   const [pageElement, setPageElement] = useState<string>("instructors");
@@ -31,6 +32,16 @@ export default function AdminPage() {
               Reviews
             </h3>
             <Reviews />
+          </>
+        ) : pageElement === "listings" ? (
+          <>
+            <h3
+              className="section-title"
+              style={{ textAlign: "center", marginTop: "4rem" }}
+            >
+              Add Listing
+            </h3>
+            <ListingsPage />
           </>
         ) : (
           <div
@@ -67,6 +78,9 @@ export default function AdminPage() {
         </button>
         <button onClick={async () => handleClick("reviews")}>
           <span id="reviewsIcon" className="snowIcon"></span>
+        </button>
+        <button onClick={async () => handleClick("listings")}>
+          <span id="listingsIcon"></span>
         </button>
       </div>
     </>

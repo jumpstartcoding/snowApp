@@ -273,6 +273,67 @@ export type DeleteReviewInput = {
   id: string,
 };
 
+export type CreateListingInput = {
+  id?: string | null,
+  lat?: number | null,
+  long?: number | null,
+  title?: string | null,
+  description?: string | null,
+  url?: string | null,
+  image?: string | null,
+};
+
+export type ModelListingConditionInput = {
+  lat?: ModelFloatInput | null,
+  long?: ModelFloatInput | null,
+  title?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  url?: ModelStringInput | null,
+  image?: ModelStringInput | null,
+  and?: Array< ModelListingConditionInput | null > | null,
+  or?: Array< ModelListingConditionInput | null > | null,
+  not?: ModelListingConditionInput | null,
+};
+
+export type ModelFloatInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
+export type Listing = {
+  __typename: "Listing",
+  id: string,
+  lat?: number | null,
+  long?: number | null,
+  title?: string | null,
+  description?: string | null,
+  url?: string | null,
+  image?: string | null,
+  createdAt: string,
+  updatedAt: string,
+};
+
+export type UpdateListingInput = {
+  id: string,
+  lat?: number | null,
+  long?: number | null,
+  title?: string | null,
+  description?: string | null,
+  url?: string | null,
+  image?: string | null,
+};
+
+export type DeleteListingInput = {
+  id: string,
+};
+
 export type ModelReservationFilterInput = {
   id?: ModelIDInput | null,
   type?: ModelStringInput | null,
@@ -340,6 +401,25 @@ export type ModelReviewFilterInput = {
 export type ModelReviewConnection = {
   __typename: "ModelReviewConnection",
   items:  Array<Review | null >,
+  nextToken?: string | null,
+};
+
+export type ModelListingFilterInput = {
+  id?: ModelIDInput | null,
+  lat?: ModelFloatInput | null,
+  long?: ModelFloatInput | null,
+  title?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  url?: ModelStringInput | null,
+  image?: ModelStringInput | null,
+  and?: Array< ModelListingFilterInput | null > | null,
+  or?: Array< ModelListingFilterInput | null > | null,
+  not?: ModelListingFilterInput | null,
+};
+
+export type ModelListingConnection = {
+  __typename: "ModelListingConnection",
+  items:  Array<Listing | null >,
   nextToken?: string | null,
 };
 
@@ -435,6 +515,30 @@ export type ModelSubscriptionReviewFilterInput = {
   createdAt?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionReviewFilterInput | null > | null,
   or?: Array< ModelSubscriptionReviewFilterInput | null > | null,
+};
+
+export type ModelSubscriptionListingFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  lat?: ModelSubscriptionFloatInput | null,
+  long?: ModelSubscriptionFloatInput | null,
+  title?: ModelSubscriptionStringInput | null,
+  description?: ModelSubscriptionStringInput | null,
+  url?: ModelSubscriptionStringInput | null,
+  image?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionListingFilterInput | null > | null,
+  or?: Array< ModelSubscriptionListingFilterInput | null > | null,
+};
+
+export type ModelSubscriptionFloatInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  in?: Array< number | null > | null,
+  notIn?: Array< number | null > | null,
 };
 
 export type CreateReservationMutationVariables = {
@@ -1814,6 +1918,66 @@ export type DeleteReviewMutation = {
   } | null,
 };
 
+export type CreateListingMutationVariables = {
+  input: CreateListingInput,
+  condition?: ModelListingConditionInput | null,
+};
+
+export type CreateListingMutation = {
+  createListing?:  {
+    __typename: "Listing",
+    id: string,
+    lat?: number | null,
+    long?: number | null,
+    title?: string | null,
+    description?: string | null,
+    url?: string | null,
+    image?: string | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type UpdateListingMutationVariables = {
+  input: UpdateListingInput,
+  condition?: ModelListingConditionInput | null,
+};
+
+export type UpdateListingMutation = {
+  updateListing?:  {
+    __typename: "Listing",
+    id: string,
+    lat?: number | null,
+    long?: number | null,
+    title?: string | null,
+    description?: string | null,
+    url?: string | null,
+    image?: string | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type DeleteListingMutationVariables = {
+  input: DeleteListingInput,
+  condition?: ModelListingConditionInput | null,
+};
+
+export type DeleteListingMutation = {
+  deleteListing?:  {
+    __typename: "Listing",
+    id: string,
+    lat?: number | null,
+    long?: number | null,
+    title?: string | null,
+    description?: string | null,
+    url?: string | null,
+    image?: string | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
 export type GetReservationQueryVariables = {
   id: string,
 };
@@ -2615,6 +2779,50 @@ export type ListReviewsQuery = {
       date?: string | null,
       content: string,
       rating?: number | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetListingQueryVariables = {
+  id: string,
+};
+
+export type GetListingQuery = {
+  getListing?:  {
+    __typename: "Listing",
+    id: string,
+    lat?: number | null,
+    long?: number | null,
+    title?: string | null,
+    description?: string | null,
+    url?: string | null,
+    image?: string | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type ListListingsQueryVariables = {
+  filter?: ModelListingFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListListingsQuery = {
+  listListings?:  {
+    __typename: "ModelListingConnection",
+    items:  Array< {
+      __typename: "Listing",
+      id: string,
+      lat?: number | null,
+      long?: number | null,
+      title?: string | null,
+      description?: string | null,
+      url?: string | null,
+      image?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null >,
@@ -4123,6 +4331,63 @@ export type OnDeleteReviewSubscription = {
     date?: string | null,
     content: string,
     rating?: number | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnCreateListingSubscriptionVariables = {
+  filter?: ModelSubscriptionListingFilterInput | null,
+};
+
+export type OnCreateListingSubscription = {
+  onCreateListing?:  {
+    __typename: "Listing",
+    id: string,
+    lat?: number | null,
+    long?: number | null,
+    title?: string | null,
+    description?: string | null,
+    url?: string | null,
+    image?: string | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnUpdateListingSubscriptionVariables = {
+  filter?: ModelSubscriptionListingFilterInput | null,
+};
+
+export type OnUpdateListingSubscription = {
+  onUpdateListing?:  {
+    __typename: "Listing",
+    id: string,
+    lat?: number | null,
+    long?: number | null,
+    title?: string | null,
+    description?: string | null,
+    url?: string | null,
+    image?: string | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnDeleteListingSubscriptionVariables = {
+  filter?: ModelSubscriptionListingFilterInput | null,
+};
+
+export type OnDeleteListingSubscription = {
+  onDeleteListing?:  {
+    __typename: "Listing",
+    id: string,
+    lat?: number | null,
+    long?: number | null,
+    title?: string | null,
+    description?: string | null,
+    url?: string | null,
+    image?: string | null,
     createdAt: string,
     updatedAt: string,
   } | null,

@@ -4,6 +4,7 @@ import {
   updateReservation,
   deleteReservation,
   deleteCustomer,
+  createListing,
 } from "../src/graphql/mutations";
 import { listReservations, listReviews } from "../src/graphql/queries";
 import { V6Client, GraphQLResult } from "@aws-amplify/api-graphql";
@@ -175,4 +176,26 @@ export async function getReservations(
     },
   });
   return response;
+}
+
+export async function addListing(
+  listing: {
+    lat: number;
+    long: number;
+    title: string;
+    description: string;
+    url: string;
+    image: string;
+  },
+  client: V6Client<never>
+) {
+  try {
+    const response = await client.graphql({
+      query: createListing,
+      variables: { input: listing },
+    });
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
 }

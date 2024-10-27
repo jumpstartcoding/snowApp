@@ -46,3 +46,13 @@ type Review @model {
   rating: Int
   createdAt: AWSDateTime!
 }
+
+type Listing @model {
+  id: ID!
+  lat: Float
+  long: Float
+  title: String
+  description: String
+  url: String
+  image: String
+}

@@ -1,3 +1,11 @@
+
+@media (min-width: 400px) {
+    .listing-form {
+   
+        margin-bottom: 60px !important;
+      }
+    
+}
 body{
     background-color: white ;
 }
@@ -68,3 +76,75 @@ body{
   }
   
 
+
+
+
+
+.listing-form {
+    max-width: 600px;   /* Limit the form's width */
+    margin: 0 auto;     /* Center the form horizontally */
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    font-family: Arial, sans-serif;
+   
+  }
+  
+  /* Styling for form labels */
+  .listing-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+  }
+  
+  /* Styling for input fields and textarea */
+  .listing-form input,
+  .listing-form textarea {
+    width: 100%;               /* Full width */
+    padding: 10px;
+    margin-bottom: 15px;       
+    border: 1px solid #ccc;  
+    border-radius: 4px;       
+    box-sizing: border-box;    /* Include padding in width */
+    font-size: 14px;
+  }
+  
+
+  /* Styling for the submit button */
+  .listing-form button[type="submit"] {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s; /* Smooth transition */
+  }
+  
+  /* Button hover effect */
+  .listing-form button[type="submit"]:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  /* Focus style for inputs and textarea */
+  .listing-form input:focus,
+  .listing-form textarea:focus {
+    border-color: #4CAF50; 
+    outline: none;          
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); 
+  }
+ 
+
+  #listingsIcon{
+    padding: 20px;
+    display: inline-block;
+    background-color: orange;
+    background-size: cover;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a small black box shadow */
+    border-radius: 50%; 
+  }

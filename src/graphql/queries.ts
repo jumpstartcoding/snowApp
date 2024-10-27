@@ -813,6 +813,50 @@ export const listReviews = /* GraphQL */ `query ListReviews(
   APITypes.ListReviewsQueryVariables,
   APITypes.ListReviewsQuery
 >;
+export const getListing = /* GraphQL */ `query GetListing($id: ID!) {
+  getListing(id: $id) {
+    id
+    lat
+    long
+    title
+    description
+    url
+    image
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.GetListingQueryVariables,
+  APITypes.GetListingQuery
+>;
+export const listListings = /* GraphQL */ `query ListListings(
+  $filter: ModelListingFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listListings(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      lat
+      long
+      title
+      description
+      url
+      image
+      createdAt
+      updatedAt
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ListListingsQueryVariables,
+  APITypes.ListListingsQuery
+>;
 export const reservationsByInstructorID = /* GraphQL */ `query ReservationsByInstructorID(
   $instructorID: ID!
   $sortDirection: ModelSortDirection

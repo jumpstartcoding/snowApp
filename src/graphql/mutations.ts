@@ -1397,3 +1397,66 @@ export const deleteReview = /* GraphQL */ `mutation DeleteReview(
   APITypes.DeleteReviewMutationVariables,
   APITypes.DeleteReviewMutation
 >;
+export const createListing = /* GraphQL */ `mutation CreateListing(
+  $input: CreateListingInput!
+  $condition: ModelListingConditionInput
+) {
+  createListing(input: $input, condition: $condition) {
+    id
+    lat
+    long
+    title
+    description
+    url
+    image
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.CreateListingMutationVariables,
+  APITypes.CreateListingMutation
+>;
+export const updateListing = /* GraphQL */ `mutation UpdateListing(
+  $input: UpdateListingInput!
+  $condition: ModelListingConditionInput
+) {
+  updateListing(input: $input, condition: $condition) {
+    id
+    lat
+    long
+    title
+    description
+    url
+    image
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.UpdateListingMutationVariables,
+  APITypes.UpdateListingMutation
+>;
+export const deleteListing = /* GraphQL */ `mutation DeleteListing(
+  $input: DeleteListingInput!
+  $condition: ModelListingConditionInput
+) {
+  deleteListing(input: $input, condition: $condition) {
+    id
+    lat
+    long
+    title
+    description
+    url
+    image
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.DeleteListingMutationVariables,
+  APITypes.DeleteListingMutation
+>;
