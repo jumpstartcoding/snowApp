@@ -27,33 +27,36 @@ export default function Reviews() {
   return (
     <section className="reviews">
       <table className="reviews-table">
+        <thead>
+          <tr>
+            <th className="id-header" scope="col">
+              ID
+            </th>
+            <th scope="col">Name</th>
+            <th scope="col">Review</th>
+            <th scope="col">Date of Lesson</th>
+          </tr>
+        </thead>
         <tbody>
           {reviewss.map((review: any, index: number) => (
             <React.Fragment key={index}>
               <tr className="index-row">
-                <th className="index-header">{index + 1}.</th>
-                <td className="index-data">
-                  {new Date(review.createdAt).toLocaleDateString()}
-                </td>
-              </tr>
-              <tr className="name-row">
-                <th className="name-header">Name:</th>
+                <th scope="row" className="index-header">
+                  {index + 1}.
+                </th>
+
                 <td className="name-data">{review.name}</td>
-              </tr>
-              <tr className="content-row">
-                <th className="content-header">Review</th>
                 <td className="content-data">
                   <p>{review.content}</p>
                 </td>
-              </tr>
-              <tr className="date-row">
-                <th className="date-header">Date of Lesson:</th>
+
                 <td className="date-data">
                   {new Date(review.date).toLocaleDateString()}
                 </td>
               </tr>
+
               <tr className="divider-row">
-                <td colSpan={2} className="divider-cell"></td>
+                <td colSpan={4} className="divider-cell"></td>
               </tr>
             </React.Fragment>
           ))}
