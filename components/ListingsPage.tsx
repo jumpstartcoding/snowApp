@@ -112,7 +112,7 @@ export default function ListingsPage() {
     try {
       await removeListing(listingId, client); // Call the removeListing function to delete from the server
       const updatedListings = listings.filter(
-        (x: any, i: number) => i !== index
+        (_: any, i: number) => i !== index
       ); // Remove the listing from the local state
       setListings(updatedListings); // Update the listings state
     } catch (error) {
