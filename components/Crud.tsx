@@ -3,12 +3,22 @@ import {
   createReview,
   updateReservation,
   deleteReservation,
+  deleteListing,
   deleteCustomer,
   createListing,
+  updateListing,
 } from "../src/graphql/mutations";
-import { listReservations, listReviews } from "../src/graphql/queries";
+import {
+  listReservations,
+  listReviews,
+  listListings,
+} from "../src/graphql/queries";
 import { V6Client, GraphQLResult } from "@aws-amplify/api-graphql";
-import { ListReservationsQuery, ListReviewsQuery } from "../src/API";
+import {
+  ListReservationsQuery,
+  ListReviewsQuery,
+  ListListingsQuery,
+} from "../src/API";
 
 export async function removeReservation(
   resID: string,
@@ -197,5 +207,73 @@ export async function addListing(
     console.log(response);
   } catch (error) {
     console.log(error);
+  }
+}
+
+export async function getListings(
+  client: V6Client<never>
+): Promise<GraphQLResult<ListListingsQuery>> {
+  const response = await client.graphql({
+    query: listListings,
+    variables: {
+      filter: {},
+    },
+  });
+
+  return response;
+}
+
+export const editListing = async (
+  listing: {
+    lat: number;
+    long: number;
+    title: string;
+    description: string;
+    url: string;
+    image: string;
+  },
+  client: any,
+  listingId: string // Pass the listing ID to specify which listing to update
+) => {
+  const input = {
+    id: listingId,
+    lat: listing.lat,
+    long: listing.long,
+    title: listing.title,
+    description: listing.description,
+    url: listing.url,
+    image: listing.image,
+  };
+
+  try {
+    // Perform the update mutation
+    console.log("Lasjask", input);
+    const result = await client.graphql({
+      query: updateListing,
+      variables: { input },
+    });
+
+    console.log("Listing updated:", result.data.updateListing);
+    return result.data.updateListing; // Return the updated listing
+  } catch (error) {
+    console.error("Error updating listing:", error);
+    throw error;
+  }
+};
+
+export async function removeListing(
+  listingID: string,
+
+  client: V6Client<never>
+) {
+  try {
+    const response = await client.graphql({
+      query: deleteListing,
+      variables: { input: { id: listingID } },
+    });
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+    alert("Deleting Listing Failed");
   }
 }

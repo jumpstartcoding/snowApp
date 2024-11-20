@@ -35,12 +35,6 @@ export default function AdminPage() {
           </>
         ) : pageElement === "listings" ? (
           <>
-            <h3
-              className="section-title"
-              style={{ textAlign: "center", marginTop: "4rem" }}
-            >
-              Add Listing
-            </h3>
             <ListingsPage />
           </>
         ) : (
