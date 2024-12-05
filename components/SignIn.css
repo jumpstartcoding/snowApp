@@ -51,8 +51,10 @@
 
 
 
+
 }
   @media (max-width: 576px) {
+    
     #reserve{
       padding: 0px !important ;
     }
@@ -90,7 +92,7 @@
   
 .navbar a {
 font-weight: 900;
-font-family:sans-serif,'Lucida Grande';
+
 color: white;
 }
   
@@ -129,7 +131,7 @@ opacity: .9;
 div.card{
 
   border-radius: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  
 
 }
 
@@ -176,23 +178,48 @@ flex:1;
   box-shadow:  3.5px 5px 0px rgba(0, 0, 0, .2);
 }
 
+.admin-page {
+  display: flex;
+  height: 100vh; /* Ensures full viewport height */
+  overflow: hidden;
+  flex-direction: column;
+}
 
+.sidebar {
+  background-color: rgba(240, 240, 240, 0.8); /* Light gray with 80% opacity */
+  display: flex;
+  position: fixed;
 
-.sideBarIcons >button {
-  background-color: rgba(0,0,0,0);
+  width: 100%;
+  bottom: 0px;
+  align-items: center;
+  overflow: auto;
+justify-content: space-evenly;
+  z-index: 9999999;
+}
+
+.sidebar-button {
+
+  background-color: transparent;
   border: none;
 
-margin: 10px 0px 0px 10px;
+  cursor: pointer;
+}
+.sidebar-button-id{display: block; font-size: .75rem;
+}
+.sidebar-button:hover{
+  background-color: rgba(0, 0, 0, 0.1); /* Light transparent gray on hover */
+  border-radius: 10px;
+}
 
- 
- }
- .snowIcon{
-  padding: 20px;
-  display: inline-block;
- 
+.snowIcon {
   background-size: cover;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a small black box shadow */
-  border-radius: 50%; 
+  background-position: center;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: block;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 #snow{
@@ -216,12 +243,6 @@ margin: 10px 0px 0px 10px;
 
 
 
-.sideBarIcons{
-background-color: none;
-position: fixed;
-bottom: 0;
-
-}
 
 
 
@@ -249,9 +270,6 @@ bottom: 0;
 ul {
   list-style: none;
   padding: 0;
-}
-.reservation-list {
-  font-family: Arial, sans-serif;
 }
 
 .event-item {
@@ -545,7 +563,7 @@ text-decoration: none;
 }
 
 .feedback input,.styled-textarea {
-  font-family: Arial, sans-serif;
+
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -653,9 +671,11 @@ text-decoration: none;
 }
 
 
-.section-title{
-  font-family:Georgia, 'Times New Roman', Times, serif;
-
+.section-title {
+  text-align: center;
+  margin: 3rem 0;
+  font-size: 1.5rem;
+  font-family: monospace;
 }
 
 #map {
@@ -752,7 +772,7 @@ flex: 2;
 
 
 .info-window-content {
-  font-family: Arial, sans-serif;
+ 
   font-size: 14px;
   color: green;
 width: 400px;
@@ -860,11 +880,22 @@ nav ul li a:hover {
 .btn-primary:hover {
   background-color: #ffc107;
 }
+.icon{
+  display: block;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  background-size: cover;
+  border-radius: 50%;
+
+}
 
 .content {
-  padding: 60px 20px;
-  max-width: 1000px;
-  margin: 0 auto;
+
+  flex: 1;
+  overflow-y: auto; /* Allows scrolling for the content */
+  padding: 20px;
+  margin-bottom: 100px;
+ 
 }
 
 .content h2 {
@@ -876,7 +907,8 @@ nav ul li a:hover {
 .content p {
   font-size: 1.2em;
   line-height: 1.6;
-  margin-bottom: 40px;
+  
+  overflow: auto;
 }
 
 .partnerships {

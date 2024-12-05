@@ -6,6 +6,9 @@ import { clientContext } from "./clientContext";
 import "./ListingsPage.css"; // Import custom styling
 
 export default function ListingsPage() {
+  const [search, setSearch] = useState<string>("");
+  const [forceRender, setForceRender] = useState(false);
+
   const [listing, setListing] = useState<{
     id?: string; // Ensure id is included for updates
     lat: number;
@@ -23,6 +26,8 @@ export default function ListingsPage() {
     image: "",
   });
 
+  const [filteredListings, setFill] = useState<any>([]);
+
   const [listings, setListings] = useState<any>([]); // State to hold the list of all listings
   const [editing, setEditing] = useState<number | null>(null); // Track the index of the listing being edited
 
@@ -35,14 +40,51 @@ export default function ListingsPage() {
       setListings(lis.data.listListings?.items);
     }
     fetchData();
-  }, [client]);
+  }, [client, forceRender]);
+
+  useEffect(() => {
+    setFill(
+      listings
+        .filter(
+          (listing: any) =>
+            listing &&
+            listing.title !== undefined &&
+            listing.description !== undefined
+        ) // Ensure valid listings
+        .filter((listing: any) => {
+          return (
+            listing.title.toLowerCase().includes(search.toLowerCase()) ||
+            listing.description.toLowerCase().includes(search.toLowerCase())
+          );
+        })
+    );
+  }, [search, listings]);
 
   // Handle form input changes for listing
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setListing({ ...listing, [name]: value });
+    if (name === "search") {
+      setSearch(value);
+      setFill(
+        listings
+          .filter(
+            (listing: any) =>
+              listing &&
+              listing.title !== undefined &&
+              listing.description !== undefined
+          ) // Ensure valid listings
+          .filter((listing: any) => {
+            return (
+              listing.title.toLowerCase().includes(value.toLowerCase()) ||
+              listing.description.toLowerCase().includes(value.toLowerCase())
+            );
+          })
+      );
+    } else {
+      setListing({ ...listing, [name]: value });
+    }
   };
 
   // Submit a new listing or update an existing one
@@ -52,6 +94,8 @@ export default function ListingsPage() {
       // Adding a new listing
       try {
         await addListing(listing, client);
+        setForceRender((prev) => !prev);
+
         setListings([...listings, listing]); // Add the new listing to the state
         setListing({
           title: "",
@@ -68,7 +112,6 @@ export default function ListingsPage() {
     } else {
       // Updating an existing listing
       try {
-        console.log("buterrr", listings[editing]);
         await editListing(listing, client, listings[editing].id); // Call the editListing function
         const updatedListings = [...listings];
         updatedListings[editing] = listing; // Update the listing in the local state
@@ -108,18 +151,35 @@ export default function ListingsPage() {
       image: "",
     }); // Reset the form fields
   };
-  const handleRemove = async (listingId: string, index: number) => {
+
+  const handleRemove = async (listingId: string) => {
     try {
-      await removeListing(listingId, client); // Call the removeListing function to delete from the server
       const updatedListings = listings.filter(
-        (_: any, i: number) => i !== index
-      ); // Remove the listing from the local state
-      setListings(updatedListings); // Update the listings state
+        (elt: any) => elt.id !== listingId
+      );
+      setListings(updatedListings);
+      setFill(
+        updatedListings
+          .filter(
+            (listing: any) =>
+              listing &&
+              listing.title !== undefined &&
+              listing.description !== undefined
+          ) // Ensure valid listings
+          .filter((listing: any) => {
+            return (
+              listing.title.toLowerCase().includes(search.toLowerCase()) ||
+              listing.description.toLowerCase().includes(search.toLowerCase())
+            );
+          })
+      ); // Update filtered listings
+      await removeListing(listingId, client);
     } catch (error) {
       console.log("Error removing listing:", error);
       alert("Failed to remove listing.");
     }
   };
+
   return (
     <div className="listings-page">
       <section className="form-section">
@@ -209,10 +269,21 @@ export default function ListingsPage() {
       </section>
 
       <section className="listings-section">
-        <h2>All Listings</h2>
+        <header className="listings-header">
+          <h2>All Listings</h2>
+          <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder="search"
+            onChange={handleChange}
+            value={search}
+          />
+        </header>
+
         {listings.length > 0 ? (
           <ul className="listings-list">
-            {listings.map((listing: any, index: number) => (
+            {filteredListings.map((listing: any, index: number) => (
               <li key={listing.id} className="listing-item">
                 <h3>{listing.title}</h3>
                 <p>Description: {listing.description}</p>
@@ -220,26 +291,38 @@ export default function ListingsPage() {
                   Location: {listing.lat}, {listing.long}
                 </p>
                 {listing.url && (
-                  <p rel="noopener noreferrer" className="more-info-link">
-                    URL:{listing.url}
-                  </p>
+                  <span style={{ display: "block" }}>
+                    <label htmlFor="url"> URL:</label>
+                    <a
+                      style={{ display: "inline" }}
+                      href={listing.url}
+                      className="more-info-link"
+                    >
+                      {" " + listing.url}
+                    </a>
+                  </span>
                 )}
                 {listing.image && (
                   <img
                     src={listing.image}
                     alt={listing.title}
-                    className="listing-image"
+                    style={{ width: "100%", maxWidth: "200px" }}
                   />
                 )}
-                <Button onClick={() => handleEdit(index)} className="edit-btn">
-                  Edit
-                </Button>
-                <Button
-                  onClick={() => handleRemove(listing.id, index)}
-                  className="remove-btn"
-                >
-                  Remove{" "}
-                </Button>
+                <div className="listing-buttons">
+                  <Button
+                    onClick={() => handleEdit(index)}
+                    className="edit-btn"
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    onClick={() => handleRemove(listing.id)}
+                    className="remove-btn"
+                  >
+                    Remove
+                  </Button>
+                </div>
               </li>
             ))}
           </ul>

@@ -115,7 +115,7 @@ function HomePage() {
           {resType === "create" ? (
             <></>
           ) : (
-            <section className="trips">
+            <section style={{ marginBottom: "100px" }} className="trips">
               {resType === "Ski" ? (
                 <ResCard key="1" userId={userID} tag="Ski"></ResCard>
               ) : (
@@ -125,12 +125,19 @@ function HomePage() {
           )}
         </main>
       </div>
-      <div className="sideBarIcons">
-        <button onClick={() => handleClick("Snowboard")}>
+      <div className="sidebar">
+        <button
+          className="sidebar-button"
+          onClick={() => handleClick("Snowboard")}
+        >
           <span id="snow" className="snowIcon"></span>
+          <p className="sidebar-button-id">SnowBoard</p>
         </button>
-        <button onClick={() => handleClick("Ski")}>
-          <span id="ski" className="snowIcon"></span>
+        <button className="sidebar-button" onClick={() => handleClick("Ski")}>
+          <span id="ski" className="snowIcon">
+            {" "}
+          </span>
+          <p className="sidebar-button-id">Ski</p>
         </button>
       </div>
     </>

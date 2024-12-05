@@ -3,8 +3,19 @@
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
-    font-family: Arial, sans-serif;
     margin-top: 4rem ;
+  }
+
+  .listings-header{
+display: flex;
+justify-content: space-between;
+place-items: center;
+
+  }
+  .listings-header >input{
+    max-height: 30px;
+    max-width: 175px;
+  
   }
   
   /* Form Section */
@@ -133,4 +144,5 @@
     background-color: red;
     color: white;
   }
+
   
