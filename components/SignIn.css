@@ -189,7 +189,7 @@ flex:1;
   background-color: rgba(240, 240, 240, 0.8); /* Light gray with 80% opacity */
   display: flex;
   position: fixed;
-
+padding-top: 8px;
   width: 100%;
   bottom: 0px;
   align-items: center;
@@ -904,8 +904,8 @@ nav ul li a:hover {
   color: #004080;
 }
 
-.content p {
-  font-size: 1.2em;
+.content >p,span {
+  
   line-height: 1.6;
   
   overflow: auto;
