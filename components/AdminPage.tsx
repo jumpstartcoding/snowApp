@@ -54,7 +54,7 @@ export default function AdminPage() {
     onClick: () => void;
     label: string;
   }) => (
-    <span style={{ textAlign: "center" }}>
+    <span key={id} style={{ textAlign: "center" }}>
       <button onClick={onClick} className="sidebar-button" aria-label={label}>
         <span className={`fa fa-${icon} icon`}></span>
       </button>
