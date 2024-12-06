@@ -70,6 +70,7 @@
   
     div.card{
       margin: 10px auto !important ;
+      
     }
     .card.createRes {
       margin: 10px;
@@ -131,8 +132,9 @@ opacity: .9;
 div.card{
 
   border-radius: 20px;
-  
-
+ 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
+  margin-bottom: 10px;
 }
 
 .createRes{
@@ -195,6 +197,7 @@ padding-top: 8px;
   align-items: center;
   overflow: auto;
 justify-content: space-evenly;
+z-index: 999999;
 
 }
 

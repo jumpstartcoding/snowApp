@@ -162,8 +162,8 @@ export default function CreateRes(props: {
         className="container "
         style={{
           marginBottom: "50px",
-          padding: "0px 50px",
-          boxShadow: " -2px 0 5px rgba(0, 0, 0, 0.1)",
+          padding: "25px 50px",
+          boxShadow: " 0 4px 6px rgba(0, 0, 0, 0.1)",
           maxWidth: "600px",
         }}
       >
