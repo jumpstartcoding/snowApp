@@ -8,6 +8,7 @@ import "./ListingsPage.css"; // Import custom styling
 export default function ListingsPage() {
   const [search, setSearch] = useState<string>("");
   const [forceRender, setForceRender] = useState(false);
+  const [popUp, setPopUp] = useState<boolean>(false);
 
   const [listing, setListing] = useState<{
     id?: string; // Ensure id is included for updates
@@ -134,6 +135,7 @@ export default function ListingsPage() {
 
   // Handle editing a listing
   const handleEdit = (index: number) => {
+    setPopUp((e) => !e);
     const listingToEdit = listings[index];
     setListing(listingToEdit); // Pre-fill the form with the current listing data
     setEditing(index); // Set the current listing as being edited
@@ -182,95 +184,108 @@ export default function ListingsPage() {
 
   return (
     <div className="listings-page">
-      <section className="form-section">
-        <h2 style={{ textAlign: "center" }}>
-          {editing === null ? "Add a Listing" : "Edit Listing"}
-        </h2>
-        <form onSubmit={submitListing} className="listing-form">
-          <div className="input-group">
-            <label htmlFor="title">Title</label>
-            <input
-              onChange={handleChange}
-              type="text"
-              name="title"
-              id="title"
-              value={listing.title}
-              required
-              className="input-field"
-            />
-          </div>
+      {popUp && (
+        <section className={`form-section ${popUp ? "show" : "hide"}`}>
+          <button
+            onClick={() => {
+              setPopUp(!popUp);
+              handleCancel();
+            }}
+            className="btn-secondary btn"
+          >
+            Close
+          </button>
+          <h2 style={{ textAlign: "center" }}>
+            {editing === null ? "Add a Listing" : "Edit Listing"}
+          </h2>
 
-          <div className="input-group">
-            <label htmlFor="long">Longitude</label>
-            <input
-              onChange={handleChange}
-              id="long"
-              name="long"
-              type="number"
-              value={listing.long}
-              required
-              className="input-field"
-            />
-          </div>
+          <form onSubmit={submitListing} className="listing-form">
+            <div className="input-group">
+              <label htmlFor="title">Title</label>
+              <input
+                onChange={handleChange}
+                type="text"
+                name="title"
+                id="title"
+                value={listing.title}
+                required
+                className="input-field"
+              />
+            </div>
 
-          <div className="input-group">
-            <label htmlFor="lat">Latitude</label>
-            <input
-              onChange={handleChange}
-              name="lat"
-              id="lat"
-              type="number"
-              value={listing.lat}
-              required
-              className="input-field"
-            />
-          </div>
+            <div className="input-group">
+              <label htmlFor="long">Longitude</label>
+              <input
+                onChange={handleChange}
+                id="long"
+                name="long"
+                type="number"
+                value={listing.long}
+                required
+                className="input-field"
+              />
+            </div>
 
-          <div className="input-group">
-            <label htmlFor="description">Description</label>
-            <textarea
-              className="input-field styled-textarea"
-              name="description"
-              id="description"
-              rows={5}
-              value={listing.description}
-              onChange={handleChange}
-              placeholder="Enter a description"
-            />
-          </div>
+            <div className="input-group">
+              <label htmlFor="lat">Latitude</label>
+              <input
+                onChange={handleChange}
+                name="lat"
+                id="lat"
+                type="number"
+                value={listing.lat}
+                required
+                className="input-field"
+              />
+            </div>
 
-          <div className="input-group">
-            <label htmlFor="url">URL</label>
-            <input
-              onChange={handleChange}
-              type="text"
-              name="url"
-              id="url"
-              value={listing.url}
-              className="input-field"
-            />
-          </div>
+            <div className="input-group">
+              <label htmlFor="description">Description</label>
+              <textarea
+                className="input-field styled-textarea"
+                name="description"
+                id="description"
+                rows={5}
+                value={listing.description}
+                onChange={handleChange}
+                placeholder="Enter a description"
+              />
+            </div>
 
-          <div className="button-group">
-            <Button type="submit" className="submit-btn">
-              {editing === null ? "Submit Listing" : "Update Listing"}
-            </Button>
-            {editing !== null && (
-              <Button
-                type="button"
-                onClick={handleCancel}
-                className="cancel-btn"
-              >
-                Cancel
+            <div className="input-group">
+              <label htmlFor="url">URL</label>
+              <input
+                onChange={handleChange}
+                type="text"
+                name="url"
+                id="url"
+                value={listing.url}
+                className="input-field"
+              />
+            </div>
+
+            <div className="button-group">
+              <Button type="submit" className="submit-btn">
+                {editing === null ? "Submit Listing" : "Update Listing"}
               </Button>
-            )}
-          </div>
-        </form>
-      </section>
+              {editing !== null && (
+                <Button
+                  type="button"
+                  onClick={handleCancel}
+                  className="cancel-btn"
+                >
+                  Cancel
+                </Button>
+              )}
+            </div>
+          </form>
+        </section>
+      )}
 
       <section className="listings-section">
         <header className="listings-header">
           <h2>All Listings</h2>
+
           <input
             type="text"
             name="search"
@@ -280,6 +295,13 @@ export default function ListingsPage() {
             value={search}
           />
         </header>
+        <button
+          onClick={() => setPopUp(!popUp)}
+          className="btn btn-primary btn-add-listing"
+        >
+          {" "}
+          Add a Listing
+        </button>
 
         {listings.length > 0 ? (
           <ul className="listings-list">
@@ -291,7 +313,7 @@ export default function ListingsPage() {
                   Location: {listing.lat}, {listing.long}
                 </p>
                 {listing.url && (
-                  <span style={{ display: "block" }}>
+                  <span style={{ display: "block", overflow: "auto" }}>
                     <label htmlFor="url"> URL:</label>
                     <a
                       style={{ display: "inline" }}

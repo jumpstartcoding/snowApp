@@ -195,7 +195,7 @@ padding-top: 8px;
   align-items: center;
   overflow: auto;
 justify-content: space-evenly;
-  z-index: 9999999;
+
 }
 
 .sidebar-button {
@@ -908,7 +908,7 @@ nav ul li a:hover {
   
   line-height: 1.6;
   
-  overflow: auto;
+
 }
 
 .partnerships {

@@ -10,22 +10,66 @@
 display: flex;
 justify-content: space-between;
 place-items: center;
+text-align: center;
 
   }
   .listings-header >input{
     max-height: 30px;
     max-width: 175px;
+    margin-left: 10px;
   
   }
+
+  @keyframes modal-enter {
+    0% {
+      top: -100%; /* Start above the viewport */
+      opacity: 0; /* Start invisible */
+    }
+    100% {
+      top: 10%; /* End position */
+      opacity: 1; /* Fully visible */
+    }
+  }
   
-  /* Form Section */
+  @keyframes modal-exit {
+    0% {
+      top: 10%; /* Start from the end position */
+      opacity: 1; /* Fully visible */
+    }
+    100% {
+      top: -100%; /* Move above the viewport */
+      opacity: 0; /* Fade out */
+    }
+  }
+  
   .form-section {
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 40px;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80%;
+    overflow-y: auto; /* Enable vertical scrolling */
+    opacity: 0; /* Start invisible */
+    pointer-events: none; /* Prevent interaction when not visible */
   }
+  
+  .form-section.show {
+    animation: modal-enter 0.5s forwards; /* Play enter animation */
+    pointer-events: auto; /* Allow interaction when visible */
+  }
+  
+  .form-section.hide {
+    animation: modal-exit .5s forwards; /* Play exit animation */
+    
+  }
+  
+  
   
   .listing-form {
     display: grid;
@@ -146,3 +190,12 @@ place-items: center;
   }
 
   
+
+  .btn-add-listing{
+
+    width: 100%;
+    margin-bottom: 10px;
+    border: none;
+ 
+  }
+
