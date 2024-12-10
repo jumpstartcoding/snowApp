@@ -94,7 +94,7 @@ function HomePage() {
         }}
       >
         <div></div>
-        <h1 style={{ textAlign: "center", marginTop: "4rem" }}>
+        <h1 className="section-title">
           {resType === "create" ? (
             <>Create Reservation</>
           ) : (

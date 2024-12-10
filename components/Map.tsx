@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-
+import { useCallback, useEffect, useRef, useState, useContext } from "react";
+import { getListings } from "./Crud";
 import { MarkerClusterer } from "@googlemaps/markerclusterer";
 import type { Marker } from "@googlemaps/markerclusterer";
 import {
@@ -13,6 +13,7 @@ import {
 import cabinImage from "/src/assets/cabin.jpg";
 import slopeImage from "/src/assets/slope.jpg";
 import bkgImage from "/src/assets/bkg.jpg";
+import { clientContext } from "./clientContext";
 
 export default function MapComponent() {
   const [markerInfo, setMarkerInfo] = useState<{
@@ -21,212 +22,34 @@ export default function MapComponent() {
     position: google.maps.LatLng | null;
   }>({
     title: "",
-    content: "Javid & Aysel Hideout",
+    content: "",
     position: null,
   });
 
   const mapRef = useRef<google.maps.Map | null>(null);
   const [windowState, setWindowState] = useState<string>("None");
+  const client = useContext(clientContext);
 
-  type Poi = { key: string; location: google.maps.LatLngLiteral };
-  const locations: Poi[] = [
-    {
-      key: "Buxton Lodge",
-      location: { lat: 41.11898, lng: -75.05232 },
-    },
-    {
-      key: "Cozy Cabin",
-      location: { lat: 41.25551, lng: -75.47079 },
-    },
-    {
-      key: "Cozy Mountain Lakehouse",
-      location: { lat: 41.0606423, lng: -75.5910219 },
-    },
-    {
-      key: "The Hideout Chalet",
-      location: { lat: 41.4196276, lng: -75.3472886 },
-    },
-    {
-      key: "Just Breathe",
-      location: { lat: 41.4309425, lng: -75.352273 },
-    },
-    {
-      key: "The Lightforest Chalet",
-      location: { lat: 41.4247878, lng: -75.338322 },
-    },
-    {
-      key: "Up Cabin",
-      location: { lat: 41.4466568, lng: -75.3429261 },
-    },
-    {
-      key: "Willow’s Place",
-      location: { lat: 41.4298275, lng: -75.3431131 },
-    },
-    {
-      key: "Meadowview Manor",
-      location: { lat: 41.4393323, lng: -75.364341 },
-    },
-    {
-      key: "Shiff Shack",
-      location: { lat: 41.4524227, lng: -75.3449826 },
-    },
-    {
-      key: "Fawn Chateau",
-      location: { lat: 41.4486341, lng: -75.3432691 },
-    },
-    {
-      key: "Sky’s the Limit",
-      location: { lat: 41.4540975, lng: -75.3237248 },
-    },
-    {
-      key: "The Regal Lodge",
-      location: { lat: 41.4355231, lng: -75.3402843 },
-    },
-    {
-      key: "Vacation Station",
-      location: { lat: 41.4569553, lng: -75.325709 },
-    },
-    {
-      key: "Cozy Cabin 2",
-      location: { lat: 41.4157344, lng: -75.3570409 },
-    },
-    {
-      key: "Tree House",
-      location: { lat: 41.4482893, lng: -75.3422964 },
-    },
-    {
-      key: "Loch Nest Mtn.",
-      location: { lat: 41.4590676, lng: -75.3388106 },
-    },
-    {
-      key: "Pine Lodge",
-      location: { lat: 41.4616204, lng: -75.3189202 },
-    },
-    {
-      key: "The Escape at The Hideout",
-      location: { lat: 41.4560149, lng: -75.3156846 },
-    },
-    {
-      key: "It’s 5 O’Clock Somewhere",
-      location: { lat: 41.4385772, lng: -75.3596001 },
-    },
-    {
-      key: "The Fox Den",
-      location: { lat: 41.4151749, lng: -75.3484843 },
-    },
-    {
-      key: "Lake Ariel Cottage",
-      location: { lat: 41.4266608, lng: -75.3388115 },
-    },
-    {
-      key: "The Dacha",
-      location: { lat: 41.4263758, lng: -75.3548349 },
-    },
-    {
-      key: "Palm Hideaway",
-      location: { lat: 41.413305, lng: -75.346938 },
-    },
-    {
-      key: "A Frame of Mind",
-      location: { lat: 41.4500161, lng: -75.4412575 },
-    },
-    {
-      key: "The Boulders",
-      location: { lat: 41.4497799, lng: -75.3474151 },
-    },
-    {
-      key: "The Treehouse Retreat",
-      location: { lat: 41.4327877, lng: -75.3430975 },
-    },
-    {
-      key: "House in the Trees",
-      location: { lat: 41.4275142, lng: -75.35502 },
-    },
-    {
-      key: "Brentwood Chalet",
-      location: { lat: 41.4325663, lng: -75.3584066 },
-    },
-    {
-      key: "Sunset View",
-      location: { lat: 41.4604726, lng: -75.3288758 },
-    },
-    {
-      key: "On the Rocks",
-      location: { lat: 41.4107232, lng: -75.341797 },
-    },
-    {
-      key: "Tree House 2",
-      location: { lat: 41.4107232, lng: -75.341797 },
-    },
-    {
-      key: "Family Ties",
-      location: { lat: 41.4107232, lng: -75.341797 },
-    },
-    {
-      key: "Tree House 3",
-      location: { lat: 41.4477956, lng: -75.3415566 },
-    },
-    {
-      key: "Deer Run Retreat",
-      location: { lat: 41.218724, lng: -75.363915 },
-    },
-    {
-      key: "Home Away from Home",
-      location: { lat: 41.053268, lng: -75.368113 },
-    },
-    {
-      key: "Paradise Retreat",
-      location: { lat: 41.050857, lng: -75.363556 },
-    },
-    {
-      key: "Shawnee Mtn",
-      location: { lat: 41.043138, lng: -75.082993 },
-    },
-    {
-      key: "Great Summer Escape",
-      location: { lat: 41.4403, lng: -75.353285 },
-    },
-    {
-      key: "Kelly Property",
-      location: { lat: 41.00254, lng: -75.528982 },
-    },
-    {
-      key: "Lake Breeze Hideaway",
-      location: { lat: 41.16291, lng: -75.554776 },
-    },
-    {
-      key: "Ski Chalet in Arrowhead Lake",
-      location: { lat: 41.144829, lng: -75.561227 },
-    },
-    {
-      key: "Summit Bear",
-      location: { lat: 41.116341, lng: -75.396687 },
-    },
-    {
-      key: "Three Daughters Properties",
-      location: { lat: 41.053397, lng: -75.36819 },
-    },
-    {
-      key: "Little Summit Location",
-      location: { lat: 41.084789, lng: -75.412782 },
-    },
-    {
-      key: "Boulder Lake Location",
-      location: { lat: 41.05373, lng: -75.592474 },
-    },
-    {
-      key: "Emerald Estate",
-      location: { lat: 41.0853644, lng: -75.4314456 },
-    },
-    {
-      key: "Luxury Lakefront",
-      location: { lat: 41.0600317, lng: -75.5987751 },
-    },
-    {
-      key: "Lake Harmony",
-      location: { lat: 41.0563215, lng: -75.6054331 },
-    },
-  ];
+  type Poi = { key: string; location: google.maps.LatLngLiteral; content: "" };
+
+  const [lol, setLol] = useState<any>([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const lis = await getListings(client);
+      const newLocations = lis.data.listListings?.items.map((elt) => ({
+        key: elt?.title || "Unknown",
+        location: {
+          lat: Number(elt?.lat) || 0,
+          lng: Number(elt?.long) || 0,
+        },
+        content: elt?.description || "Details coming soon.",
+      }));
+
+      setLol(newLocations || []);
+    }
+    fetchData();
+  }, [client]); // Add client as a dependency
 
   const PoiMarkers = (props: { pois: Poi[] }) => {
     const map = useMap();
@@ -246,9 +69,10 @@ export default function MapComponent() {
           ...markerInfo,
           title: poi.key,
           position: ev.latLng,
+          content: poi.content,
         });
       },
-      []
+      [map]
     );
 
     // Initialize MarkerClusterer, if the map has changed
@@ -303,15 +127,21 @@ export default function MapComponent() {
 
   const LocationList = (props: { poi: Poi; index: number }) => {
     const map = mapRef.current;
-    if (!map) {
-      return <div></div>;
+    if (!map || props.poi.key == markerInfo.title) {
+      return <></>;
     }
 
     const changePosition = (poi: Poi) => {
       map.panTo(poi.location);
 
       map.setZoom(15);
-      setMarkerInfo({ ...markerInfo, title: poi.key });
+      setMarkerInfo({
+        title: poi.key,
+        content: poi.content,
+        position: poi.location
+          ? new google.maps.LatLng(poi.location.lat, poi.location.lng)
+          : null, // Convert LatLngLiteral to LatLng if available
+      });
       setWindowState("open");
     };
     return (
@@ -403,13 +233,12 @@ export default function MapComponent() {
                 View on Google Maps
               </a>
             </h5>
-            <p>
-              This location is an expressive venue with numerous attractions
-              along radius of the nile river. Clearly some bullshit but come
-              book a night you the vibes. This location is an expressive venue
-              with numerous attractions along radius of the nile river. Clearly
-              some bullshit but come book a night you the vibes.
-            </p>
+            <div className="details-container">
+              <h6>
+                <strong>Details</strong>
+              </h6>
+              <p>{markerInfo.content}</p>
+            </div>
           </div>
         ) : (
           windowState == "back" && (
@@ -423,7 +252,7 @@ export default function MapComponent() {
                 </h3>
               </header>
               <section>
-                {locations.map((poi: Poi, index) => (
+                {lol.map((poi: Poi, index: number) => (
                   <LocationList poi={poi} index={index} />
                 ))}
               </section>
@@ -445,7 +274,7 @@ export default function MapComponent() {
               )
             }
           >
-            <PoiMarkers pois={locations} />
+            <PoiMarkers pois={lol} />
             {markerInfo.title && (
               <InfoWindow
                 pixelOffset={[0, -40]}

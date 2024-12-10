@@ -1,14 +1,16 @@
 import { Button } from "@aws-amplify/ui-react";
 import { FormEvent, useContext, useEffect, useState } from "react";
 import { ChangeEvent } from "react";
-import { addListing, getListings, editListing, removeListing } from "./Crud"; // Assuming editListing is available in Crud
+import { addListing, getListings, editListing, removeListing } from "./Crud";
 import { clientContext } from "./clientContext";
 import "./ListingsPage.css"; // Import custom styling
 
 export default function ListingsPage() {
   const [search, setSearch] = useState<string>("");
+
   const [forceRender, setForceRender] = useState(false);
   const [popUp, setPopUp] = useState<boolean>(false);
+  const [remove, setRemove] = useState(false);
 
   const [listing, setListing] = useState<{
     id?: string; // Ensure id is included for updates
@@ -305,13 +307,36 @@ export default function ListingsPage() {
           <ul className="listings-list">
             {filteredListings.map((listing: any, index: number) => (
               <li key={listing.id} className="listing-item">
+                {remove && (
+                  <div className="remove-prompt">
+                    <h1>Remove the Listing?</h1>
+                    <button
+                      onClick={() => handleRemove(listing.id)}
+                      className="btn btn-danger btn-lg"
+                    >
+                      Yes
+                    </button>
+                    <button
+                      onClick={() => setRemove(!remove)}
+                      className="btn btn-lg  ms-2 btn-outline-primary"
+                    >
+                      No
+                    </button>
+                  </div>
+                )}
                 <h3>{listing.title}</h3>
                 <p>Description: {listing.description}</p>
                 <p>
                   Location: {listing.lat}, {listing.long}
                 </p>
                 {listing.url && (
-                  <span style={{ display: "block", overflow: "auto" }}>
+                  <span
+                    style={{
+                      display: "block",
+                      overflow: "auto",
+                      paddingBottom: "10px",
+                    }}
+                  >
                     <label htmlFor="url"> URL:</label>
                     <a
                       style={{ display: "inline" }}
@@ -337,7 +362,7 @@ export default function ListingsPage() {
                     Edit
                   </Button>
                   <Button
-                    onClick={() => handleRemove(listing.id)}
+                    onClick={() => setRemove(!remove)}
                     className="remove-btn"
                   >
                     Remove

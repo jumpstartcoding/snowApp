@@ -13,7 +13,13 @@ export default function AdminPage() {
   const renderContent = () => {
     switch (pageElement) {
       case "instructors":
-        return <InstructorRes />;
+        return (
+          <>
+            <h3 className="section-title">Instructors</h3>
+            <InstructorRes />;
+          </>
+        );
+
       case "create":
         return (
           <>

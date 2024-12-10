@@ -47,7 +47,7 @@ export default function InstructorRes() {
         style={{
           display: "flex",
           justifyContent: "center",
-          marginTop: "50px",
+
           padding: "25px",
         }}
       >
@@ -57,14 +57,9 @@ export default function InstructorRes() {
               className="card"
               id="instructorCard"
               style={{
-                padding: "10px 30px",
-                gap: "10px",
+                padding: "50px 30px",
               }}
             >
-              <span style={{ alignSelf: "center" }}>
-                <h2>Instructors</h2>
-              </span>
-
               {instructors.map((instructor: any, index: number) => (
                 <div
                   key={index}
