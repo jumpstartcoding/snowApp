@@ -178,6 +178,7 @@ export default function ListingsPage() {
           })
       ); // Update filtered listings
       await removeListing(listingId, client);
+      setRemove(!remove);
     } catch (error) {
       console.log("Error removing listing:", error);
       alert("Failed to remove listing.");
