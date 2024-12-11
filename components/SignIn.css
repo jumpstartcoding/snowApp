@@ -91,9 +91,9 @@
         
   }
   
-.navbar a {
+.navbar span {
 font-weight: 900;
-
+cursor: pointer;
 color: white;
 }
   
@@ -106,9 +106,10 @@ opacity: .9;
  
   background: radial-gradient(
     circle at left,
+    var(--custom-orange-color),
+    var( --custom-navy-color)
+    
    
-    var( --custom-navy-color),
-    var(--custom-orange-color)
    
   );
 }

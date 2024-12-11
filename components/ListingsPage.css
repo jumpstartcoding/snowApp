@@ -28,7 +28,7 @@ text-align: center;
      
     }
     100% {
-      top: 100%; /* End position */
+      top: 95%; /* End position */
       opacity: 1; /* Fully visible */
 
     }
@@ -53,7 +53,7 @@ text-align: center;
     position: fixed;
     left: 50%;
     transform: translate(-50%,-100%);
-    z-index: 1000;
+    z-index: 9999999;
     width: 90%;
     max-width: 500px;
     max-height: 80%;

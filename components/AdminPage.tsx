@@ -16,7 +16,7 @@ export default function AdminPage() {
         return (
           <>
             <h3 className="section-title">Instructors</h3>
-            <InstructorRes />;
+            <InstructorRes />
           </>
         );
 

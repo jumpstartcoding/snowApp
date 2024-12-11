@@ -1,17 +1,27 @@
 import { signOut } from "aws-amplify/auth";
 import { ReactNode } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface NavBarProps {
   children: ReactNode; // Explicitly type the children prop
 }
 
 export default function NavBar({ children }: NavBarProps) {
+  const navigate = useNavigate();
+
+  const handleLinkClick = (path: string) => {
+    const navbar = document.getElementById("navbarSupportedContent");
+    if (navbar?.classList.contains("show")) {
+      navbar.classList.remove("show"); // Collapse the navbar
+    }
+    navigate(path); // Navigate to the desired route
+  };
+
   return (
     <>
       <nav
-        style={{ position: "fixed" }}
-        className="navbar  fixed-top text-center navbar-expand-sm bg-body-tertiary "
+        style={{ position: "fixed", zIndex: 1030 }}
+        className="navbar fixed-top text-center navbar-expand-sm bg-body-tertiary"
       >
         <div className="container-fluid">
           <button
@@ -30,30 +40,42 @@ export default function NavBar({ children }: NavBarProps) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link " aria-current="page" to="/home">
+                <span
+                  className="nav-link"
+                  onClick={() => handleLinkClick("/home")}
+                >
                   Home
-                </Link>
+                </span>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/home/reservations">
+                <span
+                  className="nav-link"
+                  onClick={() => handleLinkClick("/home/reservations")}
+                >
                   Reservations
-                </Link>
+                </span>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/home/calendar">
+                <span
+                  className="nav-link"
+                  onClick={() => handleLinkClick("/home/calendar")}
+                >
                   Calendar
-                </Link>
+                </span>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/home/admin">
+                <span
+                  className="nav-link"
+                  onClick={() => handleLinkClick("/home/admin")}
+                >
                   Admin
-                </Link>
+                </span>
               </li>
             </ul>
           </div>
         </div>
         <span
-          className="nav-item "
+          className="nav-item"
           style={{ position: "absolute", right: "15px" }}
         >
           <button
@@ -64,13 +86,13 @@ export default function NavBar({ children }: NavBarProps) {
                 console.log("SignOut Button:", e);
               }
             }}
-            className="nav-link "
+            className="btn btn-outline-danger"
           >
             Sign Out
           </button>
         </span>
       </nav>
-      {children}
+      <div style={{ paddingTop: "20px" }}>{children}</div>
     </>
   );
 }
