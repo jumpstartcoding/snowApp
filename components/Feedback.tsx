@@ -37,7 +37,6 @@ export default function Feedback() {
       <section
         className="feedback"
         style={{
-          opacity: `${!closePopUp ? "1" : ".5"}`,
           zIndex: `${!closePopUp ? "1" : "-1"}`,
         }}
       >

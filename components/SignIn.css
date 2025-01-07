@@ -87,7 +87,9 @@
          
         }
 
-      
+        .feedback-popup{
+          width: 90%;
+        }
         
   }
   
@@ -540,7 +542,8 @@ text-decoration: none;
   padding: 25px;
   position: fixed;
   transform: translate(-50%,-50%);
-  background-color: white;
+  background-color: whitesmoke;
+  border-color: wheat;
   gap: 10px;
   top: 50%;
   left: 50%;
