@@ -1,6 +1,6 @@
 import { Button } from "@aws-amplify/ui-react";
 import { ChangeEvent, FormEvent, useContext, useState } from "react";
-import { Link } from "react-router-dom";
+
 import feedbackImg from "/./src/assets/feedback.jpg";
 
 import { postReview } from "./Crud";
@@ -34,7 +34,13 @@ export default function Feedback() {
   };
   return (
     <>
-      <section className="feedback">
+      <section
+        className="feedback"
+        style={{
+          opacity: `${!closePopUp ? "1" : ".5"}`,
+          zIndex: `${!closePopUp ? "1" : "-1"}`,
+        }}
+      >
         <img className="feedback-img" src={feedbackImg} alt="feedback image" />
         <h1>We'd Like Your Feedback</h1>
         <form onSubmit={(event) => createReview(event)} action="" method="post">
@@ -65,12 +71,22 @@ export default function Feedback() {
         className="feedback-popup"
         style={{ display: `${!closePopUp ? "none" : "flex"}` }}
       >
-        <Button onClick={() => setClosePopUp(!closePopUp)}> X</Button>
-
-        <h1 style={{ textAlign: "center" }}>
-          <strong>Thank You For Sharing</strong>
-        </h1>
-        <Link to="/"> Go To Homepage</Link>
+        <Button
+          className="modal-close"
+          onClick={() => setClosePopUp(!closePopUp)}
+        >
+          {" "}
+          Close
+        </Button>
+        <div className="modal-content">
+          <div className="modal-icon">⭐</div>
+          <h2 className="modal-title">
+            <strong>Thank You!</strong>
+          </h2>
+          <p className="modal-message">
+            Your review has been submitted successfully!
+          </p>
+        </div>
       </section>
     </>
   );

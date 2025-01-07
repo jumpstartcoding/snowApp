@@ -517,13 +517,14 @@ background-color: white;}
 }
 .feedback-popup button{
  align-self: flex-start;
+ background-color: red;
+ border-color: red;
+ color: white;
+
 
 }
 .feedback-popup button:hover{
-  background-color: red;
-  color: white;
-  border-color: red;
-
+  background-color: rgb(255, 77, 77);
 
 }
 .feedback-popup a{
@@ -535,6 +536,7 @@ text-decoration: none;
   place-items: center;
  box-shadow: 0px 1px var(--custom-navy-color);
 
+ justify-content: center;
   padding: 25px;
   position: fixed;
   transform: translate(-50%,-50%);
@@ -545,9 +547,35 @@ text-decoration: none;
   border-radius: 20px;
   max-width: 400px;
 
+  z-index: 1000000;
 
- 
 
+}
+
+.modal-content {
+  background: var(--dark-bg);
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 400px;
+  text-align: center;
+  border: 2px solid var(--primary-yellow);
+}
+
+.modal-icon {
+  font-size: 4rem;
+  color: var(--primary-yellow);
+  margin-bottom: 1rem;
+}
+
+.modal-title {
+  color: var(--primary-yellow);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.modal-message {
+
+  margin-bottom: 2rem;
 }
 
 
@@ -560,7 +588,9 @@ text-decoration: none;
   background-color: white;
   position: relative;
 
+
   padding:10px;
+
   
 }
 

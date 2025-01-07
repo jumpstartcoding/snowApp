@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface NavBarProps {
-  children: ReactNode; // Explicitly type the children prop
+  children: ReactNode;
 }
 
 export default function NavBar({ children }: NavBarProps) {
@@ -20,7 +20,7 @@ export default function NavBar({ children }: NavBarProps) {
   return (
     <>
       <nav
-        style={{ position: "fixed", zIndex: 1030 }}
+        style={{ position: "fixed" }}
         className="navbar fixed-top text-center navbar-expand-sm bg-body-tertiary"
       >
         <div className="container-fluid">
